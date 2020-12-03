@@ -20,7 +20,7 @@ import { Desciption } from "../HomePage/Intro/style"
 const SocialLinks = [
   {
     icon: <IoLogoGithub />,
-    url: "https://github.com/yuchocopie/mash-up-android",
+    url: "https://github.com/yuchocopie/mashup-android",
     tooltip: "Github",
   },
   // {
@@ -35,7 +35,7 @@ const SocialLinks = [
   },
   {
     icon: <IoLogoFacebook />,
-    url: "https://www.facebook.com/mash-up",
+    url: "https://www.facebook.com/mashupgroup",
     tooltip: "Facebook",
   },
 ]

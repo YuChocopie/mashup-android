@@ -122,8 +122,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `초코파이 - 춤추는 개발자 유초코`,
-        short_name: `초코파이`,
+        name: `매쉬업 - 안드로이드 일지`,
+        short_name: `매쉬업`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ff176a`,
@@ -143,21 +143,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-lodash`,
     },
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       {
-    //         family: `Poppins`,
-    //         variants: [`300`, `400`, `500`, `600`, `700`],
-    //       },
-    //       {
-    //         family: `Fira Sans`,
-    //         variants: [`100`, `300`, `400`, `500`, `600`, `700`],
-    //       },
-    //     ],
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {

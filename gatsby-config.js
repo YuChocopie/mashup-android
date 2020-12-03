@@ -143,19 +143,29 @@ module.exports = {
     {
       resolve: `gatsby-plugin-lodash`,
     },
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       {
+    //         family: `Poppins`,
+    //         variants: [`300`, `400`, `500`, `600`, `700`],
+    //       },
+    //       {
+    //         family: `Fira Sans`,
+    //         variants: [`100`, `300`, `400`, `500`, `600`, `700`],
+    //       },
+    //     ],
+    //   },
+    // },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Poppins`,
-            variants: [`300`, `400`, `500`, `600`, `700`],
-          },
-          {
-            family: `Fira Sans`,
-            variants: [`100`, `300`, `400`, `500`, `600`, `700`],
-          },
+          `limelight`,
+          `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
         ],
+        display: "swap",
       },
     },
   ],

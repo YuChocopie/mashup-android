@@ -8,7 +8,7 @@ module.exports = {
     author: `매쉬업 안둥이`,
     about: `함께하는 것을 좋아하는 개발자들이 함께 자라나고 있습니다.`,
     description: `안드로이드 개발자들의 개발 블로그입니다.`,
-    siteUrl: `https://mashup-android.now.sh`,
+    siteUrl: `https://mashup-android.vercel.app`,
   },
   plugins: [
     {

@@ -21,7 +21,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
           <Navbar />
         </Sticky>
         {children}
-        <Footer>🌝초코파이 정🌚</Footer>
+        <Footer>🌝mash-up Android🌚</Footer>
         <ScrollToTop
           showUnder={300}
           duration={700}

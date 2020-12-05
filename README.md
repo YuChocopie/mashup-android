@@ -1,7 +1,12 @@
 # mash-up-android
 
+## 충돌내기 test
 ### 글 작성하는 법
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 424c6a7b73cb3861cab5cfca862c47e502709d80
 1. `mashup-android/content/blog/` 아래 글의 제목으로 폴더를 생성해주세요
 2. 아래 양식을 붙여넣어 index.md 파일을 생성해주세요
   - 제목과 날짜 아래 형식에 맞게 기입해주세요

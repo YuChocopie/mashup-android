@@ -1,6 +1,6 @@
 ---
-title: start
-date: "2020-12-03"
+title: 제목~~
+date: "2020-12-04"
 tags: ["start", "mash-up", "chocopie"]
 description: "description~"
 cover: "./ic_android.jpg"

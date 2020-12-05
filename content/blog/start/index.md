@@ -2,7 +2,7 @@
 title: start
 date: "2020-12-03"
 tags: ["start", "mash-up", "chocopie"]
-description: ""
+description: "description~"
 cover: "./ic_android.jpg"
 ---
 

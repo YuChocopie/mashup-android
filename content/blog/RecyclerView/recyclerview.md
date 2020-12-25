@@ -1,6 +1,6 @@
 ---
 title: RecyclerView
-date: "2020-12-21"
+date: "2020-12-25"
 tags: ["start", "mash-up", "seohui", "recyclerview", "androidweekly"]
 description: "RecyclerView 기본 설명 및 관련 위클리 번역."
 cover: "./ic_android.jpg"
@@ -22,7 +22,9 @@ cover: "./ic_android.jpg"
 
 
 
-<img src="./recyclerview.jpg" alt="recyclerview" style="zoom:80%;" />
+
+
+<p align = "center"><img src="./recyclerview.jpg" alt="recyclerview" style="zoom:80%;" /></p>
 
 [^recyclerview image]: https://wooooooak.github.io/android/2019/03/28/recycler_view/
 
@@ -66,7 +68,7 @@ cover: "./ic_android.jpg"
 
 # How to make a RecyclerView in Jetpack Compose 
 
-## Jetpack Composed에서 RecyclerView 를 사용하는 방법
+## Jetpack Compose에서 RecyclerView 를 사용하는 방법
 
 [![Ian Alexander](https://miro.medium.com/fit/c/96/96/2*rzfYoxAWI6Nn1gVOgSW7Hg.jpeg)](https://ian-alexander.medium.com/?source=post_page-----bf4751abee80--------------------------------)
 
@@ -207,7 +209,7 @@ fun ItemTwo(itemTypeTwo: ItemTypeTwo) {
 
 ## Abstracting logic
 
-> 위의 코드 샘플에서 눈치 채 셨을 수 있는 것은 뷰가 큰 역할을 하지 못한 다는 것입니다.
+> 위의 코드 샘플에서 눈치 채 셨을 수 있는 것은 뷰가 큰 역할을 하지 못한다는 것입니다.
 
 >------
 >

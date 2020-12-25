@@ -24,7 +24,7 @@ cover: "./ic_android.jpg"
 
 
 
-<p align = "center"><img src="./recyclerview.jpg" alt="recyclerview" style="zoom:80%;" /></p>
+<p align = "center"><img src="./RecyclerView/recyclerview.jpg" alt="recyclerview" style="zoom:80%;" /></p>
 
 [^recyclerview image]: https://wooooooak.github.io/android/2019/03/28/recycler_view/
 
@@ -56,7 +56,7 @@ cover: "./ic_android.jpg"
   > 개발자가 xml 레이아웃을 수정하거나 UI 위젯을 직접 만들지 않습니다. 대신 Jetpack Compose 함수를 호출하여 원하는 요소를 말하면 Compose 컴파일러에서 나머지 작업을 완료합니다.
   > 소스영역에 UI영역을 코딩하고 거기에 이벤트를 함께 처리하는 방식처럼 보입니다
 
-- <img src="./compose.jpg" alt="compose" style="zoom:50%;" />
+- <img src="./RecyclerView/compose.jpg" alt="compose" style="zoom:50%;" />
 
 [^compose image]: https://blog.karumi.com/android-jetpack-compose-review/
 

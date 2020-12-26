@@ -181,13 +181,13 @@ export const PostDescription = styled.div`
     font-size: 21px;
     font-weight: 500;
     line-height: 2;
-    margin: 60px 0;
+    margin: 20px 0;
     @media (max-width: 1200px) {
-      margin: 50px 0;
+      margin: 15px 0;
       font-size: 19px;
     }
     @media (max-width: 575px) {
-      margin: 40px 0;
+      margin: 10px 0;
       font-size: 15px;
     }
     &:before,
@@ -196,30 +196,31 @@ export const PostDescription = styled.div`
       width: 30px;
       height: 1px;
       display: block;
-      background: #292929;
+      background: #ccc;
     }
     &:before {
-      margin-bottom: 60px;
+      margin-bottom: 20px;
       @media (max-width: 1200px) {
-        margin-bottom: 50px;
+        margin-bottom: 15px;
       }
       @media (max-width: 575px) {
-        margin-bottom: 40px;
+        margin-bottom: 10px;
       }
     }
     &:after {
-      margin-top: 60px;
+      margin-top: 20px;
       @media (max-width: 1200px) {
-        margin-top: 50px;
+        margin-top: 15px;
       }
       @media (max-width: 575px) {
-        margin-top: 40px;
+        margin-top: 10px;
       }
     }
 
     p {
       font-size: 21px;
       font-weight: 500;
+      color: gray;
       line-height: 2;
       margin-bottom: 23px;
       @media (max-width: 1200px) {

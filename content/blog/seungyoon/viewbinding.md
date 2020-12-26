@@ -2,7 +2,7 @@
 title: "View Binding: What is it?"
 date: "2020-12-26"
 tags: ["mash-up", "seungyoon", "View Binding", "Data Binding", "kotlin Synthetic"]
-description: "Coroutine으로 LiveData와 SingleLiveEvent 대체하기"
+description: "binding에 대한 문제점들과 View Binding의 특징과 사용법을 작성했습니다."
 cover: "./ic_android.jpg"
 ---
 
@@ -77,6 +77,7 @@ android {
     }
 }
 ```
+
 안드로이드 스튜디오 4.0 부터는 param의 위치가 **buildFeatures**로 이동되어 위와 같이 선언합니다.<br>
 
 - **View Binding in Activity**
@@ -102,14 +103,18 @@ class MainActivity : AppCompatActivity() {
 ```kotlin
 class DetailFragment : Fragment() {
 
-    private var binding: FragmentDetailBinding? = null
+    private var _binding: FragmentDetailBinding? = null
+    
+    // This property is only valid between onCeateView and 
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -121,12 +126,12 @@ class DetailFragment : Fragment() {
     
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+        _binding = null
     }
 }
 ```
 프래그먼트에서 사용법은 위와 같습니다. 프래그먼트의 생명주기에서 자신의 UI를 그리기 시작하는 부분인 onCreateView에서 바인딩을 시켜주고 binding 객체의 root를 리턴해 넘겨줍니다.<br>
-프래그먼트에서는 Nullable 처리를 위해 추가적인 코드가 필요합니다. 프래그먼트는 뷰 보다 오래 지속되기 때문에 onDestroyView에서 binding class 인스턴스 참조를 정리해주어야 합니다.
+프래그먼트에서는 Nullable 처리를 위해 추가적인 코드가 필요합니다. 프래그먼트는 뷰 보다 오래 지속되기 때문에 onDestroyView()에서 binding class 인스턴스 null 값으로 변경하여 참조를 정리해주어야 합니다.
 
 # DataBinding vs ViewBinding
 

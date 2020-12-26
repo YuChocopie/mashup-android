@@ -26,7 +26,7 @@ const SocialLinks = [
   },
   {
     icon: <IoLogoInstagram />,
-    url: "https://www.instagram.com/u_.jeong/",
+    url: "https://www.instagram.com/official_mashup_/",
     tooltip: "Instagram",
   },
   {

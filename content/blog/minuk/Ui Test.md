@@ -8,13 +8,17 @@ cover: "./ic_android.jpg"
 
 # Android Ui Test
 
-안녕하세요. **Mash-UP** 안드로이드 10기  양민욱 입니다 :)
+안녕하세요. **Mash-UP** 안드로이드 10기  양민욱 입니다 :) <br></br>
 
-> 여러분은 Android 개발 과정에서 테스트를 도입하시나요?
+> 여러분은 Android 개발 과정에서 테스트를 도입하시나요? 
+
+<br>
 
 저도 이번 포스팅을 공부 하면서 처음 도입 했는데요. 테스트는 Android 프로젝트를 생성할 때 기본으로 생성되어 있을 정도로 구글에서 권장하고 있습니다.
 
 > 개발 과정에서 테스트를 도입하면 어떤 점이 좋을 까요?
+
+<br>
 
 이 질문에 대한 구글의 공식 답변은 아래와 같습니다.
 
@@ -22,8 +26,10 @@ cover: "./ic_android.jpg"
 - 기존 코드의 호환성을 신경 쓰지 않고 **코드 수정/ 기능 추가 가능**
 - 코드의 **안전성 보장**
 
+<br>
 테스트는 작성한 코드에 대한 안정성과 정확성, 기능 동작이 올바르게 동작하는지 확인 해주고, 무엇보다 이미 테스트로 정확성을 인정된 코드를 수정한 이후 기존 코드와 호환성을 확인할 때 유용하게 사용할 수 있습니다.
 
+<br></br>
 ## Ui Test란?
 
 테스트에는 2가지 종류가 있습니다.
@@ -34,20 +40,21 @@ cover: "./ic_android.jpg"
 
 이번 포스팅에서는 `UI Test` 를 다룰 예정이며, 포스팅에서 사용되는 예시 코드는 이 [GitHub](https://github.com/jaeryo2357/SaveAccount)에서 참고하실 수 있습니다.
 
+<br></br>
 ## 프로젝트 설정
 
 UI Test를 사용하기 위해서 `Espresso` 와 `UIAutomator` 라이브러리를 사용할 예정입니다.
 
 우선 app gradle에서 다음과 같이 추가 해주세요 (2020.12.25 기준)
 
-```
+```gradle
 // Test
 testImplementation 'junit:junit:4.12'
 androidTestImplementation "androidx.test:core-ktx:1.3.0"
 androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 androidTestImplementation 'androidx.test:runner:1.3.0'
 ```
-
+<br>
 추가적으로, 만약 테스트를 수행할 기기의 개발자 옵션에서 아래 옵션을 사용 중이라면 오류가 생길 수 있습니다. 
 
 테스트 진행 중에 옵션을 잠시 꺼두는 것이 좋습니다
@@ -56,6 +63,7 @@ androidTestImplementation 'androidx.test:runner:1.3.0'
 - 전환 애니메이션 배율
 - Animator 길이 배율
 
+<br></br>
 ## 프로젝트 소개 & 테스트 시나리오 설명
 
 코드를 작성하기 전, 마지막 단계입니다. 서두가 너무 긴 것 같아서 지루 하실까봐 걱정이네요ㅜㅜ 😂
@@ -70,13 +78,16 @@ androidTestImplementation 'androidx.test:runner:1.3.0'
 - 계정을 추가/ 수정하는 화면 : **AddEditAccountActivity**
     - 계정의 **Category, SiteName, UserId, UserPwd**를 입력 받으며, 저장 버튼을 누르면 SQLite에 계정이 저장됩니다.
     - 뒤로 가기 버튼을 누르면 화면이 종료되어 **AccountsActivity** 화면으로 되돌아 갑니다.
-
+    
+<br></br>
 **테스트 시나리오**
 
 1. 계정을 올바르게 저장하고 난 후, AccountsActivity 화면으로 되돌아 왔을 때 **리스트에 저장된 계정이 화면에 표시 되는지를 확인한다.**
 2. 1의 기능을 수행한 후, 해당 뷰를 **롱 클릭**을 하면 보여지는 다이얼로그에서 **삭제 버튼을 누르면** 리스트에서 해당 계정이 리스트에서 표시 안되는 것을 확인한다.
 
+<br>
 자! 이제 테스트를 작성해 봅시다.
+<br></br>
 
 ## Espresso로 UI Test 작성
 
@@ -85,10 +96,11 @@ androidTestImplementation 'androidx.test:runner:1.3.0'
 UI Test는 실제 기기를 통한 테스트를 수행하므로, 프로젝트 폴더에서 **androidTest폴더**에 클래스를 생성해야 해요.
 
 androidTest 폴더는 프로젝트 생성할 때 자동으로 생성되지만 찾기 어렵다면 테스트를 수행하려는 클래스에 대해 `option + enter` 를 누르면 쉽게 테스트 클래스를 생성할 수 있습니다.  `JUnit4` 를 선택하여 생성해주세요 :)
- "인공지능")
   
 
 <img src="UiTest/createTestClass.png" width="500"> 
+
+<br></br>
 
 ### 테스트 클래스 설정
 
@@ -101,7 +113,7 @@ class AccountsActivityTest {
  
    @Test
     fun createAccount() {
-			 //ToDo createAccount Test
+       //ToDo createAccount Test
     } 
 
     @Test
@@ -113,7 +125,7 @@ class AccountsActivityTest {
 
 **Espresso** 는 뷰에 대한 제어만 제공해서 테스트 환경을 구성하기 위해 `JUnit` 라이브러리를 사용하려고 해요.
 
-자바용 단위 테스트 프레임워크인 **JUnit**은 테스트 환경을 구성하는 **어노테이션**을 제공해주고 있어 가독성이 좋은 ****테스트 코드를 작성할 수 있습니다.
+자바용 단위 테스트 프레임워크인 **JUnit**은 테스트 환경을 구성하는 **어노테이션**을 제공해주고 있어 가독성이 좋은 **테스트 코드**를 작성할 수 있습니다.
 
 - `@Test`:  어노테이션을 적용한 함수는 **각각의 테스트 케이스**를 의미하게 됩니다.
 - `@Before`: 각각의 **테스트 케이스**가 실행되기 전에 수행하고자 하는 함수에 적용하고 테스트의 필요한 리소스를 할당할 때 사용합니다.
@@ -121,6 +133,8 @@ class AccountsActivityTest {
 - `@BeforeClass`: 테스트 클래스가 시작할 때 한 번만 실행하고자 하는 함수에 적용하는 어노테이션입니다.
 - `@AfterClass`:  테스트 클래스의 모든 테스트가 종료된 후 실행하고자 하는 함수에 적용하는 어노테이션입니다.
 - `@Test(timeout=)` : @Test 룰에 대한 timeout을 지정하게 됩니다. timeout 안에 테스트가 완료되지 않으면 fail이 되며, time은 milliseconds로만 사용할 수 있습니다. 예) @Test(timeout=500)
+
+<br></br>
 
 ### Espresso 코드 작성 규칙
 
@@ -134,6 +148,8 @@ onView(withId(R.id.my_view))            // withId(R.id.my_view) is a ViewMatcher
 2. 찾은 뷰에 대한 `ViewAction` 을 사용하여 여러 액션을 수행합니다. 버튼을 누르거나, 글자를 입력하는 행동을 할 수 있습니다.
 3. 테스트하고자 하는 시나리오에 맞게 1과 2를 제한 없이 반복하여 수행할 수 있습니다.
 4. 테스트에 필요한 액션이 완료되었다면 `ViewAssertions` 를 통해 테스트합니다. 이 함수의 결괏값이 테스트 케이스를 통과하는지를 결정합니다.
+
+<br></br>
 
 ### 첫번째 시나리오 작성
 
@@ -158,9 +174,10 @@ scenario.moveToState(State.CREATED);    // Moves the activity state to State.CRE
 scenario.moveToState(State.DESTROYED);  // Moves the activity state to State.DESTROYED.
 ```
 
+<br></br>
+
 다시 돌아와서 시나리오를 작성합시다.  
 
-`ActivityScenario` 로 인해 현재 테스트 케이스를 실행하면 테스트할 실제 기기에 AccoutsActivity가 실행되는 것을 확인하실 수 있습니다. 하지만 사용한 리소스, 변경된 상태에 대한 정리를 자동으로 하지 않기 때문에 `close()` 로 종료해야 합니다.
 
 **ActivityScenario로 Activity 실행**
 
@@ -173,9 +190,9 @@ fun createAccount() {
 }
 ```
 
-**AccountsActivity** 화면 설명해 드린 부분 기억하시나요? 
+`ActivityScenario` 로 인해 현재 테스트 케이스를 실행하면 테스트할 실제 기기에 AccoutsActivity가 실행되는 것을 확인하실 수 있습니다. 하지만 사용한 리소스, 변경된 상태에 대한 정리를 자동으로 하지 않기 때문에 `close()` 로 종료해야 합니다.
 
-계정 목록을 보여주는 **RecyclerView**가 존재하고 화면 하단에 **AddEditAccountActivity로 이동하는 FAB(**FloationgActionButton**)이** 존재합니다. 따라서 계정을 저장하기 위해 FAB을 클릭해야 합니다.
+<br></br>
 
 **Espresso 사용하여 뷰 접근**
 
@@ -184,8 +201,8 @@ fun createAccount() {
 fun createAccount() {
    val activityScenario = ActivityScenario.launch(AccountsActivity::class.java)
 
-	 //화면에 100%로 표시되어 있는 뷰 중 R.id.add_account_fab id를 가진 뷰를 찾고 click 액션을 수행
-	 onView(withId(R.id.add_account_fab)).perform(click())
+   //화면에 100%로 표시되어 있는 뷰 중 R.id.add_account_fab id를 가진 뷰를 찾고 click 액션을 수행
+   onView(withId(R.id.add_account_fab)).perform(click())
 
    //이 아래부터는 AddEditAccountActivity가 화면에 표시되고 있다.
    
@@ -194,7 +211,9 @@ fun createAccount() {
 }
 ```
 
-**AddEditAccountActivity**에는 `EditText`로 선언되어 있는 SiteName, UserId, UserPwd를 Text를 입력하고 저장버튼을 누르게 되면 로컬 데이터베이스에 계정이 저장이 됩니다.
+계정 목록을 보여주는 **RecyclerView**가 존재하고 화면 하단에 **AddEditAccountActivity로 이동하는 FAB(**FloationgActionButton**)이** 존재합니다. 따라서 계정을 저장하는 화면으로 이동하기 위해 FAB을 클릭해야 합니다.
+
+<br></br>
 
 **Espresso 접근한 뷰 제어**
 
@@ -210,7 +229,7 @@ fun createAccount() {
    onView(withId(R.id.add_account_userid_edit_text))
             .perform(typeText("test"), closeSoftKeyboard())
    onView(withId(R.id.add_account_userpwd_edit_text))
-						.perform(typeText("123"), closeSoftKeyboard())
+	    .perform(typeText("123"), closeSoftKeyboard())
 
 	 //계정을 저장하는 함수를 실행하는 버튼
    onView(withId(R.id.add_account_save_btn)).perform(click())
@@ -219,12 +238,12 @@ fun createAccount() {
 }
 ```
 
+**AddEditAccountActivity**에는 `EditText`로 선언되어 있는 SiteName, UserId, UserPwd를 Text를 입력하고 저장버튼을 누르게 되면 로컬 데이터베이스에 계정이 저장이 됩니다.
+
 Espresso의 **perform**은 뷰 제어에 관한 함수로 **뷰를 클릭**하는 `click()`, Text를 입력하는 `typeText()` 등이 존재합니다. 또한 `,` 를 통해 여러 액션을 동시에 실행할 수도 있습니다.
 
-저장된 계정은 AccountsActivity에서 리스트 표시되는 지로 성공 여부를  확인합니다. `Espresso.pressBack()` 함수를 통해 뒤로 가기 기능을 실행할 수 있습니다.
-
+<br></br> 
  
-
 **Espresso 뒤로가기 기능**
 
 ```kotlin
@@ -241,9 +260,10 @@ fun createAccount() {
 }
 ```
 
-이제 테스트 케이스의 성공 여부를 판단하는 `ViewAssertions` 를 사용하여 마무리하면 됩니다. 
+`Espresso.pressBack()` 함수를 통해 뒤로 가기 기능을 실행할 수 있습니다.
 
- 리스트에는 계정 **SiteName**이 표시되고 있습니다. 위에서 SiteName에 "testAccount" 값을 입력했기 때문에 저장이 정상적으로 실행되었다면 화면에 testAccount 텍스트가 표시되고 있을 것입니다. Espresso는 뷰에 대한 Id뿐만 아니라 텍스트를 통해서도 특정 뷰에 접근할 수 있습니다.
+
+<br></br>
 
 **Espresso 생성 테스트**
 
@@ -263,10 +283,15 @@ fun createAccount() {
 }
 ```
 
+
+이제 테스트 케이스의 성공 여부를 판단하는 `ViewAssertions` 를 사용하여 마무리하면 됩니다. 
+
+ 리스트에는 계정 **SiteName**이 표시되고 있습니다. 위에서 SiteName에 "testAccount" 값을 입력했기 때문에 저장이 정상적으로 실행되었다면 화면에 testAccount 텍스트가 표시되고 있을 것입니다. Espresso는 뷰에 대한 Id뿐만 아니라 텍스트를 통해서도 특정 뷰에 접근할 수 있습니다.
+
+<br></br>
+
 ### 두 번째 시나리오 작성
 
-첫 번째 시나리오와 매우 유사하고 추가된 계정에 대해서 **삭제하는 기능**을 테스트하는 시나리오입니다.
-Activity를 실행하고, 계정 정보를 입력하고 저장하는 부분은 시나리오 1과 유사합니다.
 
 ```kotlin
     @Test
@@ -291,13 +316,14 @@ Activity를 실행하고, 계정 정보를 입력하고 저장하는 부분은 �
     }
 ```
 
-계정 삭제는 삭제하려고 하는 리스트 Item의 **Long Click**에서 시작됩니다. 그 후 정말 삭제할 의사가 있는지를 질문하는 다이얼로그가 화면에 표시됩니다. 취소하는 버튼과 삭제하는 버튼이 존재합니다. 
+첫 번째 시나리오와 매우 유사하고 추가된 계정에 대해서 **삭제하는 기능**을 테스트하는 시나리오입니다.
+Activity를 실행하고, 계정 정보를 입력하고 저장하는 부분은 시나리오 1과 유사합니다.
 
-다이얼로그에 대한 접근도 어려워할 필요가 없습니다. 현재 화면에 표시되는 UI만 신경 쓰면 됩니다.
-텍스트를 통해 뷰에 접근했던 것처럼 "삭제"라는 텍스트로 다이얼로그 버튼에 접근하면 됩니다.
+계정 삭제는 삭제하려고 하는 리스트 Item의 **Long Click**에서 시작됩니다. 그 후 정말 삭제할 의사가 있는지를 질문하는 다이얼로그가 화면에 표시되고 해당 다이얼로그에는 취소하는 버튼과 삭제하는 버튼이 존재합니다. 
 
 <img src="UiTest/deleteDialog.png" width="300"> 
 
+<br></br>
 
 **다이얼로그에서 삭제 버튼 클릭**
 
@@ -306,10 +332,10 @@ Activity를 실행하고, 계정 정보를 입력하고 저장하는 부분은 �
     fun createAccount_deleteAccount() {
 
         ...
-				//위의 코드는 시나리오 1과 유사한 계정을 저장하고 되돌아온 상황입니다.
+	//위의 코드는 시나리오 1과 유사한 계정을 저장하고 되돌아온 상황입니다.
 				
-				//삭제하려는 Item 롱 클릭
-				onView(withText("createAccount")).perform(longClick())
+        //삭제하려는 Item 롱 클릭
+        onView(withText("createAccount")).perform(longClick())
         //다이얼로그의 삭제 버튼( strings.xml에 정의한) Text로 뷰에 접근
         onView(withText(R.string.delete_action)).perform(click())
 
@@ -317,7 +343,10 @@ Activity를 실행하고, 계정 정보를 입력하고 저장하는 부분은 �
     }
 ```
 
-삭제 기능이 정상적으로 실행되었다면 리스트 Item에서 찾을 수 없을 것입니다. 
+다이얼로그에 대한 접근도 어려워할 필요가 없습니다. 현재 화면에 표시되는 UI만 신경 쓰면 됩니다.
+텍스트를 통해 뷰에 접근했던 것처럼 "삭제"라는 텍스트로 다이얼로그 버튼에 접근하면 됩니다.
+
+<br></br>
 
 **Espresso 삭제 테스트**
 
@@ -327,15 +356,21 @@ Activity를 실행하고, 계정 정보를 입력하고 저장하는 부분은 �
     fun createAccount_deleteAccount() {
         
         ...
-				//위의 코드는 시나리오 1과 유사한 계정을 저장하고 되돌아온 상황입니다.
+	//위의 코드는 시나리오 1과 유사한 계정을 저장하고 되돌아온 상황입니다.
 				
-			  ...
-				//해당 뷰가 화면에 존재하지 않으면 성공!, 아니면 실패
-				onView(withText("createAccount")).check(doesNotExist())
+	...
+	//해당 뷰가 화면에 존재하지 않으면 성공!, 아니면 실패
+	onView(withText("createAccount")).check(doesNotExist())
 
         ...
     }
 ```
+
+삭제 기능이 정상적으로 실행되었다면 리스트 Item에서 찾을 수 없을 것입니다. 
+
+<br></br>
+
+**Espresso 테스트 실행 방법**
 
 <img src="UiTest/testButton.png" width="500">
 
@@ -346,7 +381,7 @@ Activity를 실행하고, 계정 정보를 입력하고 저장하는 부분은 �
 
 현재 테스트 클래스에 두 가지 테스트 케이스가 작성되어 있습니다. 따라서 테스트 클래스를 전체 실행하면 위 사진과 같이 2개의 테스트가 통과되었다는 결과를 확인하실 수 있습니다 :)
 
- 
+<br></br>
 
 ## Hilt Test 설정
 
@@ -380,7 +415,7 @@ class CustomTestRunner : AndroidJUnitRunner() {
 
 ```kotlin
 defaultConfig {
-				//다른 프로젝트에서 적용중이시라면 com.mut_jaeryo.saveaccount 패키지를 변경해야 합니다!
+	//다른 프로젝트에서 적용중이시라면 com.mut_jaeryo.saveaccount 패키지를 변경해야 합니다!
         testInstrumentationRunner "com.mut_jaeryo.saveaccount.CustomTestRunner"
     }
 ```
@@ -396,7 +431,7 @@ class AccountsActivityTest {
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
-		@Inject
+    @Inject
     lateinit var accountRepository : AccountRepository
 
     @Before
@@ -404,12 +439,12 @@ class AccountsActivityTest {
         hiltRule.inject()
     }
 
-		/**
-		 * @After: 각각 테스트케이스가 끝날 때마다 실행
+     /**
+     * @After: 각각 테스트케이스가 끝날 때마다 실행
      *  accountRepository.deleteAllAccounts()는 suspend 함수로 기본 쓰레드에서 
      *  실행되는 Espresso에서는 호출이 불가능 runBlocking으로 호출
      */
-		@After
+    @After
     fun clearTestAccounts() = runBlocking {
         accountRepository.deleteAllAccounts()
     }
@@ -418,7 +453,12 @@ class AccountsActivityTest {
 }
 ```
 
+각 테스트 케이스마다 init 함수에서 **의존성 주입**이 되어 `accountRepository` 객체를 사용할 수 있게 되고, clearTestAccounts 함수에서 로컬 DB에 저장된 모든 계정을 지우는 작업을 수행하게 된다.
+
 이제 테스트 케이스에서 실행한 불필요한 정보가 저장될 걱정 없이 테스트 케이스를 작성할 수 있게 되었고 더불어 Hilt를 어떻게 테스트 클래스에서 사용할 수 있는지도 간단히 확인해 보았습니다!
+
+
+<br></br>
 
 ## Ui Automator를 이용한 UI Test
 
@@ -431,6 +471,8 @@ Android Activity가 실행 중에 **가로 모드 또는 세로 모드**로 변�
 
 이런 상황에서 사용하는 방법이 **onSaveInstanceState()**, `ViewModel (AAC)` 등이 있지만 UI Test는 일종의 Black Box Test 기법으로 해당 기능을 어떻게 구현했는지, 어떤 라이브러리를 구현해서 했는지 알 필요 없어 이만 말을 줄이겠습니다 😈
 
+<br></br>
+
 ### 프로젝트 설정
 
 app.gradle에 uiAutomator 라이브러리를 추가합시다. (2020.12.25 기준)
@@ -438,6 +480,8 @@ app.gradle에 uiAutomator 라이브러리를 추가합시다. (2020.12.25 기준
 ```kotlin
 androidTestImplementation "androidx.test.uiautomator:uiautomator:2.2.0"
 ```
+
+<br></br>
 
 ### 시나리오 설명
 
@@ -449,6 +493,8 @@ BottomDialogFragment로 카테고리를 변경하면 카테고리 뷰도 그것�
 **기본으로 설정된 게임이 아닌 변경된 카테고리 값을 유지하는지 테스트해 보는 것이 이번 시나리오입니다.**
 
 <img src="UiTest/categoryDialog.png" width="300">
+
+<br></br>
 
 ### 시나리오 작성
 
@@ -479,11 +525,13 @@ Ui Automator는 `UiDevice` 객체를 통해 현재 연결된 실기기에 접근
 - Home 버튼, Back 버튼, Menu 버튼을 누를 수 있습니다.
 - 현재 화면을 스크린샷으로 저장할 수 있습니다.
 
+<br></br>
+
 ```kotlin
 @RunWith(AndroidJUnit4::class)
 class CategoryTest {
 
-	  lateinit var device: UiDevice
+    lateinit var device: UiDevice
 
 	  @Before
     fun startAccountActivityFromHomeScreen() {
@@ -505,7 +553,7 @@ class CategoryTest {
         device.wait(Until.hasObject(By.pkg(BASIC_PACKAGE).depth(0)), LANCH_TIMEOUT)
     }
 
-		companion object {
+    companion object {
         val BASIC_PACKAGE = "com.mut_jaeryo.saveaccount"
         val LANCH_TIMEOUT = 5000L
     }
@@ -520,11 +568,13 @@ Espresso에서 Activity를 실행했던 것과 마찬가지로 **UiDevice로 Act
 `UiDevice.wait()` 는 매개 변수로 주어지는 Long 값만큼 대기하는 함수입니다. 테스트해 본 결과 
 함수 내에 코드들이 순차적으로 실행되는 시간보다 **앱이 실행되는 시간, Activity 전환되는 시간이 상대적으로 느리기 때문에** 기다리지 않으면 미처 보이지 않은 화면에 접근하여 `NullPointException` 을 경험할 수 있습니다.
 
+<br></br>
+
 ```kotlin
 @RunWith(AndroidJUnit4::class)
 class CategoryTest {
 
-	  lateinit var device: UiDevice
+    lateinit var device: UiDevice
 
     ...
 
@@ -534,11 +584,13 @@ class CategoryTest {
 
     }
 
-		...
+    ...
 }
 ```
 
 테스트 케이스를 작성합니다. Espresso와 다른 점은 테스트 실행의 흐름이 UiDevice이기 때문에 테스트 케이스 실행 시점부터 이미 Activity는 실행되고 있는 상태입니다. 따라서 뷰에 대해 제어만 하면 됩니다.
+
+<br></br>
 
 **Ui Automator 화면 전환**
 
@@ -546,7 +598,7 @@ class CategoryTest {
 @RunWith(AndroidJUnit4::class)
 class CategoryTest {
 
-	  lateinit var device: UiDevice
+    lateinit var device: UiDevice
 
     ...
 
@@ -558,7 +610,7 @@ class CategoryTest {
             .click()
         //앱이 화면에 표시 될때까지 대기
         device.wait(Until.hasObject(By.pkg(BASIC_PACKAGE).depth(0)), LANCH_TIMEOUT)
-				// 아래 코드부터는 AddEditAccountActivity
+	// 아래 코드부터는 AddEditAccountActivity
     }
 
 		...
@@ -568,41 +620,43 @@ class CategoryTest {
 Espresso에서 뷰의 ID로 접근한 것과 동일 합니다. `UiDeivce.findObject()` 함수 내에서 패키지 명과 리소스 값과 일치하는 현재 화면에 표시되고 있는  `UiObject2` 객체를 가져옵니다.
 그리고 해당 객체에 대해서 `click()` 함수로 클릭 액션을 수행하여 Activity를 전환합니다.
 
+<br></br>
+
 **Text와 일치하는 뷰 찾는 Ui Automator**
 
 ```kotlin
 @RunWith(AndroidJUnit4::class)
 class CategoryTest {
 
-	  lateinit var device: UiDevice
+    lateinit var device: UiDevice
 
     ...
 
 		@Test
     fun checkCategory_configurationChange() {
 				
-				...
-				// 아래 코드부터는 AddEditAccountActivity
+	...
+        // 아래 코드부터는 AddEditAccountActivity
 				
-				device.findObject(By.res(BASIC_PACKAGE, "category_card"))
-            .click()
+	device.findObject(By.res(BASIC_PACKAGE, "category_card"))
+               .click()
 
         //다이얼로그가 화면에 표시 될때까지 대기
         device.wait(Until.hasObject(By.pkg(BASIC_PACKAGE).depth(0)), LANCH_TIMEOUT)
 
         val studyCategory = getApplicationContext<Context>().getString(R.string.category_study)
 
-				//studyCategory Text와 일치하는 뷰를 찾아 click
+	//studyCategory Text와 일치하는 뷰를 찾아 click
         device.findObject(
             UiSelector().text(studyCategory)
                 .className("android.widget.TextView"))
             .click()
-				//카테고리 변경 완료
+	//카테고리 변경 완료
 				
-				...
+	...
     }
 
-		...
+	...
 }
 ```
 
@@ -612,35 +666,39 @@ class CategoryTest {
 Ui Automotor도 리소스 id뿐만 아니라 **화면에 표시된 Text와 일치하는 뷰를 가져올 수 있습니다.** 
 카테고리 중 **공부 Text와 일치하는** 카테고리 뷰를 찾은 후 클릭합니다.  
 
+<br></br>
+
 **값이 일치하는 지 확인하는 JUnit Assert**
 
 ```kotlin
 @RunWith(AndroidJUnit4::class)
 class CategoryTest {
 
-	  lateinit var device: UiDevice
+    lateinit var device: UiDevice
 
     ...
 
 		@Test
     fun checkCategory_configurationChange() {
 				
-				...
+	...
 		
-				//카테고리 변경 완료
+	//카테고리 변경 완료
         var categoryText : UiObject2 =  
-						device.findObject(By.res(BASIC_PACKAGE, "selected_category"))
-				// 두 매개변수 값이 동일하면 성공!, 아니면 실패
+		device.findObject(By.res(BASIC_PACKAGE, "selected_category"))
+	// 두 매개변수 값이 동일하면 성공!, 아니면 실패
         assertEquals(categoryText.text, studyCategory)
-				...
+	...
     }
 
-		...
+	...
 }
 ```
 
 카테고리 설정값을 나타내는 뷰의 리소스 ID `R.id.selected_category` 로 해당 뷰를 가져옵니다.
 그리고 JUnit의 `asserEquals` 함수로 두 매개변수의 값이 동일한지 테스트합니다.
+
+<br></br>
 
 **Ui Automator 화면 회전**
 
@@ -648,37 +706,37 @@ class CategoryTest {
 @RunWith(AndroidJUnit4::class)
 class CategoryTest {
 
-	  lateinit var device: UiDevice
+    lateinit var device: UiDevice
 
     ...
 
-		@Test
+    @Test
     fun checkCategory_configurationChange() {
 				
-				...
+	...
 				
-				// 디바이스 왼쪽으로 회전
-				device.setOrientationLeft()
+	// 디바이스 왼쪽으로 회전
+	device.setOrientationLeft()
         //앱이 화면에 표시 될때까지 대기
-        device.wait(Until.hasObject(By.pkg(BASIC_PACKAGE).depth(0)),
-																						 LANCH_TIMEOUT)
+        device.wait(Until.hasObject(By.pkg(BASIC_PACKAGE).depth(0)), LANCH_TIMEOUT)
 
-		    //뷰가 재생성되었으므로 객체를 다시 찾아야한다.
-        categoryText = device.findObject(By.res(BASIC_PACKAGE,
-																			 "selected_category"))
+	//뷰가 재생성되었으므로 객체를 다시 찾아야한다.
+        categoryText = device.findObject(By.res(BASIC_PACKAGE, "selected_category"))
 
-			  //이전에 변경된 카테고리가 유지되었는지 확인
+        //이전에 변경된 카테고리가 유지되었는지 확인
         assertEquals(categoryText.text, studyCategory)
-				...
+	...
     }
 
-		...
+	...
 }
 ```
 
 Espresso는 못 하는 Ui Automator만의 기능입니다. 자동 회전 설정한 실기기라면 화면 회전을 통해 Activity가 재생성될 것입니다. 테스트를 통해 변경된 카테고리가 유지되는지 테스트합니다.
 
 이제 시나리오는 끝이 났습니다!! 테스트가 성공했는지 실행해봅시다 :)
+
+<br></br>
 
 ## 정리하며
 
@@ -688,6 +746,8 @@ UI Test를 해보시니 어떠신가요?
 이러한 테스트 코드를 작성하는 습관을 만든다면 좋을 것 같습니다. 
 
 Ui 테스트 자동화에 관한 포스팅이었습니다. 감사합니다:)
+
+<br></br>
 
 **참고**
 

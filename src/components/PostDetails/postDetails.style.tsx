@@ -169,7 +169,8 @@ export const PostDescription = styled.div`
   }
 
   li {
-    margin-bottom: 0.45rem;
+    margin-left: 0.25rem; 
+    margin-bottom: 0.25rem; 
 
     p {
       margin-bottom: 1em;
@@ -178,17 +179,17 @@ export const PostDescription = styled.div`
 
   blockquote {
     font-family: 'Poppins', sans-serif;
-    font-size: 21px;
+    font-size: 19px;
     font-weight: 500;
     line-height: 2;
     margin: 20px 0;
     @media (max-width: 1200px) {
       margin: 15px 0;
-      font-size: 19px;
+      font-size: 16px;
     }
     @media (max-width: 575px) {
       margin: 10px 0;
-      font-size: 15px;
+      font-size: 14px;
     }
     &:before,
     &:after {
@@ -218,16 +219,16 @@ export const PostDescription = styled.div`
     }
 
     p {
-      font-size: 21px;
+      font-size: 18px;
       font-weight: 500;
       color: gray;
       line-height: 2;
       margin-bottom: 23px;
       @media (max-width: 1200px) {
-        font-size: 19px;
+        font-size: 18px;
       }
       @media (max-width: 1200px) {
-        font-size: 17px;
+        font-size: 16px;
       }
       @media (max-width: 575px) {
         font-size: 15px;

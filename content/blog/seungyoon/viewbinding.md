@@ -11,7 +11,9 @@ cover: "./ic_android.jpg"
 오늘은 2019년 Google I/O에서 소개된 View Binding에 대해 알아보겠습니다.<br>
 현재까지 안드로이드에서 뷰에 접근할 수 있는 다양한 방법이 제공되었습니다.
 
-<img src="./view-access-ways.png" width="500">
+<br>
+<img src="ViewBinding/view-access-ways.png" width="500">
+</br>
 
 위의 표에서 안드로이드 팀은 해당 방법들을 다음과 같은 세세 가지의 기준을 정해 비교했습니다.
 - **Elegance** : 코드를 깔끔하게 작성할 수 있는지
@@ -40,16 +42,14 @@ val textView = findViewById<TextView>(R.id.txtView)
 btnSend.setOnClickListener { startActivity(Intent(this, SecondActivity::class.java)) }
 ```
 
-- 뷰의 id로 바로 접근 가능합니다.
-- 동일한 id를 가진 서로 다른 뷰에 의해 실수 할 가능성이 있습니다.
+- 뷰의 id로 바로 접근 가능하지만, 동일한 id를 가진 서로 다른 뷰에 의해 실수 할 가능성이 있습니다.
 - 전역 네임 스페이스 오염, Kotlin 전용 등 여러가지 문제가 Android 앱의 비정상 종료 횟수를 증가시킵니다.
-- 안드로이드 4.1 버전 기준으로 제거되었습니다.
+- 안드로이드 4.1 버전 기준으로 제거되었습니다. 구글에서는 바인딩 방법으로 View Binding을 권장하고 있습니다.
 - 개인적으로 유용하게 사용해왔던 방법이라 아쉬움이 남습니다.
 
-<img src="./1*rLvIP4jfh3D-Sw9xm7T0IQ.png" width="200">
+<img src="ViewBinding/1*rLvIP4jfh3D-Sw9xm7T0IQ.png" width="200">
 
-
-
+<br></br>
 **아쉽게도 세 가지의 기준을 모두 만족하는 바인딩 방법은 존재하지 않았습니다.**
 
 > But Why Not?<br></br>
@@ -96,8 +96,9 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
+
 사용방법은 Data Binding과 유사해보이지만, Data Binding과 달리 xml파일에 전체를 감싸는 layout태그를 선언해주지 않아도 최상단의 부모를 **root**라는 property로 제공합니다.
-그래서 액티비티의 setContentView에 binding 객체의 root를 넘겨주고 뷰에 접근 할 수 있습니다.
+<br><br>그래서 액티비티의 setContentView에 binding 객체의 root를 넘겨주고 뷰에 접근 할 수 있습니다.
 
 - **View Binding in Fragment**
 ```kotlin
@@ -131,7 +132,7 @@ class DetailFragment : Fragment() {
 }
 ```
 프래그먼트에서 사용법은 위와 같습니다. 프래그먼트의 생명주기에서 자신의 UI를 그리기 시작하는 부분인 onCreateView에서 바인딩을 시켜주고 binding 객체의 root를 리턴해 넘겨줍니다.<br>
-프래그먼트에서는 Nullable 처리를 위해 추가적인 코드가 필요합니다. 프래그먼트는 뷰 보다 오래 지속되기 때문에 onDestroyView()에서 binding class 인스턴스 null 값으로 변경하여 참조를 정리해주어야 합니다.
+<br>프래그먼트에서는 Nullable 처리를 위해 추가적인 코드가 필요합니다. 프래그먼트는 뷰 보다 오래 지속되기 때문에 onDestroyView()에서 binding class 인스턴스 null 값으로 변경하여 참조를 정리해주어야 합니다.
 
 # DataBinding vs ViewBinding
 
@@ -149,7 +150,8 @@ ViewBinding = 2620 kb
 - View Binding과 Data Binding은 호환이 되기 때문에 같은 모듈에서 동시에 사용할수 있습니다.
 
 ## 결론
-- **무조건 View Binding을 사용하라는 글은 아닙니다**. Data Binding의 양방향 바인딩, Binding Adapter를 이용해 동적으로 UI를 관리하는 장점들이 있기 때문에, 상황에 따라 적절한 바인딩을 선택하는 것이 가장 좋은 방법이라고 생각합니다.
+- **무조건 View Binding을 사용하라는 글은 아닙니다**.
+- Data Binding은 양방향 바인딩, Binding Adapter를 이용해 동적으로 UI를 관리하는 장점들이 있습니다.<br>그렇기 때문에 개발자는 상황에 따라 적절한 바인딩 방법을 선택하는 것이 가장 좋은 방법이라고 생각합니다.
 
 **References**
 

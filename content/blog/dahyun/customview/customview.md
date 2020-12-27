@@ -2,8 +2,8 @@
 title: Custom View
 date: "2020-12-27"
 tags: ["customview", "mash-up", "dahyun","Android"]
-description: "Android Custom View"
-cover: "./ic_android.jpg"
+description: "Android Custom View에 대해 알아봅시다."
+cover: "./customview_cover.png"
 ---
 
 # **Custom View**

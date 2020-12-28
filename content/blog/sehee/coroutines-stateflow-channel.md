@@ -3,7 +3,7 @@ title: "Replace LiveData, SingleLiveEvent with Coroutines!"
 date: "2020-12-26"
 tags: ["mash-up", "jsh-me", "coroutines", "stateflow", "channel"]
 description: "Coroutine으로 LiveData와 SingleLiveEvent 대체하기"
-cover: "./ic_android.jpg"
+cover: "./ic_android.png"
 ---
 
 
@@ -12,7 +12,7 @@ cover: "./ic_android.jpg"
 
 안녕하세요. Mash-up Android 10기 정세희라고 합니다. 요즘 쭉쭉 상승세인 Coroutine 의 귀여운 아이들인 Flow 와 Channel 의 간단한 기능 하나를 소개하기 위해 나타나게 되었습니다 : )
 
-안드로이드에서도 이제 별도의 라이브러리 추가 없이 Coroutine 이 기본적으로 사용할 수 있습니다. 비동기 라이브러리의 대표적인 Rxjava를 뒤쫓고 있는 무서운 녀석이죠. 앞서 매쉬업 안드로이드 블로그에서 기본적인 Coroutine 동작방법에 대해서 설명했다면, 이번 글에서는 비동기적으로 사용하는 방법 외에 MVVM 아키텍처에서 자주 쓰이는 LiveData 와 SingleLiveEvent 를 Corouitne의 Flow, Channel 로 대체해서 사용하는 방법에 대해 알아보려고 합니다.
+안드로이드에서도 이제 별도의 라이브러리 추가 없이 Coroutine을 기본적으로 사용할 수 있습니다. 비동기 라이브러리의 대표적인 Rxjava를 뒤쫓고 있는 무서운 녀석이죠. 앞서 매쉬업 안드로이드 블로그에서 기본적인 Coroutine 동작방법에 대해서 설명했다면, 이번 글에서는 비동기적으로 사용하는 방법 외에 MVVM 아키텍처에서 자주 쓰이는 LiveData 와 SingleLiveEvent 를 Corouitne의 Flow, Channel 로 대체해서 사용하는 방법에 대해 알아보려고 합니다.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/39688690/103150077-9fc2e480-47b3-11eb-9378-2c0eedafae3e.png" width="80%">

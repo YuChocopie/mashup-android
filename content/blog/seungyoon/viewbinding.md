@@ -1,9 +1,10 @@
 ---
 title: "View Binding: What is it?"
 date: "2020-12-26"
-tags: ["mash-up", "seungyoon", "View Binding", "Data Binding", "kotlin Synthetic"]
+tags:
+  ["mash-up", "seungyoon", "View Binding", "Data Binding", "kotlin Synthetic"]
 description: "binding에 대한 문제점들과 View Binding의 특징과 사용법을 작성했습니다."
-cover: "./ic_android.jpg"
+cover: "./cover.png"
 ---
 
 ## View Binding은 왜 등장했을까?
@@ -16,27 +17,30 @@ cover: "./ic_android.jpg"
 </br>
 
 위의 표에서 안드로이드 팀은 해당 방법들을 다음과 같은 세세 가지의 기준을 정해 비교했습니다.
+
 - **Elegance** : 코드를 깔끔하게 작성할 수 있는지
 - **Compile Time Safety** : 컴파일 시간에 안전한지
 - **Build Speed Impact** : 빌드 속도가 빠른지
 
->**findViewById의 문제점**<br></br>
+> **findViewById의 문제점**<br></br>
 
 ```kotlin
 val textView = findViewById<TextView>(R.id.txtView)
 ```
+
 - 뷰의 개수대로 코드를 추가해줘야 합니다. (100개면 100줄을??)
 - Null safety하지 못합니다. 잘못된 뷰 id로 인해 NPE(Null Pointer Exception)가 발생할 위험이 있습니다.
 
->**Butter Knife의 문제점**<br></br>
+> **Butter Knife의 문제점**<br></br>
 
 ```kotlin
 @BindView(R.id.btnNext) val nextButton : Button
 ```
+
 - findViewById의 코드를 좀 더 간결하고 번거로움을 덜어 줄 수 있지, 여전히 boiler plate code들이 발생합니다.
 - 2020년 3월 기준 deprecated 되었습니다. (역사속으로..)
 
->**Kotlin Synthtic의 문제점**<br></br>
+> **Kotlin Synthtic의 문제점**<br></br>
 
 ```kotlin
 btnSend.setOnClickListener { startActivity(Intent(this, SecondActivity::class.java)) }
@@ -57,7 +61,7 @@ btnSend.setOnClickListener { startActivity(Intent(this, SecondActivity::class.ja
 세 가지 기준을 모두 만족할 수 있는 바인딩 방법은 없을까?<br>  
 현재 가장 많이 사용되는 **Data Binding**의 목적은 **View와 Model을 엮어주는 역할**인데 많은 개발자들이 단순히 **View에 대한 참조를 얻기 위한 목적**으로 Data Binding을 사용하는 것을 보고, 이러한 맥락에서 구글에서 View에 대한 참조를 얻기 위한 목적으로 오늘의 **View Binding**이 탄생하게 되었습니다.
 
->**View Binding의 특징**<br></br>
+> **View Binding의 특징**<br></br>
 
 - **Null 안전** - 뷰의 직접 참조를 생성하므로 유효하지 않은 뷰 ID로 인해 null 포인터 예외가 발생할 위험이 없습니다. 또한 레이아웃의 일부 구성에만 뷰가 있는 경우 결합 클래스에서 참조를 포함하는 필드가 @Nullable로 표시됩니다.
 - **유형 안전** - 각 바인딩 클래스에 있는 필드의 유형이 XML 파일에서 참조하는 뷰와 일치하기 때문에 클래스 변환 예외가 발생할 위험이 없습니다.
@@ -65,8 +69,8 @@ btnSend.setOnClickListener { startActivity(Intent(this, SecondActivity::class.ja
 - Data Binding과 비교했을 때 레이아웃 변수 또는 레이아웃 표현식을 지원하지 않으므로 XML 레이아웃 파일에서 직접 **동적 UI 콘텐츠를 선언하는 데 사용할 수 없습니다.**
 - 양방향 데이터 결합을 지원하지 않습니다.
 
-
 # Usage
+
 - **프로젝트 설정**<br>
 
 ```kotlin
@@ -81,6 +85,7 @@ android {
 안드로이드 스튜디오 4.0 부터는 param의 위치가 **buildFeatures**로 이동되어 위와 같이 선언합니다.<br>
 
 - **View Binding in Activity**
+
 ```kotlin
 class MainActivity : AppCompatActivity() {
 
@@ -101,12 +106,13 @@ class MainActivity : AppCompatActivity() {
 <br><br>그래서 액티비티의 setContentView에 binding 객체의 root를 넘겨주고 뷰에 접근 할 수 있습니다.
 
 - **View Binding in Fragment**
+
 ```kotlin
 class DetailFragment : Fragment() {
 
     private var _binding: FragmentDetailBinding? = null
-    
-    // This property is only valid between onCeateView and 
+
+    // This property is only valid between onCeateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
@@ -124,13 +130,14 @@ class DetailFragment : Fragment() {
 
         binding.textView.text = "View Binding in Fragment"
     }
-    
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
 ```
+
 프래그먼트에서 사용법은 위와 같습니다. 프래그먼트의 생명주기에서 자신의 UI를 그리기 시작하는 부분인 onCreateView에서 바인딩을 시켜주고 binding 객체의 root를 리턴해 넘겨줍니다.<br>
 <br>프래그먼트에서는 Nullable 처리를 위해 추가적인 코드가 필요합니다. 프래그먼트는 뷰 보다 오래 지속되기 때문에 onDestroyView()에서 binding class 인스턴스 null 값으로 변경하여 참조를 정리해주어야 합니다.
 
@@ -150,6 +157,7 @@ ViewBinding = 2620 kb
 - View Binding과 Data Binding은 호환이 되기 때문에 같은 모듈에서 동시에 사용할수 있습니다.
 
 ## 결론
+
 - **무조건 View Binding을 사용하라는 글은 아닙니다**.
 - Data Binding은 양방향 바인딩, Binding Adapter를 이용해 동적으로 UI를 관리하는 장점들이 있습니다.<br>그렇기 때문에 개발자는 상황에 따라 적절한 바인딩 방법을 선택하는 것이 가장 좋은 방법이라고 생각합니다.
 

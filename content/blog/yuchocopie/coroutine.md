@@ -3,7 +3,7 @@ title: Coroutine 기초
 date: "2020-12-19"
 tags: ["start", "mash-up", "chocopie", "코루틴", "기본개념"]
 description: "코루틴에서 기본으로 알면 좋을 것들입니다."
-cover: "./ic_android.jpg"
+cover: "./ic_cover.png"
 ---
 
 # Coroutine 기초

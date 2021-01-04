@@ -56,12 +56,12 @@ Android Q 이후로 프로젝트에 Dark Theme 설정하는 방법은 **2가지*
 
 
 <p align="center">
-<img src="DarkTheme/forceDark.png" width="30%">
+<img src="DarkTheme/forceDark.png" width="20%">
   <br>
   카테고리 텍스트 색상이 검정으로 잘못 계산되었네요..
 </p>
 
-그 이유 중 하나로 Force Dark는 실제로 뷰를 랜더링할 때, 어떤 색상을 반전해야 하는 데 분석하고 자동으로 알맞은 다크 테마를 적용시키는 원리로 다소 어색한 다크 테마가 적용될 때도 있고 디자이너가 요구한 디자인과 다를 수도 있기 때문이에요.
+그 이유 중 하나로 Force Dark는 실제로 뷰를 랜더링할 때, 어떤 색상을 반전해야 하는 지 분석하여 자동으로 알맞은 다크 테마를 적용시키는 원리로 다소 어색한 다크 테마가 적용될 때도 있고 디자이너가 요구한 디자인과 다를 수도 있기 때문이에요.
 
 ```kotlin
 
@@ -144,7 +144,7 @@ DayNight는 `AppCompat.DayNight` 모드 값에 의해 동적으로 테마를 변
 - **절전 모드에서 설정**(권장 기본 옵션)
 
 <p align="center">
-<img src="DarkTheme/chooseTheme.png" width="30%">
+<img src="DarkTheme/chooseTheme.png" width="20%">
 </p>
 
 <br></br>

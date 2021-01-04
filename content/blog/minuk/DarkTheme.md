@@ -14,7 +14,7 @@ cover: "DarkTheme/darkThemeCover.png"
 ### Dark Theme
 
 <p align="center">
-<img src="DarkTheme/darkTheme.jpeg" width="30%">
+<img src="DarkTheme/darkTheme.jpeg" width="45%">
 </p>
 
 **다크 테마**는 안드로이드 스튜디오, 크롬과 최근에 GitHub에서 다크 테마를 공식적으로 지원해주면서 Mash-UP 전체 톡방에 한번 이슈가 되었던 기능이기도 합니다. 다크 테마를 앱에서 사용하면 어떤 점이 좋을까요?<br></br>

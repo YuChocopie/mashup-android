@@ -94,7 +94,7 @@ or
 - `MODE_NIGHT_FOLLOW_SYSTEM` - 시스템 테마 설정 값에 따름
 
 
-**DayNight**는 Light 테마일때는 `values` 폴더에 , Dark 테마일 경우 `values-night` 폴더에 접근하여 테마에 맞는 뷰를 그리게 되고, `values-night` 리소스가 없어도 자동적으로 분석하여 r그려줍니다. <br></br>
+**DayNight**는 Light 테마일때는 `values` 폴더에 , Dark 테마일 경우 `values-night` 폴더에 접근하여 테마에 맞는 뷰를 그리게 되고, `values-night` 리소스가 없어도 자동적으로 분석하여 그려줍니다. <br></br>
 
 #### DayNight과 Force Dark의 차이점
 

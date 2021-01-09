@@ -4,7 +4,7 @@ date: "2020-01-09"
 tags:
   ["mash-up", "seungyoon", "View Binding", "Fragment"]
 description: "Fragment에서 View Binding을 올바르게 사용해봅시다."
-cover: "./cover.png"
+cover: "./viewbinding_cover.png"
 ---
 
 <br>

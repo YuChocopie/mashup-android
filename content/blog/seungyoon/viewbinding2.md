@@ -4,7 +4,7 @@ date: "2020-01-09"
 tags:
   ["mash-up", "seungyoon", "View Binding", "Fragment"]
 description: "Fragment에서 View Binding을 올바르게 사용해봅시다."
-cover: "./viewbinding_cover.png"
+cover: "ViewBinding/viewbinding_cover.png"
 ---
 
 <br>
@@ -53,7 +53,7 @@ cover: "./viewbinding_cover.png"
 ▶ 그래서 반드시 binding 변수를 **onDetsroyView()** 이후에 **null**로 만들어 줘야합니다.
 
 <br>
-<img src="./ViewBinding/R1280x0.png">
+<img src="ViewBinding/R1280x0.png">
 </br>
 
 > Fragments outlives their views?
@@ -71,11 +71,9 @@ cover: "./viewbinding_cover.png"
 -   모든 Fragment에 각각 binding 변수들을 **nullify** 해줘야 할까요? 
 
 우리는 이러한 코드들을 Fragment의 특성 때문에 매번 추가해주는 것은 원치 않을 것입니다.
-#
-
 
 <br>
-<img src ="ViewBinding/android_viewbinding_kotlin.png" width="200">
+<img src="ViewBinding/view_binding_kotlin.png" width="200">
 </br>
 
 ## "어떻게 해당 이슈를 **향상**시킬 수 있을까요?"
@@ -113,7 +111,7 @@ Class ProfileFragment : Fragment(R.layout.profile_layout) {
 > bind()
 
 <br>
-<img src="ViewBinding/bind.png">
+<img src="ViewBinding/bind.png" width="500">
 </br>
 
 **bind()** 메소드의 **내부**는 위와 같습니다.

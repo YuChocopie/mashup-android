@@ -1,6 +1,8 @@
 # mash-up-android
 
-## 충돌내기 test,,
+<img width="400" alt="image" src= "https://github.com/YuChocopie/mashup-android/blob/dev/blog_img.png?raw=true">
+
+
 ### 글 작성하는 법
 
 

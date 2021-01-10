@@ -3,7 +3,7 @@ title: AAC의 ViewModel 사용 방법 정리
 date: "2020-12-26"
 tags: ["mash-up", "aac", "viewmodel", "koin"]
 description: "AAC의 ViewModel의 배경과 다양해진 초기화 방법에 대해 정리한 글입니다."
-cover: "./ic_android.jpg"
+cover: "./thumbnail_post.png"
 ---
 
 # AAC의 ViewModel 사용 방법 정리

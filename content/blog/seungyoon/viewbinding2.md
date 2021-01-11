@@ -1,6 +1,6 @@
 ---
 title: "View Binding in Fragment"
-date: "2020-01-09"
+date: "2021-01-09"
 tags:
   ["mash-up", "seungyoon", "View Binding", "Fragment"]
 description: "Fragment에서 View Binding을 올바르게 사용해봅시다."
@@ -19,7 +19,7 @@ cover: "ViewBinding/viewbinding_cover.png"
 
 > **View Binding in Fragment**
 
-```
+```kotlin
  private var _binding: ResultProfileBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -83,7 +83,7 @@ cover: "ViewBinding/viewbinding_cover.png"
 
 #### **1**. View Binding을 사용하지 않고 **findViewById**를 사용하기.
 
-```
+```kotlin
 private lateinit var textView: TextView
 
 fun onViewCreated (view: View, savedInstanceState: Bundle) {
@@ -96,7 +96,7 @@ fun onViewCreated (view: View, savedInstanceState: Bundle) {
 
 #### **2**. onCreateView() 또는 onViewCreated()에서 View Binding 참조 끝내기.
 
-```
+```kotlin
 Class ProfileFragment : Fragment(R.layout.profile_layout) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -124,7 +124,7 @@ Class ProfileFragment : Fragment(R.layout.profile_layout) {
 #
 #### **3**. binding 변수에 **property delegation** 사용하기.
 
-```
+```kotlin
 class AutoClearedValue<T : Any>(val fragment: Fragment) : ReadWriteProperty<Fragment, T> {
     private var _value: T? = null
 
@@ -163,7 +163,7 @@ fun <T : Any> Fragment.autoCleared() = AutoClearedValue<T>(this)
 
 > **해당 코드를 사용하기 위해선 build.gradle(app)에 dependencies를 추가해줘야 합니다.**
 
-```
+```kotlin
 implementation "androidx.lifecycle:lifecycle-runtime:2.2.0"
 implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
 implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
@@ -174,7 +174,7 @@ implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 
 ▶ AutoCleardValue의 사용법은 다음과 같습니다.
 
-```
+```kotlin
 // View binding
 private var binding by autoCleared<FragmentUserProfileBinding>()
 

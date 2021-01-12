@@ -8,6 +8,7 @@ tags: ["huijiny", "mash-up", "kotlin", "scope-function"]
 description: "코틀린 범위 지정 함수에 관해서!"
 
 cover: "./희진.png"
+
 ---안녕하세요 여러분!
 
 <br>

@@ -3,21 +3,31 @@ title: Coroutine 기초
 date: "2020-12-19"
 tags: ["start", "mash-up", "chocopie", "코루틴", "기본개념"]
 description: "코루틴에서 기본으로 알면 좋을 것들입니다."
-cover: "./ic_android.jpg"
+cover: "./ic_cover.png"
 ---
 
-# Coroutine 기초
+
+
+안녕하세요 유초코입니다 :)
+
+안드로이드에서 사용하는 비동기 라이브러리는 rx와 coroutine을 꼽을 수 있는데요.
+
+*coroutine*은 비동기적으로 실행되는 코드를 간소화하기 위해 Android에서 사용할 수 있는 동시 실행 설계 패턴입니다. Android에서 코루틴은 main 스레드를 차단하여 앱이 응답하지 않게 만들 수도 있는 long-running tasks 를 관리하는 데 도움이 됩니다.
+
+ 이번 글에서는 Kotlin 코루틴을 사용하여 코드를 작성하는 방법을 살펴보려 합니다!
+
+
 
 ## 기능
 
-코루틴은 Android의 비동기 프로그래밍에 권장되는 솔루션
+- **Lightweight**(**경량**): 코루틴을 실행 중인 스레드를 차단하지 않는 [_정지(suspension)_](https://kotlinlang.org/docs/reference/coroutines/basics.html)를 지원하므로 단일 스레드에서 많은 코루틴을 실행할 수 있습니다. suspension은 많은 동시 작업을 지원하면서도 blocking 보다 메모리를 절약합니다.
+- **Fewer memory leaks**(**메모리 누수 감소**): [_구조화된 동시 실행_](https://kotlinlang.org/docs/reference/coroutines/basics.html#structured-concurrency)을 사용하여 범위 내에서 작업을 실행합니다.
+- **Built-in cancellation support** (**기본으로 제공되는 취소 지원**): 실행 중인 코루틴 계층 구조를 통해 자동으로 [취소](https://kotlinlang.org/docs/reference/coroutines/cancellation-and-timeouts.html)가 전달됩니다.
+- **Jetpack 통합**: 많은 Jetpack 라이브러리에 코루틴을 완전히 지원하는 [확장 프로그램](https://developer.android.com/kotlin/ktx?hl=ko)이 포함되어 있습니다. 일부 라이브러리는 구조화된 동시 실행에 사용할 수 있는 자체 [코루틴 범위](https://developer.android.com/topic/libraries/architecture/coroutines?hl=ko)도 제공합니다.
 
-- **Lightweight**(**경량**): 코루틴을 실행 중인 스레드를 차단하지 않는 [_정지(suspension)_](https://kotlinlang.org/docs/reference/coroutines/basics.html)를 지원하므로 단일 스레드에서 많은 코루틴을 실행할 수 있다. suspension은 많은 동시 작업을 지원하면서도 메모리를 blocking에 비해 절약합니다.
-- **Fewer memory leaks**(**메모리 누수 감소**): [_구조화된 동시 실행_](https://kotlinlang.org/docs/reference/coroutines/basics.html#structured-concurrency)을 사용하여 범위 내에서 작업을 실행한다
-- **Built-in cancellation support** (**기본으로 제공되는 취소 지원**): 실행 중인 코루틴 계층 구조를 통해 자동으로 [취소](https://kotlinlang.org/docs/reference/coroutines/cancellation-and-timeouts.html)가 전달
-- **Jetpack 통합**: 많은 Jetpack 라이브러리에 코루틴을 완전히 지원하는 [확장 프로그램](https://developer.android.com/kotlin/ktx?hl=ko)이 포함되어 있다. 일부 라이브러리는 구조화된 동시 실행에 사용할 수 있는 자체 [코루틴 범위](https://developer.android.com/topic/libraries/architecture/coroutines?hl=ko)도 제공
 
-# 코루틴 기초
+
+## 코루틴 기초
 
 ```kotlin
 import  kotlinx.coroutines. *
@@ -33,7 +43,9 @@ fun  main () {
 }
 ```
 
-- 결과
+백그라운드에서 새 코루틴을 시작하고  1초 지연 (기본 시간 단위는 ms) 딜레이를 가진 후에 "World"를 출력합니다. 만약  `Thread .sleep ( 2000L) `  을 해주지 않게 된다면  main 함수의 실행을 종료하기 때문에 코루틴 함수를 실행하지 않고 종료하게 됩니다.
+
+-  결과
 
   ```
   Hello,
@@ -41,34 +53,39 @@ fun  main () {
   sleep2000
   ```
 
-`GlobalScope.launch { ... }` 와 `delay(...)` 는 `thread { ... }` ,`Thread.sleep(...)` 의 쓰임과 같다.
+- `GlobalScope.launch { ... }` 와 `delay(...)` 는 
+  `thread { ... }` ,`Thread.sleep(...)` 의 쓰임과 같다고 볼 수 있습니다.
 
-```kotlin
-GlobalScope.launch {
-	delay(1000L)
-	println("World!")
-}
-```
+  ```kotlin
+  GlobalScope.launch {
+  	delay(1000L)
+  	println("World!")
+  }
+  ```
 
-```kotlin
-thread {
-	Thread.sleep(1000)
-	println("thread!")
-}
-```
+  ```kotlin
+  thread {
+  	Thread.sleep(1000)
+  	println("thread!")
+  }
+  ```
 
-# 주요 키워드
+
+
+## 주요 키워드
 
 - CoroutineScope (GlobalScope)
 - CoroutineContext
 - Dispatcher
 - launch & async
 
+
+
 # 코루틴은 사용
 
-1. 사용할 Dispatcher 를 결정
-2. Dispatcher 를 이용해서 CoroutineScope (코루틴 블록을 묶음으로 제어할수 있는 단위)를 만든다
-3. CoroutineScope의 launch 또는 async 에 수행할 코드 블록을 넘긴다
+1. 사용할 Dispatcher 를 결정합니다
+2. Dispatcher 를 이용해서 CoroutineScope (코루틴 블록을 묶음으로 제어할수 있는 단위)를 만듦니다
+3. CoroutineScope의 launch 또는 async 에 수행할 코드 블록을 넘깁니다
 
 ## CoroutineScope
 
@@ -85,21 +102,21 @@ thread {
 
 ## Dispatcher
 
-- Dispatcher 는 CoroutineContext 의 주요 요소로 해당 Coroutine이 실행을 위해 사용하는 스레드를 정의 해둠
+- Dispatcher 는 CoroutineContext 의 주요 요소로 해당 Coroutine이 실행을 위해 사용하는 스레드를 정의 해두었습니다
 
-> - [Dispatchers.Default](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-default.html) : 디스패처 또는 기타 [ContinuationInterceptor](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-continuation-interceptor/index.html) 가 컨텍스트에 지정 되지 않은 경우 모든 표준 빌더에서 사용됩니다 . 공유 백그라운드 스레드의 공통 풀을 사용한다.
+> - [Dispatchers.Default](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-default.html) : 디스패처 또는 기타 [ContinuationInterceptor](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-continuation-interceptor/index.html) 가 컨텍스트에 지정 되지 않은 경우 모든 표준 빌더에서 사용됩니다 . 공유 백그라운드 스레드의 공통 풀을 사용합니다.
 >   이는 **CPU 사용량이 많은 작업**에 적합하다.
-> - [Dispatchers.IO](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-i-o.html) — 요청시 생성 된 스레드의 공유 풀을 사용하며 IO 작업이나 작업을 차단하는 것에 적합하다.
+> - [Dispatchers.IO](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-i-o.html) — 요청시 생성 된 스레드의 공유 풀을 사용하며 IO 작업이나 작업을 차단하는 것에 적합합니다.
 >
 > - Dispatchers.Main : 응용 프로그램 "Main"또는 "UI"스레드로 제한되고 코루틴이 이미 올바른 컨텍스트에있을 때 즉시 실행하는 디스패처를 반환, 안드로이드의 경우 UI 스레드를 사용
 >
-> - [Dispatchers.Unconfined](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-unconfined.html) — 첫 번째 중단까지 현재 호출 프레임에서 코 루틴 실행을 시작합니다. 이때 코 루틴 빌더 함수가 반환됩니다. 코 루틴은 특정 스레드 또는 풀로 제한하지 않고 해당 일시 중단 함수에서 사용하는 스레드에서 나중에 다시 시작된다. **디스패처는 일반적으로 코드에서 사용할 수 없다** .
+> - [Dispatchers.Unconfined](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-unconfined.html) — 첫 번째 중단까지 현재 호출 프레임에서 코 루틴 실행을 시작합니다. 이때 코 루틴 빌더 함수가 반환됩니다. 코 루틴은 특정 스레드 또는 풀로 제한하지 않고 해당 일시 중단 함수에서 사용하는 스레드에서 나중에 다시 시작됩니다. **디스패처는 일반적으로 코드에서 사용할 수 없음** .
 >
 > ```
 > unconfined dispatcher는 코루틴의 일부 작업을 즉시 수행해야하기 때문에 나중에 실행하기 위해 코 루틴을 디스패치 할 필요가 없거나 원하지 않는 부작용을 생성하는 특정코너 경우에 도움이 될 수있는 고급 메커니즘이다. 제한되지 않은 디스패처는 일반 코드에서 사용해서는 안된다.
 > ```
 >
-> - [newSingleThreadContext](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/new-single-thread-context.html) 는 코루틴이 실행할 스레드를 생성한다. 전용 스레드는 매우 비싼 리소스로 실제 애플리케이션에서는 더 이상 필요하지 않을 때 [닫기](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-executor-coroutine-dispatcher/close.html) 함수를 사용하여 해제 하거나 최상위 변수에 저장하고 애플리케이션 전체에서 재사용해야한다.
+> - [newSingleThreadContext](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/new-single-thread-context.html) 는 코루틴이 실행할 스레드를 생성합니. 전용 스레드는 매우 비싼 리소스로 실제 애플리케이션에서는 더 이상 필요하지 않을 때 [닫기](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-executor-coroutine-dispatcher/close.html) 함수를 사용하여 해제 하거나 최상위 변수에 저장하고 애플리케이션 전체에서 재사용해야합니다.
 
 - Dispatcher example
 
@@ -127,13 +144,14 @@ thread {
   newSingleThreadContext: I'm working in thread MyOwnThread
   ```
 
-  - main runBlocking : `launch { ... }` 의 경우 파라미터없이 사용되며, 실행 중인 Coroutine Scope에서 컨텍스트(따라서 디스패처)를 상속한다. 이 경우 주 스레드에서 실행되는 main `runBlocking` coroutine 의 컨텍스트를 상속한다.
+  - main runBlocking : `launch { ... }` 의 경우 파라미터없이 사용되며, 실행 중인 Coroutine Scope에서 컨텍스트(따라서 디스패처)를 상속한다. 이 경우 주 스레드에서 실행되는 main `runBlocking` coroutine 의 컨텍스트를 상속합니.
 
-  - Unconfined : `main`스레드 에서 실행되는 것처럼 보이는 특수 디스패처 이지만 실제 메커니즘은 아래서 다룬다.
+  - Unconfined : `main`스레드 에서 실행되는 것처럼 보이는 특수 디스패처 이지만 실제 메커니즘은 아래서 다룹니다.
 
   - Default : [GlobalScope](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-global-scope/index.html) 에서 시작될 때 사용되는 기본 디스패처는 [Dispatchers.Default](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-default.html) 로 표시되며
-    기본적으로 공유 백그라운드 스레드 풀을 사용하므로 디스패쳐를 실행한다.`launch(Dispatchers.Default) { ... }`에서`GlobalScope.launch { ... }`와 동일한 발송자를 사용
-
+    기본적으로 공유 백그라운드 스레드 풀을 사용하므로 디스패쳐를 실행합니다.
+`launch(Dispatchers.Default) { ... }`에서 `GlobalScope.launch { ... }`와 동일한 발송자를 사용.
+    
   - newSingleThreadContext : 자체 새 스레드를 가져온다
 
 * Dispatchers.Unconfined example
@@ -160,11 +178,11 @@ thread {
   main runBlocking: After delay in thread main
   ```
 
-  - Dispatcher를 Unconfined로 설정하면, 해당 coroutine은 callar thread에서 시작된다.
+  - Dispatcher를 Unconfined로 설정하면, 해당 coroutine은 callar thread에서 시작됩니다.
 
     단, 이 코루틴이 **suspend되었다가 상태가 재시작 되면 적절한 thread에 재할당되어 시작된다**
 
-  - Unconfined는 CPU time을 소비하지 않는 작업이나, 공유되는 데이터에 접근하지 않아야 하는 작업들에서 이용하는게 적절하다.
+  - Unconfined는 CPU time을 소비하지 않는 작업이나, 공유되는 데이터에 접근하지 않아야 하는 작업들에서 이용하는게 적절합니다.
 
     > 특정 스레드로 지정되어 처리되어야 하는경우에는 사용하지 않는다.
 
@@ -393,48 +411,44 @@ val deferred = async (start = CoroutineStart.LAZY) {...}
       deferred.start()
       println("end")
   ```
+  
+  - result : end는 start가 출력되자마자 출력한다.
+  
+    ~~~
+    stat
+    end
+    async1 index 0
+    async1 index 1
+    async1 index 2
+    async1 index 3
+    async1 index 4
+    async1 index 5
+    ~~~
+  
+  ### runBlocking()
+  
+  runBlocking() 함수는 코드 블록이 작업을 완료할 때 까지 기다린다.
+  
+  ~~~
+  runBlocking {
+  ...
+  }
+  ~~~
+  
+  단순히 join 같은 메소드 기능이 아닌 현재 thread 를 block 하고 실행되는 코드이므로 메인 thread 사용에 주의해야한다.
+  
+  안드로이드 의 경우 runBlocking() 함수를 메인 thread (UI thread) 에서 호출하여 시간이 오래 걸리는 작업을 수행하는 경우 ANR 이 발생할 위험이 있으므로 주의해야하며 일반적인 Blocking 코드와 suspend 스타일로 적힌 라이브러리들을 bridge해줄 모적으로 설계된 함수로 메인 함수나 테스트에서 사용하는 것이 바람직하다.
+  
+  하지만 runBlocking() 함수로 시작된 블록은 아무런 추가 함수 호출 없이 해당 블록이 완료될때까지 기다릴수 있습니다.
+  
+  주의해야 할것은 runBlocking 코루틴 블록이 사용하는 스레드는 현재 runBlocking() 함수가 호출된 스레드가 된다는 것입니다.
+  
+  
+  
+  #### reference
+  
+  ---
+  
+  https://github.com/Kotlin/kotlinx.coroutines
+  https://kotlinlang.org/docs/reference/coroutines/coroutine-context-and-dispatchers.html
 
-```
-
-- result : end는 start가 출력되자마자 출력한다.
-
-```
-
-stat
-end
-async1 index 0
-async1 index 1
-async1 index 2
-async1 index 3
-async1 index 4
-async1 index 5
-
-```
-
-### runBlocking()
-
-runBlocking() 함수는 코드 블록이 작업을 완료할 때 까지 기다린다.
-
-```
-
-runBlocking {
-...
-}
-
-```
-
-단순히 join 같은 메소드 기능이 아닌 현재 thread 를 block 하고 실행되는 코드이므로 메인 thread 사용에 주의해야한다.
-
-안드로이드 의 경우 runBlocking() 함수를 메인 thread (UI thread) 에서 호출하여 시간이 오래 걸리는 작업을 수행하는 경우 ANR 이 발생할 위험이 있으므로 주의해야하며 일반적인 Blocking 코드와 suspend 스타일로 적힌 라이브러리들을 bridge해줄 모적으로 설계된 함수로 메인 함수나 테스트에서 사용하는 것이 바람직하다.
-
-하지만 runBlocking() 함수로 시작된 블록은 아무런 추가 함수 호출 없이 해당 블록이 완료될때까지 기다릴수 있습니다.
-
-주의해야 할것은 runBlocking 코루틴 블록이 사용하는 스레드는 현재 runBlocking() 함수가 호출된 스레드가 된다는 것입니다.
-
-#### reference
-
----
-
-https://github.com/Kotlin/kotlinx.coroutines/blob/master/docs
-https://kotlinlang.org/docs/reference/coroutines/coroutine-context-and-dispatchers.html
-```

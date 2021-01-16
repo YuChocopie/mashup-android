@@ -1,6 +1,6 @@
 ---
 title: Sealed class로 RecyclerView Multi View Type 때려 부수기
-date: "2020-01-14"
+date: "2021-01-14"
 tags: ["mash-up", "mash-up 10기", "hyeonseong", "sealed class"]
 description: "Kotlin의 Sealed Class에 대해 알아보고, RecyclerView의 Multiple View Type 적용에 활용해보겠습니다."
 cover: "./ic_sealed.png"

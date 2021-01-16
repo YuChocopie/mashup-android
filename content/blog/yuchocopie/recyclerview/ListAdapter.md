@@ -19,7 +19,7 @@ cover: "./ic_cover.png"
 
 **즉 Adapter**는 데이터 리스트를 실제 눈으로 볼 수 있게 itemView로 변환하는 중간다리 역할을 합니다.
 
-<img src = "/Users/kim-yujeong/Library/Application Support/typora-user-images/image-20210116103158410.png" width="60%">
+<img src = "./image-20210116103158410.png" width="60%">
 
 ### RecyclerView - Adapter
 

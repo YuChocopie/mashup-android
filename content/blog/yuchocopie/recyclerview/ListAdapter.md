@@ -1,15 +1,14 @@
 ---
 title: RecyclerView ListAdapter
-date: "2020-12-19"
+date: "2021-01-15"
 tags: ["ListAdapter", "mash-up", "yuchocopie", "RecyclerView", "DiffUtill"]
 description: "DiffUtill 사용해서 리사이클러뷰 잘쓰기."
 cover: "./ic_cover.png"
 ---
 
-오늘 글에서는 ListAdapter를 사용해 Adapter의 역할을 살펴보려 합니다
+오늘 글에서는 RecyclerView의 list 관리를 효율적으로 다룰 수 있는 ListAdapter에 대해 살펴보려 합니다
 
-먼저, 아래 그래픽은 RecyclerView, Adapter, ViewHolder 및 데이터가 모두 함께 작동하는 방식을 보여주는데요
-
+먼저, 아래 그래픽은 RecyclerView, Adapter, ViewHolder 및 데이터가 모두 함께 작동하는 방식을 보여주는데요 각각 다음의 역할을 가지고 있습니다.
 <img src = "https://miro.medium.com/max/1448/0*tWzfsXa2-NP_WmSA" width="80%">
 
 - **ViewHolder:** RecyclerView의 single item view에 대한 정보를 저장
@@ -17,23 +16,21 @@ cover: "./ic_cover.png"
 - **ViewHolders**: 사용자가 스크롤 할 때 "재활용"(새 데이터로 다시 채워짐). 기존 항목은 한쪽 끝에서 사라지고 새 항목은 다른 쪽 끝에서 나타남
 - **Adapter** : 데이터 소스에서 데이터를 가져 와서 보유하고있는 뷰를 업데이트하는 ViewHolder로 전달
 
-**즉 Adapter**는 데이터 리스트를 실제 눈으로 볼 수 있게 itemView로 변환하는 중간다리 역할을 합니다.
+여기서 **Adapter**는 데이터 리스트를 실제 눈으로 볼 수 있게 itemView로 변환하는 중간다리 역할을 합니다.
+<img src = "./image-20210116103158410.png" width="50%">
 
-<img src = "./image-20210116103158410.png" width="60%">
+## RecyclerView의 Adapter
 
-### RecyclerView - Adapter
+RecyclerView는 정적 데이터 list에서 리스트를 효율적으로 표시하는 좋은 방법입니다. 하지만 대부분의 RecyclerView 데이터는 동적이죠
 
-RecyclerView는 정적 데이터 list에서 리스트를 효율적으로 표시하는 좋은 방법입니다. 하지만 대부분의 RecyclerView 데이터는 동적이죠,
+Adapter를 사용한 list의 갱신에는 문제점이 있습니다.
 
-Adapter를 사용한 리스트 갱신에서 문제점을 찾아보겠습니다.
-
-`notifyItemInserted()` 는 지정된 index에 새 task를 삽입할 수 있지만 항목을 제거할 경우에는 문제가 발생합니다.
-
-`notifyItemRemoved()`은 제거하려는 task의 위치가 있어야지만 유용하다. 제거 할 위치를 파악 한 뒤에 호출할 수도 있지만 코드는 지저분해질 수도 있죠
+먼저 `notifyItemInserted()` 는 지정된 index에 새 task를 삽입할 수 있지만 항목을 제거할 경우에는 문제가 발생합니다.
+그리고, `notifyItemRemoved()`은 제거하려는 task의 위치가 있어야지만 유용합니다. 제거 할 위치를 파악 한 뒤에 호출할 수도 있지만 코드는 지저분해질 수도 있죠
 
 **notifyDataSetChanged () 메소드는 비효율적 이다**
 
-`RecyclerView` list의 항목이 변경되어 업데이트해야 함 을 알리기 위해 코드를 아래와 같이 [`notifyDataSetChanged()`](https://developer.android.com/reference/android/widget/BaseAdapter)에서를 호출 할 수 있다.
+`RecyclerView` list의 항목이 변경되어 업데이트해야 함 을 알리기 위해 코드를 아래와 같이 하여[`notifyDataSetChanged()`](https://developer.android.com/reference/android/widget/BaseAdapter)에서를 호출 할 수 있습니다.
 
 ```kotlin
 var data =  listOf<Person>()
@@ -43,19 +40,18 @@ var data =  listOf<Person>()
    }
 ```
 
-하지만 결과적으로 `RecyclerView` 에서 `notifyDataSetChanged()` 은 옵션이지만 변경되지 않은 부분까지표시되지 않는 화면을 포함해 모든 list를 리바인드 하고 다시 그린다.
+하지만 결과적으로 `RecyclerView` 에서 `notifyDataSetChanged()` 은 옵션이지만 변경되지 않은 부분까지표시되지 않는 화면을 포함해 모든 list를 리바인드 하고 다시 그리게 됩니다.
+이것은 불필요한 작업으로 데이터의 양이 크거나 복잡한 list의 경우, 이 프로세스는 사용자가 list를 스크롤 할 때 디스플레이가 깜박이거나 끊길 정도로 오래 걸리는 문제가 발생할 수 있습니다.
 
-이것은 불필요한 작업으로 데이터의 양이 크거나 복잡한 list의 경우, 이 프로세스는 사용자가 list를 스크롤 할 때 디스플레이가 깜박이거나 끊길 정도로 오래 걸릴 수 있다.
+> 만약 `RecyclerView`단일 요소를 업데이트하기위한 풍부한 API가 있어 수동으로 해결할 수 있지만, 상당한 양의 코드가 필요 할 것 입니다
 
-> `RecyclerView`단일 요소를 업데이트하기위한 풍부한 API가 있어 수동으로 해결할 수 있지만 상당한 코드가 필요 할 것 이다.
+## ListAdapter
 
-### ListAdapter
+ListAdapter 는 전체 뷰를 다시 그릴 필요 없이 추가와 제거가 가능하고 이러한 작업을 애니메이션화 할 수 있습니다.
 
-여기서, ListAdapter 는 전체 뷰를 다시 그릴 필요 없이 추가와 제거가 가능하고 이러한 작업을 애니메이션화 할 수 있습니다.
+> ListAdapter 없이도 애니메이션 구현은 가능하지만 직접 구현해야하며 뷰가 애니메이션과 함께 다시그려지기 때문에 동일한 성능을 갖지 못합니다.
 
-> ListAdapter 없이도 애니메이션 구현이 가능하지만 직접 구현해야하며 뷰가 애니메이션과 함께 다시그려지기 때문에 동일한 성능을 갖지 못한다.
-
-#### DiffUtil
+## DiffUtil
 
 DiffUtil은 ListAdapter 에서 리스트를 효율적으로 변경할 수 있도록 하는 핵심입니다.
 
@@ -77,7 +73,7 @@ DiffCallback 구현 방법을 알아보겠습니다 ~~ :-)
 
 2. `PersonDiffCallback`이름에 커서를 놓고 `Option+Enter` 를 눌러 `areItemsTheSame()`및 `areContentsTheSame()`방법을 선택한 다음 **확인** 을 클릭 한다
 
-3. 이렇게하면 `PersonDiffCallback`아래와 같이 두 메서드에 대한 내부 스텁이 생성 된다.
+3) 이렇게하면 `PersonDiffCallback`아래와 같이 두 메서드에 대한 내부 스텁이 생성 된다.
    `DiffUtil` 은 두 가지 방법을 사용하여 리스트와 아이템이 어떻게 변경되었는지 파악한다.
 
    ```kotlin
@@ -90,7 +86,8 @@ DiffCallback 구현 방법을 알아보겠습니다 ~~ :-)
        }
    ```
 
-4. 내부 `areItemsTheSame()`에서 전달 된 두 `oldItem` 과 `newItem`이 동일한 지 여부를 테스트하는 코드로를 작성한다. 두 항목항목의 id 를 비교하여 같으면 `true` 다르면 `false` 를 리턴해 **항목이 추가, 제거 또는 이동**되었는지 확인합니다.
+4) 내부 `areItemsTheSame()`에서 전달 된 두 `oldItem` 과 `newItem`이 동일한 지 여부를 테스트하는 코드로를 작성한다.
+   두 항목항목의 id 를 비교하여 같으면 `true` 다르면 `false` 를 리턴해 **항목이 추가, 제거 또는 이동**되었는지 확인
 
    ```kotlin
    override fun areItemsTheSame(oldItem: Person, newItem: Person): Boolean {
@@ -98,23 +95,27 @@ DiffCallback 구현 방법을 알아보겠습니다 ~~ :-)
    }
    ```
 
-   ![areItemsTheSame ()이 항목을 비교하는 방법을 보여주는 다이어그램.](https://miro.medium.com/max/1400/0*NRO2Sg2SJHbNOpl9)
+      <img src = "https://miro.medium.com/max/1400/0*NRO2Sg2SJHbNOpl9" width="80%">
 
-5. `areContentsTheSame()` 은 내부 에서 동일한 데이터가 있는지 확인한다 . 즉, 동일한 지 여부를 판단하는 것이다. 이 동등성 검사는 `Person` 데이터 클래스 이기 때문에 모든 필드를 검한다 . `Data`클래스는 자동으로 `equals` 을 정의하고 몇 가지 다른 방법을 제공한다. `oldItem`그리고 `newItem` 의 차이가있는 경우, `DiffUtil` 에게 list 가 업데이트 되었음을 알려준다.
+5) `areContentsTheSame()` 은 내부 에서 동일한 데이터가 있는지 확인한다 . 즉, 동일한 지 여부를 판단하는 것이다. 이 동등성 검사는 `Person` 데이터 클래스 이기 때문에 모든 필드를 검한다 . `Data`클래스는 자동으로 `equals` 을 정의하고 몇 가지 다른 방법을 제공한다. `oldItem`그리고 `newItem` 의 차이가있는 경우, `DiffUtil` 에게 list 가 업데이트 되었음을 알려준다.
 
-```kotlin
-override fun areContentsTheSame(oldItem: Person, newItem: Person): Boolean {
-   return oldItem == newItem
-}
-```
+   ```kotlin
+   override fun areContentsTheSame(oldItem: Person, newItem: Person): Boolean {
+      return oldItem == newItem
+   }
+   ```
 
-![areContentsTheSame ()이 항목을 비교하는 방법을 보여주는 다이어그램.](https://miro.medium.com/max/2772/1*qGBhZoS8bC8UbEYyeucwGw.png)
+   <img src = "https://miro.medium.com/max/2772/1*qGBhZoS8bC8UbEYyeucwGw.png" width="80%">
 
 위와같이 DiffCallback을 만들면 ListAdapter를 사용하여 list 관리가 가능해집니다.
 
-`ListAdapter` : AsyncListDiffer의 wrapper 클래스로 lsit를 추적하고 list이 업데이트되면 어댑터에 알립니다.
+### `ListAdapter`
+
+ListAdapter는 AsyncListDiffer의 wrapper 클래스로 lsit를 추적하고 list이 업데이트되면 어댑터에 알립니다.
 
 변경되는 lsit를 표시 하기 위해 `RecyclerView`를 사용하는 것은 일반적인 패턴 인데요. `RecyclerView`는 list로 지원되는 `RecyclerView` 어댑터를 빌드하는 데 도움이되는 어댑터 클래스 인 `ListAdapter`를 제공하고 바로 이 ListAdapter를 사용하는 방법을 살펴보겠습니다
+
+ListAdapter의 주 사용 메서드
 
 - `getCurrentList()` : 현재 리스트를 반환
 - `onCurrentListChanged()` : 리스트가 업데이트 되었을 때 실행할 콜백 지정
@@ -128,9 +129,9 @@ override fun areContentsTheSame(oldItem: Person, newItem: Person): Boolean {
 class PersonAdapter : ListAdapter<Person, PersonAdapter.ViewHolder>(PersonDiffCallback()) {
 ```
 
-2. `ListAdapter` 에서 해당 메소드를 구현하므로 override 된 `getItemCount()` 를 지운다.
+2.  `ListAdapter` 에서 해당 메소드를 구현하므로 override 된 `getItemCount()` 를 지운다.
 
-3. `onBindViewHolder()` 에서 예전 `item`. `data`를 사용하여 항목을 가져 오는 대신 ListAdapter가 제공하는 getItem (position) 메서드를 한다.
+3.  `onBindViewHolder()` 에서 예전 `item`. `data`를 사용하여 항목을 가져 오는 대신 ListAdapter가 제공하는 getItem (position) 메서드를 한다.
 
 ```kotlin
 //item. deta
@@ -148,48 +149,43 @@ val item = getItem(position)
 ```kotlin
 MemoViewModel.persons.observe(viewLifecycleOwner, Observer {
    it?.let {
-       adapter.submitList(it)
+      adapter.submitList(it)
    }
 })
 ```
 
-### RecyclerView와 함께 데이터 바인딩 사용
+## RecyclerView와 함께 데이터 바인딩 사용
 
-> 데이터바인딩 레이아웃으로 빠르게 변경하는 법!
->
-> 1. `ConstraintLayout`태그 에 커서를 놓고 `Alt+Enter`( `Option+Enter` Mac의 경우)를 누릅니다!
->    의도 메뉴 (
->
-> 2. "빠른 수정"메뉴가 열리면 **데이터 바인딩 레이아웃으로 변환을** 선택 합니다.
->
->    ```xml
->    <data>
->      <variable
->        name="viewModel"
->        type="com....ViewModel" />
->    </data>
->    ```
+데이터바인딩 레이아웃으로 빠르게 변경하는 법!
 
-1.  `PersonAdapter.kt` 의 `onCreateViewHolder()` 에서 서 `ViewHolder`클래스 찾는 방법을 아래와 같이 해준다.
+1. ConstraintLayout`태그 에 커서를 놓고`Alt+Enter`(`Option+Enter` Mac의 경우)를 누릅니다!
+2. "빠른 수정"메뉴가 열리면 **데이터 바인딩 레이아웃으로 변환을** 선택 합니다.
 
-```kotlin
-val binding = ListItemPersonBinding.inflate(layoutInflater, parent, false)
-return ViewHolder(binding)
-```
+   ```xml
+   <data>
+     <variable
+       name="viewModel"
+       type="com....ViewModel" />
+   </data>
+   ```
 
-2. ViewHolder 는 다음과 같이 됩니다
+   1. `PersonAdapter.kt` 의 `onCreateViewHolder()` 에서 서 `ViewHolder`클래스 찾는 방법을 아래와 같이 해준다.
 
-```kotlin
-class ViewHolder private constructor(val binding: ListItemPersonBinding) : 			   		RecyclerView.ViewHolder(binding.root){
-			val name: TextView = binding.tvName
-}
-```
+   ```kotlin
+   val binding = ListItemPersonBinding.inflate(layoutInflater, parent, false)
+   return ViewHolder(binding)
+   ```
+
+   2. ViewHolder 는 다음과 같이 됩니다
+
+   ```kotlin
+   class ViewHolder private constructor(val binding: ListItemPersonBinding) : 			   		RecyclerView.ViewHolder(binding.root){
+            val name: TextView = binding.tvName
+   }
+   ```
 
 이렇게 RecyclerView의 ListAdapter - DiffUtil 사용법에 대해 알아봤습니다!
 RecyclerView를 처음 배욱고 사용하며 마주쳤던 notifyDataSetChanged() 등등의 메소드 들이 비효율적인 부분을 가지고 있었다니..! 리펙터링 할 곳이 여기저기 있겠네요 @\_@
 
 reference
-
-```
 https://medium.com/androiddevelopers/adapting-to-listadapter-341da4218f5b
-```

@@ -3,7 +3,7 @@ title: RecyclerView
 date: "2021-01-16"
 tags: ["mash-up", "2nd", "seohui", "Bubbles", "androidweekly"]
 description: "Bubbles in Android."
-cover: "./cover.png"
+cover: "./cover2.png"
 ---
 
 # Bubbles in Android

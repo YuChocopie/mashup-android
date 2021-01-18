@@ -3,7 +3,7 @@ title: Corotuine Composing Suspending Functions
 date: "2021-01-18"
 tags: ["coroutine", "mash-up", "dahyun","Android","study"]
 description: "Corotuine Composing Suspending Functions에 대해 알아봅시다."
-cover: "./coroutine3rdcpover.png"
+cover: "./coroutine3rdcover.png"
 ---
 
 # **Corotuine Composing Suspending Functions**

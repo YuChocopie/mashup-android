@@ -46,8 +46,7 @@ cover: "./희진.png"
 ### Navigation 구성
 
 1. Navigation Graph(New XML Resource)
-
-   ![img](https://blog.kakaocdn.net/dn/pL1P6/btqK2rNaFAm/tiilMpV2xxUL0ZqYp8i39k/img.png)
+   <img src = "https://blog.kakaocdn.net/dn/pL1P6/btqK2rNaFAm/tiilMpV2xxUL0ZqYp8i39k/img.png" width="100%">
 
    내비게이션 그래프는 새로운 리소스 타입이라고 해요. XML 코드로도 확인할 수 있습니다. 각각의 스크린들은 destination이라는 이름을 갖고 있고 가고 싶은 곳으로 연결할 수 있다고 합니다. 그리고 모두 프레그먼트입니다.
 

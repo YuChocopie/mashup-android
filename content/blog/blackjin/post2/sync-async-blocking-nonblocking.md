@@ -1,6 +1,6 @@
 ---
 title: Sync, Async, Blocking, NonBlocking
-date: "2020-01-19"
+date: "2021-01-19"
 tags: ["mash-up", "sync", "async", "blocking", "nonblocking"]
 description: "코드 스피치 강의 내용을 정리한 글입니다."
 cover: "./thumbnail_post.png"

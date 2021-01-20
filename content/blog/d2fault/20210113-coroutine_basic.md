@@ -4,7 +4,6 @@ date: "2021-01-15"
 tags: ["d2fault", "mash-up", "kotlin", "coroutine", "android"]
 description: "코루틴 입문자를 위한 기본 개념을 살펴봅시다."
 cover: "./ic_coroutine.jpg"
-
 ---
 
 

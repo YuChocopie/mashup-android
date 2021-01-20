@@ -2,7 +2,7 @@
 title: Reactive - 변환 연산자
 date: "2021-01-20"
 tags: ["rx", "rxJava", "yuchocopie", "Transform Operator"]
-description: ""concatMap(), switchMap() 함수에 대해 알아보고 reduce와 유사한  scan() 함수, 그리고 groupBy() 함수에 대해 살펴보겠습니다"
+description: "concatMap(), switchMap() 함수에 대해 알아보고 reduce와 유사한  scan() 함수, 그리고 groupBy() 함수에 대해 살펴보겠습니다"
 cover: "./ic_cover.png"
 ---
 

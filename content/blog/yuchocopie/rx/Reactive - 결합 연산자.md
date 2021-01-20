@@ -2,9 +2,11 @@
 title: Reactive - 결합 연산자
 date: "2021-01-20"
 tags: ["rx", "rxJava", "yuchocopie", "Combine Operator"]
-description: Combine Operator zip(), combineLatest(), Merge(), concat() "
+description: "Combine Operator zip(), combineLatest(), Merge(), concat() "
 cover: "./ic_cover.png"
 ---
+
+# Reactive 결합 연산자
 
 리액티브 연산자
 
@@ -29,6 +31,7 @@ cover: "./ic_cover.png"
 결합연산자는 다수의 Observeble을 하나로 합하는 방법을 제공합니다. flatMap() 함수나 groupBy() 함수는 1개의 Observeble을 확장해주는 반면 결합연산자는 여러개의 Observeble을 내가 원하는 Observeble로 결합해줍니다.
 
 - zip() 함수 : 입력 Observeble에서 데이터를 모두 새로발행했을 때 그것을 합해줍니다
+
 - combineLatest() 함수: 처음에 각 Observeble에서 데이터를 발행한 후에는 어디에서 값을 발행하던 최신 값으로 갱신합니다.
 - merge() 함수: 최신 데이터 여부와 상관없이 각 Observeble에서 발행하는 데이터를 그대로 출력합니다.
 - concat() 함수: 입력된 Observeble을Observeble 단위로 붙여줍니다.
@@ -40,7 +43,7 @@ zip() 함수는 각각의 Observeble을 모두 활용해 2개 혹은 그 이상�
 예를 들어 A,B 두 개의 Observeble을 결합한다면 2개의 Observeble에서 모두 데이터를 발행해야 결합할 수 있고 그 전까지는 발행을 기다립니다.
 [마블다이어그램](http://reactivex.io/documentation/operators/zip.html)은 다음과 같습니다
 
-![zipWith](http://reactivex.io/documentation/operators/images/zip.i.png)
+<img src="http://reactivex.io/documentation/operators/images/zip.i.png" alt="combineLatest" style="zoom:67%;" />
 
 zip() 함수의 원형은 아래와 같습니다.
 
@@ -211,7 +214,7 @@ combineLatest() 함수는 2개 이상의 Observable을 기반으로 Observable �
 
 [마블다이어그램](http://reactivex.io/documentation/operators/combinelatest.html) 은 아래와 같습니다.
 
-![combineLatest](http://reactivex.io/documentation/operators/images/combineLatest.png)
+<img src="http://reactivex.io/documentation/operators/images/combineLatest.png" alt="combineLatest" style="zoom:67%;" />
 
 첫 번째 Observable이나 두 번째 Observable에서만 흐름이 있을 경우 구독자에게 어떤 데이터도 발행하지 않습니다. 하지만 두 Observable 모두 값을 발행하면 그 때 결과값이 나오며
 둘 중에 어떤 것이 갱신되던지 최신 결과값을 보여줍니다.(zip 과의 차별점)
@@ -232,13 +235,13 @@ zip() 함수처럼 결합하고자 하는 첫 번째와 두 번째 Observable을
 merge() 함수는 Observable의 순서와 모든 Observable의 데이터를 발행하는지 등에 관여하지 않고 어느 것이든 업스트림엣서 먼저 입력되는 데이터를 그대로 발행합니다.
 
 [merge() 마블 다이그램](http://reactivex.io/documentation/operators/merge.html)
-![병합](http://reactivex.io/documentation/operators/images/merge.png)
+<img src="http://reactivex.io/documentation/operators/images/merge.png" alt="병합" style="zoom:67%;" />
 
 merge() 함수는 전달 된 개별 Observable 중 하나 `merge`가 `onError`알림 과 함께 종료되는 경우 `merge`자체 생성 된 Observable 이 `onError`알림 과 함께 즉시 종료됩니다 .
 
 오류가 발생하기 전에 오류가없는 나머지 Observable의 결과를 계속 내보내는 병합을 선호하는 경우 `mergeDelayError`대신 사용해야합니다.
 
-![MergeDelayError](http://reactivex.io/documentation/operators/images/mergeDelayError.C.png)
+<img src="http://reactivex.io/documentation/operators/images/mergeDelayError.C.png" alt="MergeDelayError" style="zoom:67%;" />
 
 mergeDelayError는 merge와 매우 유사하게 작동합니다. 하지만 병합되는 Observable 중 하나가 onError 알림으로 종료되는 경우에는 다르게 동작합니다. merge 함수일 경우 error가 발생하면 merge 된 Observable이 즉시 onError 알림을 발행하고 종료됩니다. 반면 mergeDelayError는 오류가 발생하지 않는 다른 Observable에게 항목 방출을 완료 할 기회를 병합 할 때까지 오류보고를 보류하고, 항목 자체를 방출하고 난 다음 종료됩니다.
 병합 된 다른 모든 Observable이 완료되면 onError 알림니다. 병합 된 Observable 중 두 개 이상에서 오류가 발생할 수 있으므로 mergeDelayError는 onError 알림에서 여러 오류에 대한 정보를 전달할 수 있습니다 (관찰자의 onError 메서드를 두 번 이상 호출하지 않음). 따라서 이러한 오류의 특성을 알고 싶다면 관찰자의 onError 메서드를 작성하여 CompositeException 클래스의 매개 변수를 허용해야합니다.
@@ -249,7 +252,7 @@ mergeDelayError에는 Iterable 또는 Observable 배열을 전달할 수는 없�
 concat() 은 2개 이상의 Observable을 이어붙여주는 함수입니다. 첫번째 Observable에 onComplete 이벤트가 발생해야 두 번째 Observable을 구독합니다.
 
 [concat 마블 다이어그램](http://reactivex.io/documentation/operators/concat.html)
-![concat](http://reactivex.io/documentation/operators/images/concat.png)
+<img src="http://reactivex.io/documentation/operators/images/concat.png" alt="concat" style="zoom:67%;" />
 
 concat 함수 원형
 

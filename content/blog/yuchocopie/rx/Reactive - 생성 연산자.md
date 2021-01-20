@@ -1,10 +1,12 @@
 ---
-title: Reactive - 변환 연산자
+title: Reactive - 생성 연산자
 date: "2021-01-20"
 tags: ["rx", "rxJava", "yuchocopie", "Create Operator"]
 description: "생성 연산자중 interval(), timer(), range(),  intervalRange(), defer(), repeat() 에  대해 살펴봅시다."
 cover: "./ic_cover.png"
 ---
+
+# Reactive - 생성 연산자
 
 리액티브 연산자
 
@@ -34,7 +36,7 @@ cover: "./ic_cover.png"
 
 interval() 함수는 일정 시간 간격으로 데이터 흐름을 생성합니다. 주어진 시간 간격만큼 Interval을 둔 정수 시퀀스를
 
-![간격](http://reactivex.io/documentation/operators/images/interval.c.png)
+<img src="http://reactivex.io/documentation/operators/images/interval.c.png" alt="간격" style="zoom:67%;" />
 
 주로 사용하는 원형에는 2가지가 있습니다.
 
@@ -96,7 +98,7 @@ RxComputationThreadPool-1 | 616 | value = 500
 
 timer() 함수는 interval()함수와 유사하지만 한번만 실행하는 함수입니다.
 
-![Timer](http://reactivex.io/documentation/operators/images/timer.c.png)
+<img src="http://reactivex.io/documentation/operators/images/timer.c.png" alt="Timer" style="zoom:67%;" />
 
 timer 함수의 원형은 interval()함수와 전반적으로 비슷하며, 현재스레드가 아닌 계산스케쥴러에서 실행하기 때문에 단독으로 사용하게 되는 경우 CommonUtils.sleep() 함수의 호출이 없으면 그냥 종료하게 됩니다.
 
@@ -110,7 +112,7 @@ public static Observable<Long> timer(long delay, TimeUnit unit)
 
 range() 함수는 주어진 값 n부터 m개의 Integer 객체를 발행합니다. 앞선 interval()함수와 timer()함수는 Long를 발행했지만 range()하뭇는 Integer 객체를 발행하는 것이 다릅니다.
 
-![Range](http://reactivex.io/documentation/operators/images/range.c.png)
+<img src="http://reactivex.io/documentation/operators/images/range.c.png" alt="Range" style="zoom:67%;" />
 
 range() 함수의 원형을 보면 앞선 함수들과는 다르게 스케쥴러에서 실행되지 않아 현재 스레드에서 동작합니다.
 
@@ -177,7 +179,7 @@ public void makeWithInterval() {
 ### 5. defer() 함수
 
 defer()함수는 timer()함수와 비슷하지만 데이터 흐름 생성을 구독자가 subscribe() 함수를 호출할 때까지 미룰 수 있습니다.
-![Defer](http://reactivex.io/documentation/operators/images/defer.c.png)
+<img src="http://reactivex.io/documentation/operators/images/defer.c.png" alt="Defer" style="zoom:67%;" />
 
 Observeble의 생성이 구독할 때까지 미뤄지기 때문에 최신 데이터를 얻을 수 있습니다.
 
@@ -193,7 +195,7 @@ public static <T> Observable<T> defer(Callable<? extends ObservableSource<? exte
 
 단순히 반복실행을 합니다. 주로 서버가 잘 살아있는지 확인(ping, heart beat 라고 한다) 하는 코드에 사용하게 된다.
 
-![Repeat](http://reactivex.io/documentation/operators/images/repeat.c.png)
+<img src="http://reactivex.io/documentation/operators/images/repeat.c.png" alt="Repeat" style="zoom:67%;" />
 
 ```java
 String[] balls = {"1", "3", "5"};

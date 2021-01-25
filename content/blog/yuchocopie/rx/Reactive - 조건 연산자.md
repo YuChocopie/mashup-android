@@ -42,7 +42,7 @@ cover: "./ic_cover.png"
 
 [amb 마블 다이어그램](http://reactivex.io/documentation/operators/amb.html)
 
-<img src="http://reactivex.io/documentation/operators/images/amb.png" alt="amb" style="zoom:67%;" />
+<img src="./images/amb.png" alt="amb" style="zoom:67%;" />
 
 ### 2. takeUntil(other) 함수
 
@@ -51,7 +51,7 @@ takeUntil() 함수는 take() 함수에 조건을 설정할 수 있습니다.
 
 [TakeWhile 마블 다이어그램](http://reactivex.io/documentation/operators/takewhile.html)
 
-<img src="http://reactivex.io/documentation/operators/images/takeWhile.c.png" alt="TakeWhile" style="zoom:67%;" />
+<img src="./images/takeWhile.c.png" alt="TakeWhile" style="zoom:67%;" />
 
 예시코드
 
@@ -82,7 +82,7 @@ skipUntil(other) 함수는 takeUntil() 함수와 정반대의 함수입니다.
 
 [skipUntil마블다이어그램](http://reactivex.io/documentation/operators/skipuntil.html)
 
-<img src="http://reactivex.io/documentation/operators/images/skipUntil.png" alt="skipUntil" style="zoom:67%;" />
+<img src="./images/skipUntil.png" alt="skipUntil" style="zoom:67%;" />
 
 takeUntil() 함수와는 다르게 other Observable에서 화살표가 나올때 까지는 값을 발행하지 않고 건너뛰다가 other Observable에서 값을 발행하는 순간부터 원래 Observable에서 값을 정상적으로 발행하기 시작합니다.
 
@@ -92,7 +92,8 @@ all() 함수는 단순합니다. **주어진 조건에 100% 맞을 때만 true�
 
 [all 마블다이어그램](http://reactivex.io/documentation/operators/all.html)
 
-<img src="http://reactivex.io/documentation/operators/images/all.png" alt="all" style="zoom:67%;" />
+<img src=".
+/images/all.png" alt="all" style="zoom:67%;" />
 
 > # 기타 연산자
 >
@@ -100,11 +101,11 @@ all() 함수는 단순합니다. **주어진 조건에 100% 맞을 때만 true�
 >     유틸리티 연산자로 보조 역할을 한다
 >     인자로 전달받는 time과 시간 단위 (ms,m 등) 만큼 입력받은 Observable의 데이터 발행을 지연시켜주는 역할을 한다.
 >
->    <img src="http://reactivex.io/documentation/operators/images/delay.png" alt="delay" style="zoom:67%;" />
+>    <img src="./images/delay.png" alt="delay" style="zoom:67%;" />
 >
 > 2. [TimeInterval() 함수](http://reactivex.io/documentation/operators/timeinterval.html)
 >    어떤 값을 발행했을 때 이전 값을 발행한 이후 시간이 얼마나 흘렀는지 알려준다.
->    <img src="http://reactivex.io/documentation/operators/images/timeInterval.c.png" alt="TimeInterval" style="zoom:67%;" />
+>    <img src="./images/timeInterval.c.png" alt="TimeInterval" style="zoom:67%;" />
 >
 >    예시코드
 >
@@ -129,3 +130,7 @@ all() 함수는 단순합니다. **주어진 조건에 100% 맞을 때만 true�
 >    main | 264 | value = Timed[time=99, unit=MILLISECONDS, value=GREEN]
 >    main | 306 | value = Timed[time=42, unit=MILLISECONDS, value=ORANGE]
 >    ```
+
+reference
+
+http://reactivex.io

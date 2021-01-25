@@ -38,7 +38,7 @@ concatMap() 함수는 flatMap()함수와 매우 비슷합니다. flatMap() 는 �
 
 > flatMap 마블 다이어그램
 >
-> <img src="http://reactivex.io/documentation/operators/images/mergeMap.r.png" alt="flatMap" style="zoom:67%;" />
+> <img src="./images/mergeMap.r.png" alt="flatMap" style="zoom:67%;" />
 >
 > 예시 코드
 >
@@ -74,7 +74,7 @@ concatMap() 함수는 flatMap()함수와 매우 비슷합니다. flatMap() 는 �
 
 concatMap은 순서를 보장하기 위해 flatMap의 실행 시간에 비해 추가시간이 필요할 수 있습니다.
 
-<img src="http://reactivex.io/documentation/operators/images/concatMap.png" alt="concatMap" style="zoom:67%;" />
+<img src="./images/concatMap.png" alt="concatMap" style="zoom:67%;" />
 
 예시코드
 
@@ -111,7 +111,7 @@ RxComputationThreadPool-4 | 1448 | value = 5<>
 concatMap() 함수가 인터리빙이 발생할 수 있는 상황에서 동작의 순서를 보장해준다면 switchMap() 함수는 순서를 보장하기 위해 기존에 진행중이던 동작을 바로 중단합니다.
 여러개의 값이 발행되었을 때 마지막에 들어온 값만 처리하고 싶을 때 사용합니다. 중간에 끊기더라도 **마지막 데이터의 처리는 보장**하기 때문이죠.
 
-<img src="http://reactivex.io/documentation/operators/images/switchMap.png" alt="switchMap" style="zoom:67%;" />
+<img src="./images/switchMap.png" alt="switchMap" style="zoom:67%;" />
 
 예시코드
 
@@ -184,7 +184,7 @@ switchMap() 함수는 센서 등의 값을 얻어와 동적으로 처리하는 �
 
 groupBy() 함수는 어떤 기준(keySelector)으로 단일 Observable을 여러개로 이루어진 Observable 그룹으로 만듭니다.
 
-<img src="http://reactivex.io/documentation/operators/images/groupBy.c.png" alt="GroupBy" style="zoom:67%;" />
+<img src="./images/groupBy.c.png" alt="GroupBy" style="zoom:67%;" />
 
 어떤 기준으로 Observable 각각을 여러 개 Observable의 그룹으로 구분한다고 생각 하면 되며 아래 예시 코드에서 자세히 살펴봅시다.
 
@@ -216,4 +216,8 @@ GROUP:BALL	 Value:2
 
 scan() 함수는 reduce() 함수와 비슷합니다. reduce() 함수는 Observable 에서 모든 데이터가 입력된 후 그것을 종합하여 마지막 1개의 데이터만 구독자에게 발행했지만 scan() 함수는 **실행할 때마다 입력값에 맞는 중간 결과 및 최종 결과를 구독자에게 발행**합니다.
 
-<img src="http://reactivex.io/documentation/operators/images/scan.png" alt="scan" style="zoom:67%;" />
+<img src="./images/scan.png" alt="scan" style="zoom:67%;" />
+
+reference
+
+http://reactivex.io

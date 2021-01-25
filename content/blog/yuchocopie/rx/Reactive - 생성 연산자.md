@@ -16,19 +16,19 @@ cover: "./ic_cover.png"
 
 - 결합연산자: 1개의 Observer이 아니라 여러 개의 Observable을 조합할 수 있도록 해준다
 
-| 연산자 종류      | 연산자 함수                                                                                   |
-| :--------------- | :-------------------------------------------------------------------------------------------- |
-| **생성 연산자**  | just(), fromXXX(), create(), interval(), range(), timer(), intervalRange(), defer(), repeat() |
-| 변환 연산자      | map(), flatMap(), concatMap(), switchMap), groupBy(), scan(), buffer(), window()              |
-| 필터 연산자      | filter(), take(), skip(), distinct()                                                          |
-| 결합 연산자      | zip(), combineLatest(), Merge(), concat()                                                     |
-| 조건 연산자      | amb(), takeUntil(), skipUntil(), all()                                                        |
-| 에러 처리 연산자 | onErrorReturn(), onErrorResumeNext(), retry(), retryUntil()                                   |
-| 기타 연산자      | subscribe(), subscribeOn(), observeOn(), reduce(), count()                                    |
+| 연산자 종류      | 연산자 함수                                                                                       |
+| :--------------- | :------------------------------------------------------------------------------------------------ |
+| **생성 연산자**  | just(), fromXXX(), create(), **interval(), range(), timer(), intervalRange(), defer(), repeat()** |
+| 변환 연산자      | map(), flatMap(), concatMap(), switchMap), groupBy(), scan(), buffer(), window()                  |
+| 필터 연산자      | filter(), take(), skip(), distinct()                                                              |
+| 결합 연산자      | zip(), combineLatest(), Merge(), concat()                                                         |
+| 조건 연산자      | amb(), takeUntil(), skipUntil(), all()                                                            |
+| 에러 처리 연산자 | onErrorReturn(), onErrorResumeNext(), retry(), retryUntil()                                       |
+| 기타 연산자      | subscribe(), subscribeOn(), observeOn(), reduce(), count()                                        |
 
 # 생성연산자
 
-생성연산자 데이터 흐름을 만드는 것으로 간단히 Observable(Observable, Single, Mayeb 객체 등)을 만든다고 생각하면 됩니다.
+생성연산자 데이터 흐름을 만드는 것으로 간단히 Observable(Observable, Single, Maybe 객체 등)을 만든다고 생각하면 됩니다.
 
 이번에는 생성 연산자중 interval(), timer(), range(), intervalRange(), defer(), repeat() 에 대해 살펴봅시다.
 
@@ -44,7 +44,8 @@ interval() 함수는 일정 시간 간격으로 데이터 흐름을 생성합니
 @CheckReturnValue
 @SchedulerSupport(SchedulerSupport.COMPUTATION)
 public static Observable<Long> interval(long period, TimeUnit unit)
-public static Observable<Long> interval(long initialDelay, long period, TimeUnit unit, Scheduler scheduler)
+public static Observable<Long> interval(long initialDelay, long period, TimeUnit unit)
+//, Scheduler scheduler)
 ```
 
 첫 번째 원형은 **일정 시간(period)**을 쉬었다가 데이터를 발행합니다.
@@ -59,7 +60,7 @@ interval() 함수는 기본적으로 영원히 지속되기 때문에 폴링 용
 
 ```java
 CommonUtils.exampleStart();
-Observable<Long> source = Observable.interval(100L, TimeUnit.MILLISECONDS)
+Observable<Long> source = Observable.interval(0,100L, TimeUnit.MILLISECONDS)
   .map(data -> (data + 1) * 100)
   .take(5);
 source.subscribe(Log::it);
@@ -71,7 +72,7 @@ Observable인 source변수는 100ms 간격으로 0부터 데이터를 발행한 
 
 > interval() 함수 자체는 간단합니다 :-)
 
-CommonUtils.exampleStart() 는 시작 시간을 표시하는 유틸리티 메서드 입니다. rxJava는 비동기 프로그래밍이기에 씨간에 대한 이해가 중요하고 각 시작 시간을 기준으로 각 함수의 실행 시간을 측정할 수 있게 됩니다.
+CommonUtils.exampleStart() 는 시작 시간을 표시하는 유틸리티 메서드 입니다. rxJava는 비동기 프로그래밍이기에시간에 대한 이해가 중요하고 각 시작 시간을 기준으로 각 함수의 실행 시간을 측정할 수 있게 됩니다.
 
 CommonUtils.sleep(1000) 은 단순히 thread.sleep() 을 호출합니다. sleep()을 호출하는 이유는 메인스레드가 아닌 별도의 스레드에서 동작하기 때문에 sleep()을 호출하지 않을 경우 main 스레드에서 할 일이 없기 때문에 프로그램을 바로 종료하게 됩니다.
 
@@ -183,7 +184,7 @@ defer()함수는 timer()함수와 비슷하지만 데이터 흐름 생성을 구
 
 Observeble의 생성이 구독할 때까지 미뤄지기 때문에 최신 데이터를 얻을 수 있습니다.
 
-스케줄러 NONE 이기 때문에 메인스레드에서 동작하며 인자로는 Callable<Observable<T>>를 받습니다. Callable 객체이기 때문에 subscribe() 함수를 호출할 때까지 call 메서드의 호출을 미룰 수 있게 됩니다.
+스케줄러 NONE 이기 때문에 메인스레드에서 동작하며 인자로는 **Callable<Observable<T>>**를 받습니다. **Callable 객체**이기 때문에 subscribe() 함수를 호출할 때까지 call 메서드의 호출을 미룰 수 있게 됩니다.
 
 ```java
 @CheckReturnValue
@@ -226,7 +227,7 @@ main | debug = onComplete
 ```
 
 - 서버에 heart beat(ping) 하는 코드 예시
-  지속적인 통신을 해야 하는 서버의 경우 일정 시간 안에 heart beat 패킷을 보내지 않으면 서버는 클라이언트와의 연결이 종료된 것ㅅ으로 판단하고 연결을 해제하는데 이럴 경우에 repeat()함수를 활용해 간단히 구현이 가합니다.
+  지속적인 통신을 해야 하는 서버의 경우 일정 시간 안에 heart beat 패킷을 보내지 않으면 서버는 클라이언트와의 연결이 종료된 것 으로 판단하고 연결을 해제하는데 이럴 경우에 repeat()함수를 활용해 간단히 구현이 가합니다.
 
 ```java
 CommonUtils.exampleStart();

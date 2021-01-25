@@ -184,7 +184,7 @@ switchMap() 함수는 센서 등의 값을 얻어와 동적으로 처리하는 �
 
 groupBy() 함수는 어떤 기준(keySelector)으로 단일 Observable을 여러개로 이루어진 Observable 그룹으로 만듭니다.
 
-<img src="./images/groupBy.c.png" alt="GroupBy" style="zoom:67%;" />
+<img src="./images/groupBy.png" alt="GroupBy" style="zoom:67%;" />
 
 어떤 기준으로 Observable 각각을 여러 개 Observable의 그룹으로 구분한다고 생각 하면 되며 아래 예시 코드에서 자세히 살펴봅시다.
 

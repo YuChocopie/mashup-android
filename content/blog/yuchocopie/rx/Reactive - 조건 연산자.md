@@ -92,8 +92,7 @@ all() 함수는 단순합니다. **주어진 조건에 100% 맞을 때만 true�
 
 [all 마블다이어그램](http://reactivex.io/documentation/operators/all.html)
 
-<img src=".
-/images/all.png" alt="all" style="zoom:67%;" />
+<img src="./images/all.png" alt="all" style="zoom:67%;" />
 
 > # 기타 연산자
 >
@@ -105,7 +104,7 @@ all() 함수는 단순합니다. **주어진 조건에 100% 맞을 때만 true�
 >
 > 2. [TimeInterval() 함수](http://reactivex.io/documentation/operators/timeinterval.html)
 >    어떤 값을 발행했을 때 이전 값을 발행한 이후 시간이 얼마나 흘렀는지 알려준다.
->    <img src="./images/timeInterval.c.png" alt="TimeInterval" style="zoom:67%;" />
+>    <img src="./images/timeInterval.png" alt="TimeInterval" style="zoom:67%;" />
 >
 >    예시코드
 >

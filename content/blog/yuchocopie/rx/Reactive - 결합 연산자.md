@@ -43,7 +43,7 @@ zip() 함수는 각각의 Observeble을 모두 활용해 2개 혹은 그 이상�
 예를 들어 A,B 두 개의 Observeble을 결합한다면 2개의 Observeble에서 모두 데이터를 발행해야 결합할 수 있고 그 전까지는 발행을 기다립니다.
 [마블다이어그램](http://reactivex.io/documentation/operators/zip.html)은 다음과 같습니다
 
-<img src="http://reactivex.io/documentation/operators/images/zip.i.png" alt="combineLatest" style="zoom:67%;" />
+<img src="http://reactivex.io/documentation/operators/images/zip.i.png" alt="zipWith" style="zoom:67%;" />
 
 zip() 함수의 원형은 아래와 같습니다.
 
@@ -139,7 +139,7 @@ basePrice와 usagePrice을 각각 구현해 map함수를 사용하면 어려운 
 
 1. data를 추가로 넘겨주는 방법을 고민합니다
 2. zip() 함수는 2개 뿐만 아니라 3개의 Observable 도 결합할 수 있다
-3. 새로운 클래스를 사용하는 것보다 아파치 커먼즈의 Pair클랫스를 사용한다
+3. 새로운 클래스를 사용하는 것보다 **아파치 커먼즈의 Pair클랫스**를 사용한다
 
 바뀐 코드
 
@@ -210,14 +210,13 @@ CommonUtils.exampleComplete();
 
 ### 2. combineLatest() 함수
 
-combineLatest() 함수는 2개 이상의 Observable을 기반으로 Observable 각각의 값이 변경되었을 때 갱신해주는 함쑤입니다. 마지막 인자로 combine이 들어가는데 끅것이 각 Observable을 결합하여 어떤 결과를 만들어주는 역할을 합니다.
+combineLatest() 함수는 2개 이상의 Observable을 기반으로 Observable 각각의 값이 변경되었을 때 갱신해주는 함수입니다. 마지막 인자로 combine이 들어가는데 그것이 각 Observable을 결합하여 어떤 결과를 만들어주는 역할을 합니다.
 
 [마블다이어그램](http://reactivex.io/documentation/operators/combinelatest.html) 은 아래와 같습니다.
 
 <img src="http://reactivex.io/documentation/operators/images/combineLatest.png" alt="combineLatest" style="zoom:67%;" />
 
-첫 번째 Observable이나 두 번째 Observable에서만 흐름이 있을 경우 구독자에게 어떤 데이터도 발행하지 않습니다. 하지만 두 Observable 모두 값을 발행하면 그 때 결과값이 나오며
-둘 중에 어떤 것이 갱신되던지 최신 결과값을 보여줍니다.(zip 과의 차별점)
+첫 번째 Observable이나 두 번째 Observable에서만 흐름이 있을 경우 구독자에게 어떤 데이터도 발행하지 않습니다. 하지만 두 Observable 모두 값을 발행하면 그 때 결과값이 나오며 둘 중에 어떤 것이 갱신되던지 최신 결과값을 보여줍니다.(zip 과의 차별점)
 함수원형은 아래와 같습니다.
 
 ```java

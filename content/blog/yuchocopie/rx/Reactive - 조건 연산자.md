@@ -56,7 +56,7 @@ takeUntil() 함수는 take() 함수에 조건을 설정할 수 있습니다.
 예시코드
 
 ```java
-String[] data = {"2", "2", "3", "4", "5", "6"};
+String[] data = {"1", "2", "3", "4", "5", "6"};
 
 Observable<String> source = Observable.fromArray(data)
     .zipWith(Observable.interval(100L, TimeUnit.MILLISECONDS),

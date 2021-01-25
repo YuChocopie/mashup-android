@@ -180,17 +180,32 @@ public void makeWithInterval() {
 ### 5. defer() 함수
 
 defer()함수는 timer()함수와 비슷하지만 데이터 흐름 생성을 구독자가 subscribe() 함수를 호출할 때까지 미룰 수 있습니다.
-<img src="./images/defer.c.png" alt="Defer" style="zoom:67%;" />
 
-Observeble의 생성이 구독할 때까지 미뤄지기 때문에 최신 데이터를 얻을 수 있습니다.
+defer() 연산자는 옵저버가 구독 할 때까지 기다린 다음 Observable factory 함수를 사용해서 옵저버를 생성합니다.
+
+각 구독자에 대해 해당 작업을 수행하기 때문에 구독자가 동일한 옵저버블을 구독하고 있다고 생각할 수 있지만, 실제로는 **각 구독자는 고유한 개별 시퀀스를 받습니다**(그래서 아래 그림에서 2가지 시퀀스가 발행). 경우에 따라 Observable을 생성하기 위해 마지막순간까지 기다게되면 옵저버블에 최신 데이터가 포함되도록 할 수 있습니다.
+
+<img src="./images/defer.c.png" alt="Defer" style="zoom:67%;" />
+defer() 는 Observeble의 생성이 구독할 때까지 미뤄지기 때문에 최신 데이터를 얻을 수 있습니다.
+
+> **구독자가 subscribe() 를 호출하면 그 때 supplier의 call() 메서드를 호출합니다(데이터의 발행이 구독시점부터 시작한다고 생각하면 됩니다**.)
 
 스케줄러 NONE 이기 때문에 메인스레드에서 동작하며 인자로는 **Callable<Observable<T>>**를 받습니다. **Callable 객체**이기 때문에 subscribe() 함수를 호출할 때까지 call 메서드의 호출을 미룰 수 있게 됩니다.
+
+> _callable_ 은 비동기 작업이 일어난 경우에 해당 작업의 값을 변수로 받을 수 있게 되는 것 입니다
 
 ```java
 @CheckReturnValue
 @SchedulerSupport(SchedulerSupport.NONE)
 public static <T> Observable<T> defer(Callable<? extends ObservableSource<? extends T>> supplier)
 ```
+
+> fromCallable 함수
+>
+> - defer() 함수와 마찬가지로 스트림 생성을 지연하는 효과를 가지고 있고 Observable 에서 데이터를 방출할 때 추가로 Observable을 생성하지 않고 바로 데이터를 스트림으로 전달할 수 있습니다.
+>   fromCallable에서는 Observable을 한 번만 생성하여 defer의 효과를 그대로 가져갈 수 있는 장점이있습니다.
+>
+> <img src="./images/from.c.png" alt="From" style="zoom:67%;" />
 
 ### 6.repeat() 함수
 

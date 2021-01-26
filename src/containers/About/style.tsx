@@ -82,3 +82,44 @@ export const SocialProfiles = styled.div`
     }
   }
 `
+export const AboutStudy = styled.div`
+  img {
+    zoom: 50%;
+    margin-right: 10px;
+  }
+`
+export const AboutProject = styled.div`
+  table {
+    border-style: none; 
+  }
+
+  table > tbody > tr {
+    background-color: white;
+    border-style: none;
+  }
+
+  table > tbody > tr > td {
+    text-align: center;
+    border-style: none;
+  }
+
+  img {
+    width: 150px;
+    border-radius: 30px
+  }
+`
+
+export const AboutMember = styled.div`
+  img {
+    float: left;
+    width: 100px;
+    margin-right: 20px;
+    border-radius: 30px;
+  }
+
+  .member-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+`

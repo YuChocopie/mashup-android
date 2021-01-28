@@ -3,7 +3,7 @@ title: "Shared Element in Navigation"
 date: "2021-01-26"
 tags:
   ["mash-up", "seungyoon", "navigation", "shared element"]
-description: "코루틴 flow에 대해 알아보자.(1/2)"
+description: "Fragment에서 요소 공유하는 방법"
 cover: "./sharedelement/title_image.png"
 ---
 

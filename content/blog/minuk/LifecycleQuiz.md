@@ -1,4 +1,12 @@
-# 헷갈리는 LifeCycle
+---
+title: "헷갈리는 Lifecycle"
+date: "2021-01-29"
+tags: ["mash-up", "minuk", "lifecycle", "quiz"] // #키워드 작성하기!
+description: "lifecycle 면접 질문 알아보아요~"
+cover: "./lifecycle_cover.jpg"
+---
+
+# 헷갈리는 Lifecycle
 
 안녕하세요. Mash-Up 안드로이드 10기 양민욱입니다 :) <br>
 

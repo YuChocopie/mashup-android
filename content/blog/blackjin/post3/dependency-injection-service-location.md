@@ -1,8 +1,8 @@
----
+earl---
 title: Dependency Injection And Service Location
 date: "2020-01-26"
-tags: ["mash-up",, "DI", "Dependency Injection ", "Service Location"]
-description: ".Dependency Injection And Service Location 번역 및 내용 정리 글"
+tags: ["mash-up","DI", "Dependency Injection", "Service Location"]
+description: "Dependency Injection And Service Location 번역 및 내용 정리 글"
 cover: "./thumbnail_post.png"
 ---
 

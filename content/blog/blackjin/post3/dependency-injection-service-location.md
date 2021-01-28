@@ -1,4 +1,4 @@
-earl---
+---
 title: Dependency Injection And Service Location
 date: "2020-01-26"
 tags: ["mash-up","DI", "Dependency Injection", "Service Location"]

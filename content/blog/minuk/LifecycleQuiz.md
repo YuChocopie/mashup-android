@@ -33,7 +33,7 @@ Activity Lifecycle은 앱을 사용하는 사용자의 행동에 따라서 변�
 
 <br></br>
 
-<img src="LifecycleQuiz/Lifecycle.png" width="70%">
+<img src="lifecycle_quiz/Lifecycle.png" width="70%">
 
 <br>
 

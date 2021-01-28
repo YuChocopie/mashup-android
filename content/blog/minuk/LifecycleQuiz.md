@@ -3,7 +3,7 @@ title: "헷갈리는 Lifecycle"
 date: "2021-01-29"
 tags: ["mash-up", "minuk", "lifecycle", "quiz"] // #키워드 작성하기!
 description: "lifecycle 면접 질문 알아보아요~"
-cover: "./lifecycle_cover.jpg"
+cover: "./lifecycle_cover.png"
 ---
 
 # 헷갈리는 Lifecycle

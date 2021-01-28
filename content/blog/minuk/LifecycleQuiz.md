@@ -1,8 +1,8 @@
 ---
-title: "헷갈리는 Lifecycle"
+title: "Lifecycle Quiz"
 date: "2021-01-29"
-tags: ["mash-up", "minuk", "lifecycle", "quiz"] // #키워드 작성하기!
-description: "lifecycle 면접 질문 알아보아요~"
+tags: ["mash-up", "minuk", "Android", "Lifecycle", "quiz"]
+description: "Android 생명주기 질문에 대한 답을 알아봅시다."
 cover: "./lifecycle_cover.png"
 ---
 

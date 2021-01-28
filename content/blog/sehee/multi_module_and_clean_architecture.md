@@ -7,5 +7,5 @@ cover: "./ic_architecture.png"
 
 ---
 
-![picture](https://user-images.githubusercontent.com/39688690/106168371-8b6a7100-61d1-11eb-9e3f-9d4409c3bc64.png)
+<img src="https://user-images.githubusercontent.com/39688690/106168371-8b6a7100-61d1-11eb-9e3f-9d4409c3bc64.png" width="180%">
 

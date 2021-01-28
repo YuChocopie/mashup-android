@@ -117,7 +117,7 @@ onDestroy 콜백 함수내에서는 onStop에서 하지 못한 리소스 해제�
 
 MainActivity는 `Resumed` 상태입니다.
 
-<img src="LifecycleQuiz/Q1preview.gif" width="80%">
+<img src="lifecycle_quiz/Q1preview.gif" width="80%">
 
 <br></br>
 
@@ -143,7 +143,7 @@ MainActivity는 `Resumed` 상태입니다.
 
 ### Q. SubActivity에서 MainActivity로 다시 돌아갈 때 호출되는 생명주기
 
-<img src="LifecycleQuiz/Q2preview.gif" width="80%">
+<img src="lifecycle_quiz/Q2preview.gif" width="80%">
 
 <br></br>
 
@@ -168,7 +168,7 @@ MainActivity는 `Resumed` 상태입니다.
 
 다이얼로그는 `AlertDialog` 입니다.
 
-<img src="LifecycleQuiz/Q3preview.gif" width="80%">
+<img src="lifecycle_quiz/Q3preview.gif" width="80%">
 
 <br></br>
 
@@ -188,7 +188,7 @@ MainActivity는 `Resumed` 상태입니다.
 
 ### Q.MainActivity에서 홈 버튼을 눌렀을 때는 어떤 콜백이 호출될까요?
 
-<img src="LifecycleQuiz/Q4preview.gif" width="80%">
+<img src="lifecycle_quiz/Q4preview.gif" width="80%">
 
 <br></br>
 
@@ -227,7 +227,7 @@ MainActivity는 `Resumed` 상태입니다.
 
 ### Q.MainActivity가 투명 Acitivity인 TransparentActivity로 호출될 때 발생되는 생명주기
 
-<img src="LifecycleQuiz/Q5preview.gif" width="80%">
+<img src="lifecycle_quiz/Q5preview.gif" width="80%">
 
 <br></br>
 

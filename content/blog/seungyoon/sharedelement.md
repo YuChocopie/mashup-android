@@ -1,6 +1,6 @@
 ---
 title: "Shared Element in Navigation"
-date: "2021-01-26"
+date: "2021-02-19"
 tags:
   ["mash-up", "seungyoon", "navigation", "shared element"]
 description: "Fragment에서 요소 공유하는 방법"
@@ -84,9 +84,7 @@ fun FragmentNavigatorExtras(vararg sharedElements: Pair<View, String>) =
         NavHostFragment.findNavController(this@SkinFragment).navigate(action, extras)
 ```
 ​
-제 코드 같은 경우에는 버튼 클릭 시에 내비게이션의 다음 프래그먼트로 **argument**도 보내기 때문에 **action**에 인자가 들어 있는데,
-​
-인자 없이 다음 프래그먼트로 액션만 선언해줘도 됩니다.
+제 코드 같은 경우에는 버튼 클릭 시에 내비게이션의 다음 프래그먼트로 **argument**도 보내기 때문에 **action**에 인자가 들어 있는데,<br>인자 없이 다음 프래그먼트로 액션만 선언해줘도 됩니다.
 ​
 > Second Fragment
 ​
@@ -97,11 +95,13 @@ fun FragmentNavigatorExtras(vararg sharedElements: Pair<View, String>) =
 ​
 다음 프래그먼트에서는 **FragmentNavigatiorExtras**가 알아서 요소를 공유해주기 때문에 위의 코드만 작성하면 됩니다.
 ​
-**inflateTransition**로 애니메이션을 줄 수 있는데 아래와 같이 5개의 요소가 있습니다.
+**inflateTransition**로 애니메이션을 줄 수 있는데 아래와 같이 5개의 요소가 있습니다.<br></br>
 ​
-[##_Image|kage@cIOrv5/btqWsHruzFb/jk36cCX6cKzsCMwio4KGl0/img.png|alignCenter|data-filename="스크린샷 2021-02-09 오후 4.44.25.png" data-origin-width="432" data-origin-height="210" data-ke-mobilestyle="widthContent"|||_##]
+<p align="center"><img src="./sharedelement/inflateTransition.png" width="200"></p>
+<br></br>
 ​
 만드는 방법은 res -> transition 폴더 생성 
+
 ​
 > change\_bounds.xml
 ​
@@ -113,8 +113,7 @@ fun FragmentNavigatorExtras(vararg sharedElements: Pair<View, String>) =
 ```
 ​
 이후에 **inflateTransition**에 적용해 사용하면 되겠습니다.
-​
----
+
 ​
 ### **Reference**
 ​

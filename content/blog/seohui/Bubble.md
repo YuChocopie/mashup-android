@@ -1,9 +1,25 @@
 ---
+<<<<<<< HEAD
 title: Bubbles
 date: "2021-01-16"
 tags: ["mash-up", "2nd", "seohui", "Bubbles", "android"]
 description: "Bubbles in Android."
 cover: "./cover2.png"
+=======
+<<<<<<< HEAD
+title: RecyclerView
+date: "2020-12-25"
+tags: ["mash-up", "2nd", "seohui", "Bubbles", "androidweekly"]
+description: "Bubbles in Android."
+cover: "./cover.png"
+=======
+title: Bubbles
+date: "2021-01-16"
+tags: ["mash-up", "2nd", "seohui", "Bubbles", "android"]
+description: "Bubbles in Android."
+cover: "./cover2.png"
+>>>>>>> upstream/dev
+>>>>>>> 83ec31b (add 3rd)
 ---
 
 # Bubbles in Android
@@ -193,6 +209,11 @@ val bubbleMetadata = Notification.BubbleMetadata.Builder()
 
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 83ec31b (add 3rd)
 
 
 
@@ -202,6 +223,10 @@ val bubbleMetadata = Notification.BubbleMetadata.Builder()
 
 아래의 참고 자료를 더 보시면 좋을 것 같습니다. 
 
+<<<<<<< HEAD
+=======
+>>>>>>> upstream/dev
+>>>>>>> 83ec31b (add 3rd)
 ```
 #### reference
 

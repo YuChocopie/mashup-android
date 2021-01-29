@@ -1,5 +1,5 @@
 const path = require(`path`)
-const _ = require('lodash')
+const _ = require("lodash")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
@@ -55,7 +55,7 @@ exports.createPages = ({ graphql, actions }) => {
     })
 
     // Create blog post list pages
-    const postsPerPage = 5
+    const postsPerPage = 10
     const numPages = Math.ceil(posts.length / postsPerPage)
 
     Array.from({ length: numPages }).forEach((_, i) => {
@@ -75,7 +75,7 @@ exports.createPages = ({ graphql, actions }) => {
     let tags = []
     // Iterate through each post, putting all found tags into `tags`
     _.each(posts, edge => {
-      if (_.get(edge, 'node.frontmatter.tags')) {
+      if (_.get(edge, "node.frontmatter.tags")) {
         tags = tags.concat(edge.node.frontmatter.tags)
       }
     })
@@ -102,17 +102,17 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
-    if (typeof node.frontmatter.slug !== 'undefined') {
+    if (typeof node.frontmatter.slug !== "undefined") {
       createNodeField({
         node,
-        name: 'slug',
+        name: "slug",
         value: node.frontmatter.slug,
       })
     } else {
       const value = createFilePath({ node, getNode })
       createNodeField({
         node,
-        name: 'slug',
+        name: "slug",
         value,
       })
     }
@@ -122,10 +122,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 // for React-Hot-Loader: react-🔥-dom patch is not detected
 exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
   const config = getConfig()
-  if (stage.startsWith('develop') && config.resolve) {
+  if (stage.startsWith("develop") && config.resolve) {
     config.resolve.alias = {
       ...config.resolve.alias,
-      'react-dom': '@hot-loader/react-dom',
+      "react-dom": "@hot-loader/react-dom",
     }
   }
 }

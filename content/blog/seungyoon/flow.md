@@ -3,7 +3,7 @@ title: "Coroutine Flow"
 date: "2021-01-26"
 tags:
   ["mash-up", "seungyoon", "coroutine", "flow"]
-description: "코루틴 flow에 대해 알아보자. (1/2)"
+description: "코루틴 flow에 대해 알아보자.(1/2)"
 cover: "flow/Group 3.jpg"
 ---
 
@@ -260,9 +260,9 @@ fun main() = runBlocking {
     flow.collect { value -> println("flow: $value") }
 
     println("-------------------")
-
+    
     (1..3).asFlow().collect { value -> println("flow:$value") }
-
+    
     println("main end!")
 }
 ```
@@ -444,7 +444,7 @@ fun main() = runBlocking {
                 println("Filter $it")
                 it % 2 == 0
             }
-            .map {
+            .map { 
                 println("Map $it")
                 "string $it"
             }.collect {

@@ -1,5 +1,5 @@
 ---
-title: MVVM && Hilt etc Study Record
+title: MVVM && Hilt (etc) Study Record
 date: "2021-01-29"
 tags: ["mash-up", "3rd", "seohui", "MVVM", "Hilt", "Practice", "android"]
 description: "MVVM & Hilt study."

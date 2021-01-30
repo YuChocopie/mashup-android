@@ -1,6 +1,4 @@
 ---
-
-
 title: MVVM && Hilt etc Study Record
 date: "2021-01-29"
 tags: ["mash-up", "3rd", "seohui", "MVVM", "Hilt", "Practice", "android"]

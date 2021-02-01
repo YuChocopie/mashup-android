@@ -4,11 +4,11 @@ date: "2021-01-09"
 tags:
   ["mash-up", "seungyoon", "View Binding", "Fragment"]
 description: "Fragment에서 View Binding을 올바르게 사용해봅시다."
-cover: "ViewBinding/viewbinding_cover.png"
+cover: "./viewbinding/viewbinding_cover.png"
 ---
 
 <br>
-<img src="ViewBinding/1*g-J92x35cABd-B3dC3ttZQ.png" width="500">
+<img src="./viewbinding/1*g-J92x35cABd-B3dC3ttZQ.png" width="500">
 </br>
 
 [**이전 글**](https://mashup-android.vercel.app/seungyoon/viewbinding/)에서 **View Binding**이 무엇인지와 Activity, Fragment에서의 사용법을 알아봤습니다.<br></br>
@@ -53,7 +53,7 @@ cover: "ViewBinding/viewbinding_cover.png"
 ▶ 그래서 반드시 binding 변수를 **onDetsroyView()** 이후에 **null**로 만들어 줘야합니다.
 
 <br>
-<img src="ViewBinding/R1280x0.png">
+<img src="./viewbinding/R1280x0.png">
 </br>
 
 > Fragments outlives their views?
@@ -73,7 +73,7 @@ cover: "ViewBinding/viewbinding_cover.png"
 우리는 이러한 코드들을 Fragment의 특성 때문에 매번 추가해주는 것은 원치 않을 것입니다.
 
 <br>
-<img src="ViewBinding/view_binding_kotlin.png" width="200">
+<img src="./viewbinding/view_binding_kotlin.png" width="200">
 </br>
 
 ## "어떻게 해당 이슈를 **향상**시킬 수 있을까요?"
@@ -111,7 +111,7 @@ Class ProfileFragment : Fragment(R.layout.profile_layout) {
 > bind()
 
 <br>
-<img src="ViewBinding/bind.png" width="500">
+<img src="./viewbinding/bind.png" width="500">
 </br>
 
 **bind()** 메소드의 **내부**는 위와 같습니다.

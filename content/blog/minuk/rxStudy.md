@@ -584,7 +584,9 @@ Q. 그럼 onError 이벤트에서 예외를 처리하는 것과 무엇이 다른
 
 ### onErrorReturnItem
 
-onErrorReturn() 함수와 비슷한 함수로 **Throwable 객체를 인자로 전달하지 않기 때문에** 코드는 좀 더 간결해집니다. **단, 예외의 종류는 확인할 수 없습니다.**<br></br>
+onErrorReturn() 함수와 비슷한 함수로 **Throwable 객체를 인자로 전달하지 않기 때문에** 코드는 좀 더 간결해집니다. **단, 예외의 종류는 확인할 수 없습니다.**
+
+<br></br>
 
 ```java
 String[] grades = {"70", "88", "$100", "93"};
@@ -649,7 +651,9 @@ RxCachedThreadScheduler-1 | debug = Wrong Data found!
 
 ### 7.2.3 retry() 함수
 
-예외 처리의 다른 방법은 재시도입니다. 예를 들어 서버와 통신할 때 인터넷이 일시적으로 안되거나 서버에 일시적인 장애가 발생하면 **일정 시간 후 다시 통신을 요청하는 것이 필요합니다.**<br></br>
+예외 처리의 다른 방법은 재시도입니다. 예를 들어 서버와 통신할 때 인터넷이 일시적으로 안되거나 서버에 일시적인 장애가 발생하면 **일정 시간 후 다시 통신을 요청하는 것이 필요합니다.**
+
+<br></br>
 
 retry()라는 함수는 이러한 재 요청 로직을 단순하게 처리할 수 있습니다.<br></br>
 
@@ -682,11 +686,15 @@ main | 596 | error = api.github.com
 main | 596 | value = result : -500
 ```
 
-`retry(5)` 로 인해 실행 횟수를 5회로 지정, 총 5번의 재 호출 후 에러 코드 반환<br></br>
+`retry(5)` 로 인해 실행 횟수를 5회로 지정, 총 5번의 재 호출 후 에러 코드 반환 <br></br>
 
 하지만 재시도하는 시간 간격이 1ms가 걸리거나, 1ms가 되지 않는 시간에 바로 재시도하고 있습니다.
 
-이러면 대기 시간이 없어 실제로 도움이 되지 않습니다.<br></br>
+이러면 대기 시간이 없어 실제로 도움이 되지 않습니다. 
+
+<br></br>
+
+
 
 ### 대기 시간을 설정한 retry()
 
@@ -740,7 +748,9 @@ main | 5617 | value = result : -500
 
 retryUntil()는 특정 조건이 충족될 때까지만 재시도하는 함수입니다. 
 
-retry() 함수는 재시도를 지속할 조건이 없을 때 재시도를 중단한다면, retryUntil() 함수는 재시도를 중단할 조건이 발생할 때까지 계속 재시도합니다.<br></br>
+retry() 함수는 재시도를 지속할 조건이 없을 때 재시도를 중단한다면, retryUntil() 함수는 재시도를 중단할 조건이 발생할 때까지 계속 재시도합니다.
+
+<br></br>
 
 ```java
 @CheckReturnValue
@@ -765,7 +775,9 @@ public interface BooleanSupplier {
 
 - **BooleanSupplier** 객체는 인자는 없고 Boolean 값을 리턴하는 함수형 인터페이스
 
-BooleanSupplier 함수의 값이 **false**이 계속 진행, **true**면 계속 재호출<br></br>
+BooleanSupplier 함수의 값이 **false**이 계속 진행, **true**면 계속 재호출
+
+<br></br>
 
 **예제 코드**
 
@@ -804,7 +816,9 @@ RxCachedThreadScheduler-1 | 4616 | error = api.github.com
 RxCachedThreadScheduler-1 | Network is not available
 ```
 
-Network가 올바르지 않으면 1000ms의 딜레이를 가진 후 재호출한다. 이 과정은 Network가 제대로 동작할 때까지 반복한다.<br></br>
+Network가 올바르지 않으면 1000ms의 딜레이를 가진 후 재호출한다. 이 과정은 Network가 제대로 동작할 때까지 반복한다.
+
+<br></br>
 
 ### 7.2.5 retryWhen() 함수
 
@@ -834,7 +848,9 @@ CommonUtils.exampleComplete();
 
 retryWhen() 함수 람다 표현식 인자는 `Observable<Throwable>` 로 설정되어 있기 때문에,
 
-attempts는 `Observable<Throwable>` 형태입니다.<br></br>
+attempts는 `Observable<Throwable>` 형태입니다. 
+
+<br></br>
 
 **출력**
 
@@ -852,11 +868,15 @@ subscribing
 
 ## 7.3 흐름 제어
 
-흐름 제어는 Observable이 데이터를 발행하는 속도와 옵서버가 데이터를 받아서 처리하는 속도 사이의 차이가 발생할 때 사용하는 함수입니다. 예를 들어 Android에서 사용자가 버튼을 두번 빠르게 클릭하는 것을 제어할 때 사용할 수 있을 듯해요.<br></br>
+흐름 제어는 Observable이 데이터를 발행하는 속도와 옵서버가 데이터를 받아서 처리하는 속도 사이의 차이가 발생할 때 사용하는 함수입니다. 예를 들어 Android에서 사용자가 버튼을 두번 빠르게 클릭하는 것을 제어할 때 사용할 수 있을 듯해요.
+
+<br></br>
 
 ### 7.3.1 sample 함수
 
-sample() 함수는 특정한 시간 동안 **가장 최근에 발행된 데이터만 걸러줍니다.** 해당 시간에는 아무리 많은 데이터가 들어와도 해당 구간의 마지막 데이터만 발행하고 나머지는 무시합니다.<br></br>
+sample() 함수는 특정한 시간 동안 **가장 최근에 발행된 데이터만 걸러줍니다.** 해당 시간에는 아무리 많은 데이터가 들어와도 해당 구간의 마지막 데이터만 발행하고 나머지는 무시합니다.
+
+<br></br>
 
 ![rxStudy/Untitled%204.png](rxStudy/Untitled%204.png)
 
@@ -904,11 +924,15 @@ RxComputationThreadPool-1 | 856 | value = 3
 
 ### 7.3.2 buffer() 함수
 
-buffer() 함수는 **일정 시간 동안 데이터를 모아두었다가 한꺼번에 발행합니다**. 따라서 넘치는 데이터 흐름을 제어할 필요가 있을 때 활용합니다.<br></br>
+buffer() 함수는 **일정 시간 동안 데이터를 모아두었다가 한꺼번에 발행합니다**. 따라서 넘치는 데이터 흐름을 제어할 필요가 있을 때 활용합니다. 
+
+<br></br>
 
 ![rxStudy/Untitled%205.png](rxStudy/Untitled%205.png)
 
-처음 빨간원 노란원 초록원을 발행하면 그것을 모아서 **List 객체**에 전달해 줍니다. 그 다음 다시 하늘 파랑 자주 원이 생기면 그것을 모아서 한번에 발행해 줍니다 .<br></br>
+처음 빨간원 노란원 초록원을 발행하면 그것을 모아서 **List 객체**에 전달해 줍니다. 그 다음 다시 하늘 파랑 자주 원이 생기면 그것을 모아서 한번에 발행해 줍니다.
+
+<br></br>
 
 **예제 코드**
 
@@ -946,7 +970,9 @@ RxComputationThreadPool-1 | 506 | value = [1, 2, 3]
 RxComputationThreadPool-3 | 1013 | value = [4, 5, 6]
 ```
 
-기본 `buffer` 함수는 필터링 없이 인자의 개수만큼 Data를 묶어서 List 형태로 데이터를 발행한다.<br></br>
+기본 `buffer` 함수는 필터링 없이 인자의 개수만큼 Data를 묶어서 List 형태로 데이터를 발행한다.
+
+<br></br>
 
 ### Skip하는 Buffer
 
@@ -1044,7 +1070,9 @@ RxComputationThreadPool-4 | 1015 | value = 6
 
 `window()` 함수는 groupBy() 함수와 개념적으로 비슷합니다. 
 
-groupBy() 함수는 특정 조건에 맞는 입력값들을 그룹화해 별도의 **Observable을 병렬로 만듭니다**. 반면 window() 함수는 throttleFirst() 나 sample() 함수처럼 내가 처리할 수 있는 일부의 값들만 받아들일 수 있습니다. 흐름 제어 기능에 **groupBy() 함수와 비슷한 별도의 Observable 분리 기능을 모두 갖추었다고 생각하면 됩니다.**<br></br>
+groupBy() 함수는 특정 조건에 맞는 입력값들을 그룹화해 별도의 **Observable을 병렬로 만듭니다**. 반면 window() 함수는 throttleFirst() 나 sample() 함수처럼 내가 처리할 수 있는 일부의 값들만 받아들일 수 있습니다. 흐름 제어 기능에 **groupBy() 함수와 비슷한 별도의 Observable 분리 기능을 모두 갖추었다고 생각하면 됩니다.** 
+
+<br></br>
 
 ![rxStudy/Untitled%208.png](rxStudy/Untitled%208.png)
 

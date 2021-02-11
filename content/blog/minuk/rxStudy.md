@@ -1,3 +1,12 @@
+---
+title: ""
+date: "2021-02-11"
+tags: ["rx", "rxjava", "mash-up", "minuk", "error", "debug"] // #키워드 작성하기!
+description: "RxJava 프로그래밍 디버그와 예외 처리"
+cover: "./rx_cover.png"
+---
+
+
 # 7장. 디버깅과 예외처리
 
 지금까지 배운 Observable와 각종 리액티브 연산자를 활용하면 무엇이든 만들 수 있다고 한다고 해요. 

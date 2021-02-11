@@ -1,11 +1,10 @@
 ---
-title: ""
+title: "Reactive - 디버그와 예외 처리"
 date: "2021-02-11"
-tags: ["rx", "rxjava", "mash-up", "minuk", "error", "debug"] // #키워드 작성하기!
+tags: ["rx", "rxjava", "mash-up", "minuk", "error", "debug"]
 description: "RxJava 프로그래밍 디버그와 예외 처리"
 cover: "./rx_cover.png"
 ---
-
 
 # 7장. 디버깅과 예외처리
 

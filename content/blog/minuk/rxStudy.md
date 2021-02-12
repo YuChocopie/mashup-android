@@ -306,7 +306,7 @@ doOnDisposable() 함수는 Observable의 구독을 해지했을 때 호출되며
 
         
 
-          **출력**
+    **출력**
 
     ```java
     main | debug = onSubscribe()

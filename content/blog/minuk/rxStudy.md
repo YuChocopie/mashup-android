@@ -989,6 +989,8 @@ RxComputationThreadPool-1 | 439 | value = [1, 2]
 RxComputationThreadPool-3 | 941 | value = [4, 5]
 ```
 
+<br></br>
+
 ### 7.3.3 throttleFirst()
 
 `throttleFirst()` 는 주어진 조건에서 가장 먼저 입력된 값을 발행합니다.  sample() 함수와 비슷하지만 다릅니다. throttleFirst() 함수는 어떤 데이터를 발행하면 지정된 시간 동안 **다른 데이터를 발행하지 않도록 막습니다.**
@@ -1040,6 +1042,8 @@ RxComputationThreadPool-4 | 914 | debug = 5
 RxComputationThreadPool-4 | 1015 | debug = 6
 RxComputationThreadPool-4 | 1015 | value = 6
 ```
+
+<br></br>
 
 ### 7.3.4 window() 함수
 

@@ -87,6 +87,7 @@ const ResetCSS = createGlobalStyle`
 
   :not(pre) > code[class*="language-"], pre[class*="language-"] {
     background: #f5f5f5;
+    font-size: 0.9em;  
   }
 
   pre[class*="language-"] {

@@ -60,7 +60,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         },
         {
           name: "google-site-verification",
-          content: "lV1dh41W1XHmTzJEr5czWbrRk5ARFhgpINCCg0-Wo00",
+          content: "mvlMHnWXsna4RC83krFXNr0nLwcQD8kXUKv6W9Jg6RY" 
         },
         {
           property: `og:title`,
@@ -105,8 +105,8 @@ const SEO: React.FunctionComponent<SEOProps> = ({
 SEO.defaultProps = {
   lang: `ko`,
   meta: [],
-  keywords: [],
-  description: `춤추는 개발자 유초코의 블로그 입니다.`,
+  keywords: ["mash-up","매쉬업 안드로이드팀","mash-up android","android"],
+  description: `mash-up android 팀의 기술블록그`,
 }
 
 export default SEO

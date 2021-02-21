@@ -13,7 +13,7 @@ cover: "./cover.png"
 현재까지 안드로이드에서 뷰에 접근할 수 있는 다양한 방법이 제공되었습니다.
 
 <br>
-<img src="ViewBinding/view-access-ways.png" width="500">
+<img src="./viewbinding/view-access-ways.png" width="500">
 </br>
 
 위의 표에서 안드로이드 팀은 해당 방법들을 다음과 같은 세세 가지의 기준을 정해 비교했습니다.
@@ -51,7 +51,7 @@ btnSend.setOnClickListener { startActivity(Intent(this, SecondActivity::class.ja
 - 안드로이드 4.1 버전 기준으로 제거되었습니다. 구글에서는 바인딩 방법으로 View Binding을 권장하고 있습니다.
 - 개인적으로 유용하게 사용해왔던 방법이라 아쉬움이 남습니다.
 
-<img src="ViewBinding/1*rLvIP4jfh3D-Sw9xm7T0IQ.png" width="200">
+<img src="./viewbinding/1*rLvIP4jfh3D-Sw9xm7T0IQ.png" width="200">
 
 <br></br>
 **아쉽게도 세 가지의 기준을 모두 만족하는 바인딩 방법은 존재하지 않았습니다.**

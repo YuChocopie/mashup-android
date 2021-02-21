@@ -34,7 +34,7 @@ MotionLayout은 Google I/O '18에 처음 도입되었으며 이후 많은 개선
 
 또한, MotionLayout은 ConstraintLayout의 하위 클래스로 사용자 제어 애니메이션을 매우 쉽고 유지, 관리할 수 있도록 하는 것을 목표로 한다고 합니다.
 
-ConstraintLayout의 확장 기능으로 도입된 만큼 MotionLayout은 ConstraintLayout의 일부 요소들을 상속 받고 있습니다.
+ConstraintLayout의 확장 기능으로 도입된 만큼 MotionLayout은 ConstraintLayout의 일부 요소들을 상속받고 있습니다.
 
 
 

@@ -127,7 +127,7 @@ areItemsTheSame() && !areContentsTheSame()인 경우 해당 메서드가 호출�
 
 ### `ListAdapter`
 
-ListAdapter는 AsyncListDiffer의 wrapper 클래스로 lsit를 추적하고 list이 업데이트되면 어댑터에 알립니다.
+ListAdapter는 AsyncListDiffer의 wrapper 클래스로 list를 추적하고 list이 업데이트되면 어댑터에 알립니다.
 
 위와같이 DiffCallback을 만들면 ListAdapter를 사용하여 list 관리가 가능해집니다.
 

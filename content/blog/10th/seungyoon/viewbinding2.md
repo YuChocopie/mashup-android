@@ -8,7 +8,7 @@ cover: "./viewbinding/viewbinding_cover.png"
 ---
 
 <br>
-<img src="./viewbinding/1*g-J92x35cABd-B3dC3ttZQ.png" width="500">
+<img src="./viewbinding/a.png" width="500">
 </br>
 
 [**이전 글**](https://mashup-android.vercel.app/seungyoon/viewbinding/)에서 **View Binding**이 무엇인지와 Activity, Fragment에서의 사용법을 알아봤습니다.<br></br>

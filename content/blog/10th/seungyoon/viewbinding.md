@@ -51,7 +51,7 @@ btnSend.setOnClickListener { startActivity(Intent(this, SecondActivity::class.ja
 - 안드로이드 4.1 버전 기준으로 제거되었습니다. 구글에서는 바인딩 방법으로 View Binding을 권장하고 있습니다.
 - 개인적으로 유용하게 사용해왔던 방법이라 아쉬움이 남습니다.
 
-<img src="./viewbinding/1*rLvIP4jfh3D-Sw9xm7T0IQ.png" width="200">
+<img src="./viewbinding/b.png" width="200">
 
 <br></br>
 **아쉽게도 세 가지의 기준을 모두 만족하는 바인딩 방법은 존재하지 않았습니다.**

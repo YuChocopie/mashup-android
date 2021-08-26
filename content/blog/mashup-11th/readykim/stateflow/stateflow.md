@@ -6,7 +6,7 @@ description: "StateFlow 와 LiveData 를 다양한 관점에서 비교해봅니�
 cover: "./images/thumbnail.png"
 ---
 
-LiveData 는 Lifecycle 라이브러리 중 하나로, 안드로이드 공통의 라이프사이클과 관련된 문제를 해결할 수 있게 해주면서 앱 개발시 보다 더 유지보수 하기 쉽게, 테스트 하기 쉽게 만들어주는 라이브러리입니다.
+LiveData 는 Lifecycle 라이브러리 중 하나로, 안드로이드 공통의 라이프사이클과 관련된 문제를 해결할 수 있게 해 주면서 앱 개발시 보다 더 유지보수하기 쉽게, 테스트하기 쉽게 만들어주는 라이브러리입니다.
 LiveData 는 옵저버 패턴을 활용하여 구현되었으며, 관찰 가능한 일반 클래스인 ObservableXXX 클래스와는 달리 LiveData 는 생명주기의 변화를 인식합니다. 즉, Activity, Fragment, Service 등 안드로이드 컴포넌트의 생명 주기 인식을 통해 Active 상태에 있는 컴포넌트에서만 업데이트합니다.
 
 LiveData 를 사용했을 때 장점은 아래와 같습니다.
@@ -39,7 +39,7 @@ LiveData 객체는 주로 AAC ViewModel 에서 관리하게 되는데, 이또한
 그리고 Presentation Layer 는 Domain Layer 에 대한 의존성을 가지고 있습니다.
 
 ### Data Layer
-Domain Layer 에 대한 의존성을 갖습니다. Domain 계층의 Repository 인터페이스를 포함하고 있으며, 이에 대한 구현을 Data Layer 에서 하게 됩니다. 그리고 데이터베이스(Local)와 서버(Remote)와의 통신도 Data 계층에서 이루어집니다. 또한 필요하다면 Mapper 클래스를 두어 Data Layer 의 모델을 Domain 계층의 모델로 변환해주는 역할도 이 게층에서 하게됩니다.
+Domain Layer 에 대한 의존성을 갖습니다. Domain 계층의 Repository 인터페이스를 포함하고 있으며, 이에 대한 구현을 Data Layer 에서 하게 됩니다. 그리고 데이터베이스(Local)와 서버(Remote)와의 통신도 Data 계층에서 이루어집니다. 또한 필요하다면 Mapper 클래스를 두어 Data Layer 의 모델을 Domain 계층의 모델로 변환해주는 역할도 이 계층에서 하게됩니다.
 
 Data Layer 클래스에서 LiveData 객체를 작업하고 싶을 수 있지만 LiveData 는 비동기 데이터 스트림을 처리하도록 설계되지 않았습니다. LiveData transfromation 과 MediatorLiveData 등을 통해 이를 처리하게 할 수는 있겠지만, 모든 LiveData 의 관찰은 오직 Main Thread 에서만 진행되기 때문에 한계점을 갖고 있습니다.
 

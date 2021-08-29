@@ -23,7 +23,7 @@ Fullscreen으로 동작하는 Dialog를 만드는 방법으로는 크게 두 가
 
 SHOW DIALOG 버튼 클릭시 Fullscreen으로 동작하는 Dialog가 출력되고, SUBMIT/CANCEL 버튼 클릭 이벤트와 동시에 Toast가 출력되는 예제 앱이다.
 
-<img src="./images/20210829-fullscreen_custom_dialog/1.png" style="zoom:25%;" /><img src="./images/20210829-fullscreen_custom_dialog/2.png" style="zoom:25%;" /><img src="./images/20210829-fullscreen_custom_dialog/3.png" style="zoom:25%;" />
+<img src="./images/20210829-fullscreen_custom_dialog/1.gif" style="zoom:50%;" />
 
 <br>
 

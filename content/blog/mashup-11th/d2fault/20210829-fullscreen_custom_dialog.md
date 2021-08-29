@@ -31,7 +31,7 @@ SHOW DIALOG 버튼 클릭시 Fullscreen으로 동작하는 Dialog가 출력되�
 
 `MyCustomDialog` 라는 이름의 Project를 empty activity로 생성하고, `build.gradle` 에 `viewBinding` 사용 선언을 우선 해 주어야 한다.
 
-```groovy build.gradle
+```groovy
 android {
     ...
     viewBinding {
@@ -48,7 +48,7 @@ app 수준의 `build.gradle` 에 위 코드를 추가하고 sync 버튼을 눌�
 
 `activity_main.xml` 파일 정 가운데에 SHOW_DIALOG 버튼을 생성한다.
 
-```xml activity_main.xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -75,7 +75,7 @@ app 수준의 `build.gradle` 에 위 코드를 추가하고 sync 버튼을 눌�
 
 `dialog_full_activity.xml` 파일을 `res/layout` 에 생성한 다음 아래 코드를 넣어 준다.
 
-```xml dialog_full_activity.xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -161,7 +161,7 @@ app 수준의 `build.gradle` 에 위 코드를 추가하고 sync 버튼을 눌�
 
 이대로 실행할 경우 error가 발생한다. `strings.xml` 에 필요한 값이 누락되어 있기 때문이다. `res/values/strings.xml` 파일을 다음과 같이 수정해 보자.
 
-```xml strings.xml
+```xml
 <resources>
     <string name="app_name">MyCustomDialog</string>
 
@@ -183,7 +183,7 @@ CustomDialogMaker는 object로, Fullscreen Dialog를 쉽게 생성할 수 있도
 
 우선, `CustomDialogMaker.kt` 에서 확인 버튼과 취소 버튼 각각의 이벤트를 전달할 수 있도록 `interface` 를 생성하자.
 
-```kotlin CustomDialogListener.kt
+```kotlin
 interface CustomDialogListener {
     fun onClickSubmitButton()
     fun onClickCancelButton()
@@ -192,7 +192,7 @@ interface CustomDialogListener {
 
 각 버튼의 클릭 이벤트가 들어왔을 때 각각 이벤트에 따라 위 작성된 `interface` 를 target으로 실질적 구현부(ex-Activity)에서 이벤트를 수신하도록 했다. 말로 풀어 쓰니 어려운데, 아래 코드(`CustomDialogMaker.kt`)를 확인하자. 
 
-```kotlin CustomDialogMaker.kt
+```kotlin
 object CustomDialogMaker {
     fun getDialog(
         context: Context,
@@ -234,7 +234,7 @@ object CustomDialogMaker {
 
 `MainActivity.kt` 파일에서는 ViewBinding 대신 `findViewById` 를 이용하여 `showDialogButton` 에 `onClickListener` 를 추가하였고, 버튼 클릭시 `Dialog` 가 출력되도록 코드를 작성하였다.
 
-```kotlin MainActivity.kt
+```kotlin
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

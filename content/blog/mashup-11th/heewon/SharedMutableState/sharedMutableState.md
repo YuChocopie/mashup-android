@@ -3,7 +3,7 @@ title: "Coroutine Shared mutable state and concurrency"
 date: "2021-08-31"
 tags: ["mash-up", "Coroutine", "Volatile", "Thread-safe", "Mutex", "Actor"]
 description: "Coroutine Shared mutable state and concurrency에 대해 알아봅니다."
-cover: "./images/ic_cover"
+cover: "./images/ic_thumbnail.png"
 ---
 
 # Shared mutable state and concurrency

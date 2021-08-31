@@ -12,8 +12,6 @@ cover: "./ic_cover.png"
 
 먼저 안드로이드 플랫폼에서 **프로세스간에 메모리를 어떻게 할당**하는지 알아보며 **LMK와 OOM**에 대해 알아보도록 하겠습니다!
 
-
-
 ## 메모리 유형
 
 먼저 안드로이드 기기에는 RAM, zRAM, Storage 세가지의 메모리 유형이 있고, CPU와 GPU는 모두 동일한 RAM에 접근합니다.
@@ -26,7 +24,7 @@ cover: "./ic_cover.png"
 - zRAM: RAM의 파티션으로 스왑 공간으로 사용됩니다. 모든 것은 zRAM에 배치될 때 압축되고 zRAM에서 복사될 때 압축이 해제된다. 이 부분의 RAM은 페이지가 zRAM으로 들어오거나 zRAM에서 나갈 때 크기가 커지거나 작아집니다.
 - Storage: 파일 시스템, 모든 앱 라이브러리, 플랫폼에 포함된 개체 코드와 같은 영구데이터가 모두 포함됩니다.
 
-
+..
 
 ## 메모리 페이지
 
@@ -61,9 +59,8 @@ RAM은 다음과 같이 그룹화 할 수 있는데요
 
 </div>
 </details>
-.
 
-.
+..
 
 # LMK(Low memory management)
 
@@ -89,8 +86,7 @@ Android에는 메모리 부족 상황을 처리하는 두 가지 기본 메커�
 
 `kswapd` 으로는 시스템에 충분한 메모리를 확보할 수 없는 경우가 많습니다. 사용 가능한 메모리 양이 특정 임계값 아래로 떨어지면 시스템은 [onTrimMemory()](<https://developer.android.com/reference/android/content/ComponentCallbacks2?hl=ko#onTrimMemory(int)>)를 사용해 메모리가 부족하고 할당량을 줄여야 한다고 앱에 알리는데요. 이 방법으로 충분하지 않으면 **커널이 메모리를 확보하려고 프로세스를 종료하기 시작하고** 이 작업을 실행하기 위해 로우 메모리 킬러(low-memory killer, **LMK**)를 사용합니다.
 
-.
-.
+..
 
 ### Low-memory killer
 
@@ -112,7 +108,7 @@ LMK는 [oom_adj_score](https://android.googlesource.com/platform/system/core/+/m
 
 OOM 은 Linux 커널에서 예전부터 쭉 존재해온 메모리 관리 모듈입니다. OOM이 휴대폰 기기에 들어가는 시스템에는 안맞다고 생각하여 OOM이 발생하지 않도록 메모리를 관리하고자 Android 에서 만든게 LMK 인데요. 즉, Android 에는 LMK 와 OOM이 다 있고 동작하지만 OOM 이 발생되면 파급 효과가 크기 때문에 이러한 것을 방지하고자 동작하는 것이 LMK 인 것입니다.
 
-
+..
 
 > 그럼 OOM이 무엇이길래 파급효과가 크다는 것일까요?
 
@@ -136,7 +132,6 @@ jvm이 메모리가 부족해 객체를 할당할 수 없고 garbage collector�
 
 마지막으로 정리를 해보면, 안드로이드에서는 OOM Killer와 LMK 모두를 사용합니다!
 그리고 OOM 상황에서는 치명적인 상황이 발생하기 때문에 안드로이드에서 LMK 라는 모듈을 추가해 OOM 상황이 발생하기 전에 이를 방지하는 것이죠 :)
-
 
 #### reference
 

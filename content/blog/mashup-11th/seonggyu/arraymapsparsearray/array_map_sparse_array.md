@@ -27,7 +27,7 @@ Map은 요소를 키(Key)와 값(Value)으로 연관시켜 저장하는 데이�
 
 그렇다면 어떻게 키를 통해 데이터의 위치를 빠르게 예측할 수 있을까요? 다양한 방법이 있겠지만 가장 많이 사용하는 방법은 해싱(Hashing)입니다. 
 
-<img src="https://user-images.githubusercontent.com/57310034/131463132-0aea98da-280a-46d4-b2fb-f785da72947a.png"/>  
+<img width=500 src="https://user-images.githubusercontent.com/57310034/131463132-0aea98da-280a-46d4-b2fb-f785da72947a.png"/>  
 
 (출처 : [위키피디아](https://en.wikipedia.org/wiki/Hash_function))
 
@@ -116,7 +116,7 @@ int heartRate = aMap.get(heartKey);
 
 따라서 기본형의 키를 사용한다면 오토박싱을 제거해 메모리를 더욱 절감하기 위해 SparseArray를 사용할 수 있습니다.  
 
-<img src="https://user-images.githubusercontent.com/57310034/131478475-cf801603-33a8-40de-a7cf-696faaac2f67.png"/>  
+<img width=500 src="https://user-images.githubusercontent.com/57310034/131478475-cf801603-33a8-40de-a7cf-696faaac2f67.png"/>  
 
 물론 값에 대해서는 제네릭을 사용하지만 이마저도 기본형으로 사용하고자 한다면 다음과 같은 라이브러리를 사용하면 됩니다.
 

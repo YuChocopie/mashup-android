@@ -135,13 +135,15 @@ LaunchMode를 정의하는 방법은 두 가지가 있습니다.
 
 [공식문서](https://developer.android.com/guide/components/activities/tasks-and-back-stack?hl=ko)에서도 볼 수 있는데, **권장되는 LaunchMode는 기본값인 `standard`이에요**.` singleTask`와 `singleInstance`는 권장되지 않습니다. 하지만 생명주기를 공부하다가 알게 된 만큼 `singleTop`과 `singleTask`의 생명주기정도를 알아보려고 합니다. 위에 있는 내용들을 이해하였다면 금방 이해하게 될 거에요.
 
+![lifecycle](./images/lifecycle.png)
+
 왼쪽에 있는 예시는 singleTop을 사용하는 두 가지의 액티비티를 실행시켰을 때 입니다. 백스택에 activity1과 2가 순서대로 올라가는게 보일거에요. 그 뒤에 잠깐 pause되었는데 그 전에 `'Start with SINGLE_TOP flag'`라고 적혀있어요. 위에서는 Manifest에 모드를 선언하는 방법만 말씀드렸는데, 다른 방법으로 flag를 선언하여 activity를 시작하는 방법도 있답니다. `singleTop`으로 activity2를 `onPause`상태에있다가 다시 `onResume` 상태로 가게되었더니 중간에 `onNewIntent` 가 불리는 것을 볼 수 있죠. 현재 태스크 내 가장 상위 인스턴스가 activity2이기 때문이에요!
 
 
 
 오른쪽에 있는 예시는` singleTask`로 선언된 액티비티가 먼저 실행되고 그 뒤 Activity2가 실행되는 모습이에요. Activity2에서 1으로 돌아갈 때 `singleTask`로 선언된 Activity1이 현재 작업중인 태스크 내에 있으므로 `onNewIntent`가 불려 activity1이 재사용 된 다는 것을 봐주세요. 그리고 또 알아둘 것은 `singleTask`액티비티(Activity1) 위에서 불린 `standard` 액티비티(Activity2)는 그 대로 그 Task위에 생성이 된 다는 점이에요! 위의 예시에서 C에서 D를 불렀을 때 노란색 Task2에 D가 쌓인것처럼 말이에요!
 
-![lifecycle](./images/lifecycle.png)
+
 
 
 

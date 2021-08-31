@@ -14,7 +14,7 @@ cover: "./images/thumbnail.png"
 
 Map은 요소를 키(Key)와 값(Value)으로 연관시켜 저장하는 데이터 구조입니다. 찾고자 하는 데이터에 대한 키를 통해 데이터의 위치를 예측할 수 있습니다. 실질적으로 어떻게 구현하느냐에 따라 다르겠지만 일반적으로 배열이나 리스트보다 데이터를 저장하고 조회하는 속도가 빠릅니다.  
 
-<img src="https://user-images.githubusercontent.com/57310034/131462646-5cc39e9e-523e-439d-a1a1-44d999626b1b.png"/>   
+<img src="./images/map.png"/>   
 
 (Map으로 나타낸 월별 강우량 통계 - 출처 : [mathworks](https://www.mathworks.com/help/matlab/matlab_prog/overview-of-the-map-data-structure.html))
 
@@ -27,7 +27,7 @@ Map은 요소를 키(Key)와 값(Value)으로 연관시켜 저장하는 데이�
 
 그렇다면 어떻게 키를 통해 데이터의 위치를 빠르게 예측할 수 있을까요? 다양한 방법이 있겠지만 가장 많이 사용하는 방법은 해싱(Hashing)입니다. 
 
-<img width=500 src="https://user-images.githubusercontent.com/57310034/131463132-0aea98da-280a-46d4-b2fb-f785da72947a.png"/>  
+<img width=500 src="./images/hashfunction.png"/>  
 
 (출처 : [위키피디아](https://en.wikipedia.org/wiki/Hash_function))
 
@@ -65,11 +65,11 @@ System.out.println("The price of Egg is: " + egg);
 
 하나의 큰 배열을 가지고 비교적 띄엄 띄엄 데이터를 갖는 HashMap과는 다르게, ArrayMap은 촘촘한 배열 두 개를 사용합니다. 저장할 데이터가 많아지면 배열의 크기를 늘리고, 삭제되면서 배열의 크기를 줄이는 식으로 빈 메모리를 최소화합니다.  
 
-<img width=500 src="https://user-images.githubusercontent.com/57310034/131483433-ce1140e0-6bcd-4445-98dd-0a244634f919.png"/>  
+<img width=500 src="./images/arraymap.png"/>  
 
 하지만 그만큼 약간의 오버헤드가 발생합니다. 키를 찾기 위해 이분 탐색을 사용해야하고 데이터를 추가하거나 삭제할 때 배열에 대한 삽입 삭제 연산을 수행해야하기 때문이죠.
 
-<img width=500 src="https://user-images.githubusercontent.com/57310034/131483845-e6d29a8b-bc82-49bc-86d9-d23e64865551.png"/>  
+<img width=500 src="./images/arraymap_structure.png"/>  
 
 그리고 ArrayMap은 데이터를 순회할 때 인덱스를 사용합니다.  
 
@@ -96,7 +96,7 @@ SparseArray는 ArrayMap과 거의 동일한 구조를 갖고 있지만 SparseArr
 
 JVM에는 [오토박싱](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html)이라는 개념이 있습니다. 이는 컴파일러가 기본형(Primitive)의 데이터를 대응하는 Wrapper 클래스의 객체로 변경해주는 것을 말합니다.
 
-<img width=300 src="https://user-images.githubusercontent.com/57310034/131470050-4924f71e-6559-496d-b7b9-27daf8baf895.png">  
+<img width=300 src="./images/autoboxing.png">  
 
 오토박싱에는 두 가지 단점이 있습니다.
 - Wrapper 객체를 추가로 할당한다.
@@ -116,7 +116,7 @@ int heartRate = aMap.get(heartKey);
 
 따라서 기본형의 키를 사용한다면 오토박싱을 제거해 메모리를 더욱 절감하기 위해 SparseArray를 사용할 수 있습니다.  
 
-<img width=500 src="https://user-images.githubusercontent.com/57310034/131478475-cf801603-33a8-40de-a7cf-696faaac2f67.png"/>  
+<img width=500 src="./images/sparsearray.png"/>  
 
 물론 값에 대해서는 제네릭을 사용하지만 이마저도 기본형으로 사용하고자 한다면 다음과 같은 라이브러리를 사용하면 됩니다.
 
@@ -128,7 +128,7 @@ int heartRate = aMap.get(heartKey);
 
 그렇다면 ArrayMap이나 SparseArray 컨테이너는 언제 사용하는 게 좋을까요? 안드로이드 개발팀에 따르면 다음과 같은 두 상황에 적합하다고 합니다.  
 
-<img width=200 src="https://user-images.githubusercontent.com/57310034/131480987-c6b9077b-0e93-4539-b2c5-283c392bb80d.png"/> 
+<img width=200 src="./images/bestfit.png"/> 
 
 - 아이템의 개수가 1,000개 미만일 때
 - `Map`이 값으로 `Map`을 중첩하여 사용하고 있을 때

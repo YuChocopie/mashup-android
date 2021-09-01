@@ -70,8 +70,7 @@ res/layout/activity_main.xml
 - `android:indeterminateDrawable` : 만들어둔 애니메이션을 여기다가 적용해줍니다.
 - `android:inderterminateDuration` : 만들어둔 애니메이션의 효과가 해당 5000ms 동안 나타납니다.
 
-![loading](/Users/ijieun/Downloads/loading.gif)
-
+![loading](https://user-images.githubusercontent.com/53978090/131702145-2e4a14b2-bca4-4f53-8120-34a717c93758.gif)
 
 
 하지만, 항상 로딩 애니메이션을 보여주는것보다 API응답 속도가 느릴때만 로딩 UI를 보여주고 싶다면 [ContentLoadingProgressBar](https://developer.android.com/reference/android/support/v4/widget/ContentLoadingProgressBar.html)를 사용하면 된다고 합니다.
@@ -185,7 +184,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-![progress](/Users/ijieun/Downloads/progress.gif)
+![progress](https://user-images.githubusercontent.com/53978090/131702153-937da068-24b2-4a6f-a585-6ed35aa9a0d5.gif)
 
 
 
@@ -299,9 +298,7 @@ imgLike.setOnClickListener {
 }
 ```
 
-![framelayout](/Users/ijieun/Downloads/framelayout.gif)
-
-
+![framelayout](https://user-images.githubusercontent.com/53978090/131702164-ef84a791-8434-4403-9397-8843a6db7312.gif)
 
 
 
@@ -435,7 +432,7 @@ DetailActivity.kt
 
 window.sharedElementEnterTransition { }부분이 없어도 애니메이션 효과가 나타나긴 하지만, TransitionSet을 공부하며 원하는 느낌을 적용해보면 좋을 것 같습니다. : )
 
-![transition](/Users/ijieun/Downloads/transition.gif)
+![transition](https://user-images.githubusercontent.com/53978090/131702183-24f7e909-9762-4fd4-b1b9-74f752f208a1.gif)
 
 
 

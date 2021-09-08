@@ -14,9 +14,13 @@ cover: "./images/thumbnail.png"
 
 Map은 요소를 키(Key)와 값(Value)으로 연관시켜 저장하는 데이터 구조입니다. 찾고자 하는 데이터에 대한 키를 통해 데이터의 위치를 예측할 수 있습니다. 실질적으로 어떻게 구현하느냐에 따라 다르겠지만 일반적으로 배열이나 리스트보다 데이터를 저장하고 조회하는 속도가 빠릅니다.  
 
-<img src="./images/map.png"/>   
-
-(Map으로 나타낸 월별 강우량 통계 - 출처 : [mathworks](https://www.mathworks.com/help/matlab/matlab_prog/overview-of-the-map-data-structure.html))
+<figure style="display:block; text-align:center;">
+  <img src="./images/map.png">
+  <figcaption style="text-align:center; font-size:15px; color:#808080">
+    Map으로 나타낸 월별 강우량 통계 - 출처 :
+    <a href="https://www.mathworks.com/help/matlab/matlab_prog/overview-of-the-map-data-structure.html">mathworks</a>
+  </figcaption>
+</figure>
 
 이를 가능토록 만들어주는 Map의 몇 가지 제약은 다음과 같습니다.  
 1. Key는 중복일 수 없다.
@@ -27,9 +31,12 @@ Map은 요소를 키(Key)와 값(Value)으로 연관시켜 저장하는 데이�
 
 그렇다면 어떻게 키를 통해 데이터의 위치를 빠르게 예측할 수 있을까요? 다양한 방법이 있겠지만 가장 많이 사용하는 방법은 해싱(Hashing)입니다. 
 
-<img width=500 src="./images/hashfunction.png"/>  
-
-(출처 : [위키피디아](https://en.wikipedia.org/wiki/Hash_function))
+<figure style="display:block; text-align:center;">
+  <img src="./images/hashfunction.png" style="width: 600px; margin:0px auto">
+  <figcaption style="text-align:center; font-size:15px; color:#808080">
+     출처 : <a href="https://en.wikipedia.org/wiki/Hash_function">위키피디아</a>
+  </figcaption>
+</figure>
 
 해시는 "으깨다", "잘게 썰다" 라는 의미로, 해시 함수는 임의의 크기의 데이터를 고정된 크기의 값으로 매핑시키는 역할을 합니다. 이렇게 해시 함수에 의해 반환되는 값을 해시 값이라고 부릅니다.  
 

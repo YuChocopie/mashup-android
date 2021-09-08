@@ -62,9 +62,6 @@ suspend fun massiveRun(action: suspend () -> Unit) {
 
 여기서 `massiveRun`의 인수 자리에 들어오는 코드가 곧 `action` 함수의 내용이 됩니다.
 
-<br>
-
-
 ```kotlin
 var counter = 0
 
@@ -365,16 +362,14 @@ Counter = 100000
 
 이처럼 Actor 내부에서 채널을 이용하기 때문에 순차적인 실행이 보장되고, 동시성으로 인한 오류 방지가 가능합니다.
 
-<br><br>
+<br>
 
 <img src="./images/actor.png" alt="actor" style="zoom:90%;" />
-
-<br>
 
 그림처럼 Message는 **비동기식**으로 `Actor`에 전송되고, 
 `Actor`는 수신된 메시지를 **큐**에 담아 두었다가 **FIFO** 순서로 순차적으로 처리합니다.
 
-<br><br>
+<br>
 
 #### `Actor`를 사용하기 위해서는 첫 번째로, `Actor`가 처리할 **Message들의 클래스**를 정의해야 합니다.
 
@@ -405,7 +400,7 @@ class GetCounter(val response: CompletableDeferred<Int>) : CounterMsg()
 `Actor`도 코루틴이기 때문에 본질적으로 **비동기적**이고,
 값을 즉시 반환하지 못할 경우가 있을 수 있기 때문입니다.
 
-<br><br>
+<br>
 
 #### 이제 이 **Message를 처리하는 `Actor`를 정의**하겠습니다.
 
@@ -432,7 +427,7 @@ fun CoroutineScope.counterActor() = actor<CounterMsg> {
 
 여기에서 `complete` 함수는 int 타입인 `counter` 변수의 값을 반환한다는 것으로 이해하면 쉽습니다.
 
-<br><br>
+<br>
 
 #### 이제 `main` 함수에서 **`Actor`를 실행**해보겠습니다.
 
@@ -473,7 +468,7 @@ Counter = 100000
 따라서 동기화 문제가 해결됩니다.
 또, 불필요한 **context switching**이 발생하지 않기 때문에 실행 시간도 더 빨라집니다.
 
-<br><br>
+<br>
 
 이상으로 **Coroutine Shared mutable state and concurrency**에 관한 포스팅을 마무리하도록 하겠습니다.
 

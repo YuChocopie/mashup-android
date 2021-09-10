@@ -1,9 +1,15 @@
 ---
+
 title: "Airbnb Mavericks 살펴보기"
+
 date: "2021-09-10"
+
 tags: ["mash-up", "Airbnb", "Mavericks", "State Management"]
+
 description: "에어비엔비의 상태관리 라이브러리인 메버릭스(Mavericks) 를 소개하는 시간을 가져볼까 합니다."
+
 cover: "./images/thumbnail.png"
+
 ---
 
 안드로이드 앱을 개발하다가 보면, 현재 화면에 필요한 데이터들을 어떻게 관리하는게 좋을까 하는 고민거리가 생깁니다. 데이터들은 이전화면에서 받아온 extra 일수도 있고, SQLite/Preference/Server api 등 각기 다른 DataSource에서 가지고 올 것입니다.
@@ -33,6 +39,37 @@ data class UserState(
   val age: Int = 27,
   val regionName: String = "역삼1동",
   val profileImageUrl: String? = null
-) : MavericksState
+) : MavericksState {
+  
+  // derived proerites
+  val introduction: String
+      get() = "이름: $name, 나이: $age, 사는곳: $regionName"
+}
+```
+  
+#### MavericksViewModel
+MavericksViewModel은 화면회전 / LMK 등의 Configuration Changes가 발생할때, 데이터를 유지하기 위해서 `Jetpack ViewModel`을 구현하는 형태로 사용하고 있습니다.
+- 상태(MavericksState) 업데이트
+- stateFlow을 사용해서 stream으로 상태를 구독할 수 있는 메소드 제공 (1.0버전에서는 RxJava를 사용함.)
+  
+```kotlin
+class UserViewModel(
+    initialState: UserState,
+    private val userRepository: UserRepository,
+    private val regionRepository: RegionRepository
+) : MavericksViewModel<UserState>(initialState) {
+    
+
+    companion object : MavericksViewModelFactory<UserViewModel, UserState> {
+
+        override fun initialState(viewModelContext: ViewModelContext): MyState {
+            return MyState(...)
+        }
+
+        override fun create(viewModelContext: ViewModelContext, state: MyState): MyViewModel {
+            return MyViewModel(state, ...)
+        }
+    }
+}
 ```
 

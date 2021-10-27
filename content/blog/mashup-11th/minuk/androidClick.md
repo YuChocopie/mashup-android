@@ -1,12 +1,18 @@
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 148ac6e5e8443f806afdabaf55807875e93a9d16
 ---
 title: "android 중복클릭 방지 - ex) 좋아요 기능"
 date: "2021-08-30"
 tags: ["Mash-up 11th", "kotlin", "android", "throttleFirst", "debounce"]
 description: "어떻게 하면 좋아요 기능을 효율적으로 구현할 수 있을까요?"
 cover: "./summaryImage.png"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 148ac6e5e8443f806afdabaf55807875e93a9d16
 ---
 
 

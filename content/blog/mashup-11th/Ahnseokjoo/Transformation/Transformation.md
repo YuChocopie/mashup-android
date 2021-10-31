@@ -3,7 +3,7 @@ title: "Transformation map과 switchMap"
 date: "2021-08-31"
 tags: ["mash-up", "Transformation.map","Transformation.switchMap"] 
 description: "Transformation.map과 Transformation.switchMap에 대해서 알아봅니다."
-cover: "./images/tumbnail.png"
+cover: "./images/tumb_nail.png"
 ---
 
 > LiveData를 조금 더 유연하고 확장성 있게 사용하는 방법을 알아봅니다.

@@ -1,6 +1,6 @@
 ---
 
-title: "Lunch Mode"
+title: "Launch Mode"
 
 date: "2021-08-30"
 

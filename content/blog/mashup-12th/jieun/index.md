@@ -7,3 +7,5 @@ cover: "./images/thumbnail.png"
 ---
 
 열심히 블로그를 작성해봅시다 ~ 
+
+![heart](./images/heart.png)

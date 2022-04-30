@@ -39,7 +39,7 @@ dependencies {
 }
 ```
 
-```
+```xml
 <manifest>
     <application>
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
@@ -52,7 +52,7 @@ dependencies {
 
 **앱 ID**와 **광고 ID**가 아직 없으신 분들은 [AdMob 홈페이지](https://apps.admob.com/v2/home?utm_source=internal&utm_medium=et&utm_campaign=helpcentrecontextualopt&utm_term=http%3A%2F%2Fgoo.gl%2F6Xkfcf&subid=ww-ww-et-amhelpv4)에 로그인하셔서 생성해주세요.
 
-```
+```kotlin
 MobileAds.initialize(this) {}
 ```
 
@@ -62,7 +62,7 @@ AdMob을 초기화하는 코드로 앱 실행 시 최초 한번 실행해야 하
 
 #### **AdMob 네이티브  광고 표시하기**
 
-```
+```kotlin
 val adLoader = AdLoader.Builder(this, "광고 ID")
     .forNativeAd { ad : NativeAd ->
         // Show the ad.
@@ -87,11 +87,11 @@ recyclerView 뷰에 Item 데이터를 바인딩하듯이 **NativeAdView라는 �
 
 저는 처음에 adAppIcon이나 adHeadLine처럼 Id를 공식문서와 동일하게 설정해주면 이후 adView.setNativeAd(ad) 코드를 통해 자동으로 등록이 되는 줄 알았지만 아니더라고요.
 
-Id는 자유롭게 작성하되 inflate 후 해당 뷰의 데이터를 바 인하고 **NativeAdView 객체에 해당 View를 등록해줘야 합니다.**
+Id는 자유롭게 작성하되 inflate 후 해당 뷰의 데이터를 바인딩하고 **NativeAdView 객체에 해당 View를 등록해줘야 합니다.**
 
 예를 들어 아래처럼 하면 됩니다.
 
-```
+```kotlin
 <Button
     android:id="@+id/ad_call_to_action"
     android:layout_width="wrap_content"
@@ -115,7 +115,7 @@ root.setNativeAd(nativeAds.ad)
 
 layout 파일은 공식문서에서도 잘 나와있지만 LinearLayout으로 구성되어 있어서 ConstraintLayout으로 수정한 저의 코드를 올려드리면서 마무리하겠습니다.
 
-```
+```xml
 <com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -263,7 +263,7 @@ layout 파일은 공식문서에서도 잘 나와있지만 LinearLayout으로 �
 
 PagingSource는 리스트에 표시되는 하나의 데이터 클래스를 반환해야 하기 때문에 sealed class로 일반적인 리스트 데이터 클래스와 광고 데이터 클래스를 정의했습니다. 
 
-```
+```kotlin
 sealed class SearchContentUi {
     data class ContentUi(
         val contentId: Int = 0,
@@ -289,7 +289,7 @@ fun Content.convertToContentUi() = SearchContentUi.ContentUi(
 )
 ```
 
-```
+```kotlin
 class ContentPagingSource(
     private val api: RealTimeService,
     private val adLoaderBuilder: AdLoader.Builder,
@@ -325,7 +325,7 @@ getNativeAds는 AdLoader를 이용해 광고 데이터를 가져오는 함수입
 
 저는 리스트 10개당 광고 하나를 로드하기 때문에 suspendCancellableCoroutine을 사용하였습니다.
 
-```
+```kotlin
  private suspend fun getNativeAds(adLoaderBuilder: AdLoader.Builder) =
         suspendCancellableCoroutine<NativeAd> { emit ->
             val videoOptions = VideoOptions.Builder()
@@ -354,7 +354,7 @@ getNativeAds는 AdLoader를 이용해 광고 데이터를 가져오는 함수입
 
 저의 경우에는 발급받은 광고 ID와 테스트 ID를 strings 파일에 정의해두고 buildType에 따라서 광고 ID를 설정해주었습니다.
 
-```
+```kotlin
     @Provides
     fun provideNativeAdLoader(@ApplicationContext appContext: Context): AdLoader.Builder {
         val adsId = if (BuildConfig.DEBUG) {

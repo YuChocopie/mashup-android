@@ -3,7 +3,7 @@ title: "Scope Function Basic"
 date: "2022-05-23"
 tags: ["scopeFunction", "mash-up"] 
 description: "scopeFunction 추천 사용 팁"
-cover: "./ic_android.jpg"
+cover: "./scope_function.png"
 ---
 
 안녕하세요 안드로이드 12기 주혜진입니다~

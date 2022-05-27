@@ -8,7 +8,7 @@ cover: "./images/jieun_cover.png"
 
 안녕하세요 안드로이드 12기 이지은입니다.
 
-입사한지 얼마 안되었을때, 팀장님께서 붙여놓은 @Serializable 어노테이션을 보고 parcelaable과 맨날 비교하는 그 serializable(Java 인터페이스)인줄 알고 질문을 했던적이 있었습니다.ㅎㅎ 그때 처음으로 kotlinx Serialization라이브러리 라는것을 알게 되었고, 어떻게 사용하는지 왜 쓰는지 등이 궁금해서 이번 기회에! 정리해보려고 가져와봤습니다.😊
+입사한지 얼마 안되었을때, 팀장님께서 붙여놓은 @Serializable 어노테이션을 보고 parcelable과 맨날 비교하는 그 serializable(Java 인터페이스)인줄 알고 질문을 했던적이 있었습니다.ㅎㅎ 그때 처음으로 kotlinx Serialization라이브러리 라는것을 알게 되었고, 어떻게 사용하는지 왜 쓰는지 등이 궁금해서 이번 기회에! 정리해보려고 가져와봤습니다.😊
 
 ### Serialization
 

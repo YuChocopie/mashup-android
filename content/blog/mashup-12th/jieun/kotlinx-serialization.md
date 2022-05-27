@@ -14,7 +14,7 @@ cover: "./images/jieun_cover.png"
 
 Android에서 서버통신을 할때 서버 데이터인 JSON 형식을 직렬화 및 역직렬화를 하면서 Gson, Moshi 등의 라이브러리를 많이들 사용하시죠!   
 
-<img src="https://user-images.githubusercontent.com/53978090/170328015-b3b18548-d640-4721-afe7-2d79e0e654a5.png" width="400" height ="200">
+<img src="https://user-images.githubusercontent.com/53978090/170328015-b3b18548-d640-4721-afe7-2d79e0e654a5.png" width="500" height ="250">
 
 저도 원래는 제일 익숙한 Gson만 사용하다가, 구글 코드랩에서 Moshi를 사용하는걸 보고 Moshi도 살짝 맛을 봤었습니다! 
 
@@ -65,7 +65,7 @@ Kotlinx Serialization의 특징으로는 어떤게 있을까요??
 
 > 첫번째로, **빠른 JSON 인코딩 & 디코딩을 지원합니다.** 
 
-<img src="https://user-images.githubusercontent.com/53978090/170738840-1546cad7-5166-4080-ae25-568e5efa26b2.png" width="500" height ="250">
+<img src="https://user-images.githubusercontent.com/53978090/170738840-1546cad7-5166-4080-ae25-568e5efa26b2.png" width="700" height ="350">
 
 위의 사진은 kotlinx serialization을 사용했을때, 속도가 얼마나 향상됐는지를 나타냅니다.
 

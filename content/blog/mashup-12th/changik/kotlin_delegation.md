@@ -1,18 +1,10 @@
 ---
-
-Title: "Kotlin Delegation 분석"
-
+title: "Kotlin Delegation 분석"
 date: "2022-05-28"
-
 tags: ["Delegation", "Delegate Pattern", "Kotlin", "Android"]
-
-Description: "Kotlin의 Delegation이 어떤 기능이고, 어떻게 사용하는지 알아봅시다"
-
-Cover: "./image/thumbnail.png"
-
+description: "Kotlin의 Delegation이 어떤 기능이고, 어떻게 사용하는지 알아봅시다"
+cover: "./images/thumbnail.png"
 ---
-
-
 
 다른 언어들에 비해 코틀린이 제공해주는 독특한 기능이 있는데요. 바로 델리게이션입니다. 델리게이션을 지칭하는 위임 패턴은 이미 전통적인 디자인 패턴 중 하나이지만, 코틀린은 이러한 위임 패턴을 아주 간단히 구현할 수 있게 만들어, 언어 차원에서 위임 패턴 사용을 적극 권장하고 있습니다. 안드로이드 개발에서도 by lazy, by remember 등의 위임 패턴을 이미 많이 사용하는데요. 오늘은 코틀린 델리게이션에 대해 간단히 알아보는 시간을 가져볼까 합니다.
 

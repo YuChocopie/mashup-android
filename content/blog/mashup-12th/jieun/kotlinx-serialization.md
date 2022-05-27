@@ -27,7 +27,7 @@ Android에서 서버통신을 할때 서버 데이터인 JSON 형식을 직렬�
 
 
 > Gson을 사용하여 직렬화 했을때
-```
+```kotlin
 fun main() {
     val data = """
         {
@@ -48,7 +48,8 @@ data class Person(
 예를들어서 다음과 같은 데이터 클래스를 직렬화 했을때, 결과가 어떻게 나올까요?
 
 
-```
+```kotlin
+
 Person(name=jieun, age=0, hobby=null)
 ```
 
@@ -91,7 +92,7 @@ Kotlinx Serialization 라이브러리에 대해 간단하게 알아봤는데요,
 
 
 build.gradle(Project)
-```
+```kotlin
 buildscript {
     ext {
         kotlin_version = '1.4.10'
@@ -104,7 +105,7 @@ buildscript {
 ```
 
 build.gradle(Gradle)
-```
+```kotlin
 plugins {
     id 'kotlinx-serialization'
 }
@@ -116,7 +117,7 @@ dependencies {
 
 그 다음에 직렬화를 적용할 클래스에 @Serializable 어노테이션을 추가해줍니다.
 
-```
+```kotlin
 @Serializable
 data class Person(
     val name: String,
@@ -127,7 +128,7 @@ data class Person(
 
 그리고 json String을 객체로 가져와야하기 때문에 Json.decodeFromString() 함수를 사용하면 됩니다! 
 
-```
+```kotlin
 fun main() {
     val data = """
         {
@@ -141,7 +142,7 @@ fun main() {
 ```
 
 실행 결과 
-```
+```kotlin
 Person(name=jieun, age=20, hobby=lol)
 ```
 
@@ -158,7 +159,7 @@ json String을 객체로 변환합니다. (decoding)
 
 객체를 Json String으로 변환합니다. (encodeing)
 
-```
+```kotlin
 private fun makePersonJson() {
     val personA = Person("jieun", 20, "overwatch")
     val personJson = Json.encodeToString(personA)
@@ -174,7 +175,7 @@ data class Person(
 ```
 
 
-```
+```kotlin
 {"name":"jieun","age":20,"hobby":"overwatch"}
 ```
 
@@ -182,7 +183,7 @@ data class Person(
 
 json string에 정의되어 있으나 맵핑하려는 Model에 해당하는 칼럼이 없을 경우 발생하는 에러를 무시합니다. 
 
-```
+```kotlin
 fun main() {
     val data = """
         {
@@ -204,7 +205,7 @@ data class Person(
 ```
 위의 json에는 Person클래스에 없는 address라는 칼럼값이 들어가있고, decodeFromString을 통해 decoding을 하면 다음과 같은 에러를 발생시킵니다.
 
-```
+```kotlin
 Exception in thread "main" kotlinx.serialization.json.internal.JsonDecodingException: Unexpected JSON token at offset 53: Encountered an unknown key 'address'.
 Use 'ignoreUnknownKeys = true' in 'Json {}' builder to ignore unknown keys.
 JSON input: 
@@ -215,7 +216,7 @@ JSON input:
 ```
 address라는 알수없는 값이 있어서 decode를 할 수 없으니, ignoreUnknownKeys를 true로 해달라고 친절하게 알려주네요😢
 
-```
+```kotlin
 fun main() {
     val json = Json { ignoreUnknownKeys = true }
     val data = """

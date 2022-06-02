@@ -227,38 +227,7 @@ private var _repository : Repository? = savedStateHandle.get<Repository>(REPOSIT
 
 위 코드는 프로퍼티 위임 전 repository 라는 데이터를 가지고 오기 위한 코드인데요, 단순히 savedStateHandle을 통해 값을 가지고 오기 때문에 결과값에 null이 들어올 수 있습니다.. null이 들어올 때 별도의 처리를 간단하게 하기 위한 프로퍼티를 작성해봅시다.
 
-
-
-```kotlin
-fun <T> safeStateHandleProperty(
-    savedStateHandle: SavedStateHandle,
-    stateHandleKey: String,
-    safeCall: () -> Unit
-): ReadWriteProperty<Any?, T?> =
-    object : ReadWriteProperty<Any?, T?> {
-        override fun getValue(thisRef: Any?, property: KProperty<*>): T? {
-            val result = savedStateHandle.get<T>(stateHandleKey)
-
-            return if (result != null) {
-                result
-            } else {
-                safeCall()
-                null
-            }
-        }
-
-        override fun setValue(thisRef: Any?, property: KProperty<*>, value: T?) {
-            /**
-             * 예시를 위해 임의로 작성한 setValue 함수입니다.
-             */
-            println("test")
-        }
-    }
-```
-
-
-
-예시를 위해 가볍게 작성했습니다. 프로퍼티 위임을 받을 수 있는 객체를 만들어주려면 ReadOnlyProperty 나, ReadWriteProperty라는 인터페이스를 구현합니다.
+프로퍼티 위임을 받을 수 있는 객체를 만들어주려면 ReadOnlyProperty 나, ReadWriteProperty라는 인터페이스를 구현합니다.
 
 
 

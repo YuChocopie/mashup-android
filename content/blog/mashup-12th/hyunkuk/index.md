@@ -8,7 +8,7 @@ cover: "./images/ic_hyunkuk_statecompose.png"
 
 
 > Compose는 State를 사용하는데 State가 무엇인지 어떻게 관리해야 하는지를 알아보고자 하였고, 
-구글 공식 문서의 상태 관리에 대해서 번역해 보았습니다.
+구글 공식 문서의 상태 관리에 대해서 정리해보았습니다.
 
 #State in Jetpack Compose
 
@@ -154,7 +154,7 @@ fun HelloContent(text: String, onTextChange: (String) -> Unit) { // state hoisti
 - 가로채기 가능
     - 호출자는 상태를 변경하기 이전에, 이벤트를 반영할지 말지 결정할 수 있습니다.
 - 분리됨
-    - 호이스팅한 상태는 어디나 저장할 수 있다. 예를 들어서 ViewModel로 옮길 수도 있습니다.
+    - 호이스팅한 상태는 어디나 저장할 수 있습니다. 예를 들어서 ViewModel로 옮길 수도 있습니다.
 
 <u>만약에 한 Composable에 관리해야 하는 상태가 많아진다면 어떻게 될까요?</u>
 
@@ -170,7 +170,7 @@ Composable의 복잡성에 따라  State를 관리하는 방법은 3가지가 �
 - <span style="color: #008000">ViewModel</span>. 비즈니스 로직과 화면 또는 UI 상태에 대한 액세스를 제공합니다.
 
 다음은 Compose 상태 관리와 관련한 항목의 관계를 보여주는 다이어 그램입니다. 
-- 컴포저블은 복잡성에 따라 0개 이상의 상태 홀더(일반 객체 또는 ViewModel이거나 둘 다일 수 있음)를 사용할 수 있습니다.
+- 컴포저블은 복잡성에 따라 0개 이상의 상태 홀더(일반 객체 또는 ViewModel이거나 혹은 둘다)를 사용할 수 있습니다.
 - 일반 상태 홀더는 비즈니스 로직이나 화면 상태에 액세스해야 하는 경우 ViewModel을 사용할 수도 있습니다.
 - ViewModel은 비즈니스 레이어 또는 데이터 영역을 사용합니다.
 <p align="center">

@@ -61,7 +61,7 @@ fun BlurImage(content: @Composable () -> Unit) {
 } 
 ```
 
-content 컴포저블 람다를 이용해서 Image 컴포저블을 매개변수로 받았습니다.
+content 컴포저블 람다를 이용해서 Image 컴포저블을 매개변수로 받으려고합니다.
 
 ```kotlin
 // 블러처리에 대한 코드 
@@ -98,7 +98,6 @@ drawRect는 선택사항인데요, blur와 이미지의 경계를 조금 더 구
 
 이렇게 gradient가 들어가게 되면서, 경계가 좀 더 명확해집니다.
 마지막으로 Box Scope 내부에 content를 집어줍니다.
-다음과 같은 결과를 얻을 수 있습니다.
 Box 안에 content만 넣은 결과는 다음과 같습니다.
 
 ![imageblur](./images/imageblur.png)

@@ -319,6 +319,10 @@ fun transBitmap(context: Context, url: String) {
 
 viewModel에서 coil의 이미지 로더를 이용해서 bitmap으로 가져왔습니다. 여기서 중요한 것은 Toolkit.blur를 사용하기 위해서는 Bitmap을 ARGB_8888으로 사용해야 합니다.
 
+저는 coil 라이브러리를 통해 이미지를 url로 불러오기 때문에 위와 같은 방법으로 bitmap을 가져왔지만, url로 불러오지 않고 drawable의 이미지를 사용하시는 경우
+
+drawable을 bitmap으로 변환하고, Toolkit을 적용하시면 됩니다.
+
 ```kotlin
 //In Screen Compoasble
 val blurBitmap = homeViewModel.bitmap.collectAsState().value

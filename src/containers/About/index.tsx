@@ -150,7 +150,7 @@ const About: React.FunctionComponent<AboutProps> = props => {
             </p>
           </div>
           <div className = "member-row">
-            <img src = { require('https://avatars.githubusercontent.com/u/33657541?v=4')}/>
+            <img src = "https://avatars.githubusercontent.com/u/33657541?v=4" />
             <p>
             <a href="https://github.com/jaeryo2357">양민욱</a><br/>
             안드로이드 10기~<br/>

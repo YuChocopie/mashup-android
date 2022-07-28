@@ -177,7 +177,7 @@ const About: React.FunctionComponent<AboutProps> = props => {
             <img src = { require('../../images/member/양민욱.png')}/>
             <p>
             <a href="https://github.com/jaeryo2357">양민욱</a><br/>
-            안드로이드 10기<br/>
+            안드로이드 10기~<br/>
             한줄 소개 : 안드팀 10기 열정 담당
             </p>
           </div>
@@ -229,6 +229,14 @@ const About: React.FunctionComponent<AboutProps> = props => {
             <a href="https://github.com/miinjung">최민정</a><br/>
             안드로이드 8기<br/>
             한줄 소개 : 목배게 홍보대사 최민정입니다.
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = { require('https://avatars.githubusercontent.com/u/47407541?v=4')}/>
+            <p>
+            <a href="https://github.com/Sookhee">정민지</a><br/>
+            안드로이드 12기<br/>
+            한줄 소개 : 안드로이드 12기 막내 담당!
             </p>
           </div>
         </div>

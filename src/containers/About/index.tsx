@@ -134,35 +134,11 @@ const About: React.FunctionComponent<AboutProps> = props => {
             </p>
           </div>
           <div className = "member-row">
-            <img src = { require('../../images/member/고승윤.jpeg')} />
-            <p>
-            <a href="https://github.com/SeungYooon">고승윤</a><br/>
-            안드로이드 7기<br/>
-            한줄 소개 : 안드팀의 성실함을 담당하는 팀원입니다. (자칭)
-            </p>
-          </div>
-          <div className = "member-row">
             <img src = { require('../../images/member/김유정.jpeg')}/> 
             <p>
             <a href="https://github.com/yuchocopie">김유정</a><br/>
             안드로이드 6기<br/>
             한줄 소개 : 안드팀의 친목담당 유초코입니다~~
-            </p>
-          </div>
-          <div className = "member-row">
-            <img src = { require('../../images/member/박서희.jpeg')}/>
-            <p>
-            <a href="https://github.com/seohui548">박서희</a><br/>
-            안드로이드 10기<br/>
-            한줄 소개 : 안드팀의 10기 신입 서희입니다!
-            </p>
-          </div>
-          <div className = "member-row">
-            <img src = { require('../../images/member/박재민.jpeg')}/>
-            <p>
-            <a href="https://github.com/mkSpace">박재민</a><br/>
-            안드로이드 9기<br/>
-            한줄 소개 : 안드팀의 상콤발랄 막내온탑
             </p>
           </div>
           <div className = "member-row">
@@ -174,7 +150,7 @@ const About: React.FunctionComponent<AboutProps> = props => {
             </p>
           </div>
           <div className = "member-row">
-            <img src = { require('../../images/member/양민욱.png')}/>
+            <img src = { require('https://avatars.githubusercontent.com/u/33657541?v=4')}/>
             <p>
             <a href="https://github.com/jaeryo2357">양민욱</a><br/>
             안드로이드 10기~<br/>
@@ -187,56 +163,6 @@ const About: React.FunctionComponent<AboutProps> = props => {
             <a href="https://github.com/Huijiny">유희진</a><br/>
             안드로이드 10기<br/>
             한줄 소개 : 안녕하세요! 안둥이 유희진입니다! 많이 듣고 배우겠습니다🙇‍♀️
-            </p>
-          </div>
-        </div>
-        <div>
-          <div className = "member-row">
-            <img src = { require('../../images/member/이두한.jpeg')}/>
-            <p>
-            <a href="https://github.com/koba1mobile">이두한</a><br/>
-            안드로이드 9기<br/>
-            한줄 소개 : 코로나 제발 끝나길 ㅜㅜ
-            </p>
-          </div>
-          <div className = "member-row">
-            <img src = { require('../../images/member/이진성.jpeg')}/>
-            <p>
-            <a href="https://github.com/dlwls5201">이진성</a><br/>
-            안드로이드 7기<br/>
-            한줄 소개 : 읽고 쓰고 달리는 개발자 블랙진 입니다.
-            </p>
-          </div>
-          <div className = "member-row">
-            <img src = { require('../../images/member/정세희.jpeg')}/>
-            <p>
-            <a href="https://github.com/jsh-me">정세희</a><br/>
-            안드로이드 10기<br/>
-            한줄 소개 : 안녕하세요 ! 매쉬업10기 정세희입니다✋
-            </p>
-          </div>
-          <div className = "member-row">
-            <img src = { require('../../images/member/정현성.jpeg')}/>
-            <p>
-            <a href="https://github.com/jin55789">정현성</a><br/>
-            안드로이드 10기<br/>
-            한줄 소개 : 안녕하세요! Mash-Up 10기 안드로이드 정현성입니다 !
-            </p>
-          </div>
-          <div className = "member-row">
-            <img src = { require('../../images/member/최민정.jpeg')}/>
-            <p>
-            <a href="https://github.com/miinjung">최민정</a><br/>
-            안드로이드 8기<br/>
-            한줄 소개 : 목배게 홍보대사 최민정입니다.
-            </p>
-          </div>
-          <div className = "member-row">
-            <img src = { require('https://avatars.githubusercontent.com/u/47407541?v=4')}/>
-            <p>
-            <a href="https://github.com/Sookhee">정민지</a><br/>
-            안드로이드 12기<br/>
-            한줄 소개 : 안드로이드 12기 막내 담당!
             </p>
           </div>
         </div>

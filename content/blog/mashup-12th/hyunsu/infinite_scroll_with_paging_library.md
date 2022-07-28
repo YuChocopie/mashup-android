@@ -14,7 +14,7 @@ cover: "./images/blog_title_hyunsu.png"
 
 Android Jetpack 에서는 페이징을 위한 라이브러리를 제공합니다. Paging은 구글에서 권장하는 Android 앱 아키텍처에 맞게 설계되어 있으며, 다른 Jetpack 컴포넌트와 잘 동작할 수 있도록 설계되어 있습니다.
 
-페이징 라이브러리를 사용하여 얻을수 있는 이점은 다음과 같습니다.
+페이징 라이브러리를 사용하여 얻을 수 있는 이점은 다음과 같습니다.
 
 - 페이징된 데이터의 메모리 내 캐싱. 이렇게 하면 앱이 페이징 데이터로 작업하는 동안 시스템 리소스를 효율적으로 사용할 수 있습니다.
 - 요청 중복 제거 기능이 기본으로 제공되어 앱에서 네트워크 대역폭과 시스템 리소스를 효율적으로 사용할 수 있습니다.
@@ -193,7 +193,7 @@ load() 함수는 LoadResult를 반환하는데 세가지 중 하나일 수 있�
 
 Page에는 필수의 세가지 인자가 있습니다.
 
-- date : 가져온 항목의 List
+- data : 가져온 항목의 List
 - prevKey : 현재 페이지 앞에 항목을 가져와야 하는 경우 load() 메서드에서 사용하는 키
 - nextKey : 현재 페이지 뒤에 항목을 가져와야 하는 경우 load() 메서드에서 사용하는 키
 
@@ -215,7 +215,7 @@ override fun getRefreshKey(state: PagingState<Int, Picture>): Int? {
             state.closestPageToPosition(position)?.prevKey?.plus(1)
                 ?: state.closestPageToPosition(position)?.nextKey?.minus(1)
         }
-    }
+}
 ```
 
 새로고침은 DB업데이트, 구성변경, 프로세스 중단, 스와이프 등으로 인해 무효화 되어 Paging라이브러리가 현재 목록을 대체할 새 데이터를 로드하려고 할 때마다 발생합니다
@@ -395,22 +395,23 @@ private fun initRecyclerView() {
 }
 
 private fun collectFlows() {
-	lifecycleScope.launch {
+	viewLifecycleOwner.lifecycleScope.launch {
 		viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
 			launch {
-		      viewModel.picList.collectLatest { picture ->
-		        picturePagingAdapter.submitData(picture)
-					}
+		        viewModel.picList.collectLatest { picture ->
+		            picturePagingAdapter.submitData(picture)
+			    }
 			}
       
 			launch {
 		      picturePagingAdapter.loadStateFlow
-	          .collectLatest {
-	            if (it.source.append is LoadState.Loading) dialog.show()
-              else dialog.dismiss()
-						}
+	            .collectLatest {
+	                if (it.source.append is LoadState.Loading) dialog.show()
+                    else dialog.dismiss()
+				}
 			}
-	}
+        }
+    }
 }
 ```
 

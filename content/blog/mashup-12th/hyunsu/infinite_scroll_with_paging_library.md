@@ -28,7 +28,7 @@ Android Jetpack 에서는 페이징을 위한 라이브러리를 제공합니다
 - ViewModel layer
 - UI layer
 
-![Untitled](./images/paging_layer.jpg.png)
+![Untitled](./images/paging_layer.jpg)
 
 ### Repository layer
 

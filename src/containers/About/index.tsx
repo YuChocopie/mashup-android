@@ -78,16 +78,16 @@ const About: React.FunctionComponent<AboutProps> = props => {
         <AboutStudy>
           <h2>안드로이드 팀</h2>
           <p>
-            <img src={require('../../images/study12th/2022.04.22.jpg')} alt ="12 기수 첫 만남.jpg" width="640" height="360"/> 
-            <img src={require('../../images/study12th/2022.04.28 사진.jpg')} alt ="2번째 온라인 세미나 사진.jpg" width="640" height="360"/> 
-            <img src={require('../../images/study12th/음언제지.jpg')} alt ="첫 전체 세미나 회식" width="640" height="360"/> 
-            <img src={require('../../images/study12th/2022.04.28 세미나.jpg')} alt ="온라인으로 세미나는 이렇게.jpg" width="640" height="360"/> 
-            <img src={require('../../images/study12th/2022.05.05.jpg')} alt ="어린이날도 안드와 함께.jpg" width="640" height="360"/> 
-            <img src={require('../../images/study12th/2022.05.28 간지.jpg')} alt ="오프라인 세미나도 이렇게.jpg" width="640" height="360"/> 
-            <img src={require('../../images/study12th/2022.05.28 전체사진.jpg')} alt ="오프라인 기념으로 이렇게 다같이.jpg" width="640" height="360"/> 
+            <img src={require('../../images/study12th/2022.04.22.jpg')} alt ="12 기수 첫 만남.jpg" width="640" height="420"/> 
+            <img src={require('../../images/study12th/2022.04.28 사진.jpg')} alt ="2번째 온라인 세미나 사진.jpg" width="640" height="420"/> 
+            <img src={require('../../images/study12th/음언제지.jpg')} alt ="첫 전체 세미나 회식" width="640" height="420"/> 
+            <img src={require('../../images/study12th/2022.04.28 세미나.jpg')} alt ="온라인으로 세미나는 이렇게.jpg" width="640" height="420"/> 
+            <img src={require('../../images/study12th/2022.05.05.jpg')} alt ="어린이날도 안드와 함께.jpg" width="640" height="420"/> 
+            <img src={require('../../images/study12th/2022.05.28 간지.jpg')} alt ="오프라인 세미나도 이렇게.jpg" width="640" height="420"/> 
+            <img src={require('../../images/study12th/2022.05.28 전체사진.jpg')} alt ="오프라인 기념으로 이렇게 다같이.jpg" width="640" height="420"/> 
             <img src={require('../../images/study12th/2022.06.25.jpg')} alt ="안드 해커톤.jpg" width="640" height="360"/> 
-            <img src={require('../../images/study12th/2022.07.15.jpg')} alt ="안드 세미나.jpg" width="640" height="360"/> 
-            <img src={require('../../images/study12th/2022.08.04.jpg')} alt ="안드 세미나.jpg" width="640" height="360"/> 
+            <img src={require('../../images/study12th/2022.07.15.jpg')} alt ="안드 세미나.jpg" width="640" height="420"/> 
+            <img src={require('../../images/study12th/2022.08.04.jpg')} alt ="안드 세미나.jpg" width="640" height="420"/> 
           </p>
           <p>
             🥰 <u><strong>귀염 뽀짝 슈퍼 러블리</strong></u> 매셥 안드로이드 팀은 즐겁게 공부하고 열심히 노는 것을 목표로 순항 중(~ing)

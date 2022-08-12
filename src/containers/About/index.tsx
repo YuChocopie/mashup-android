@@ -126,31 +126,31 @@ const About: React.FunctionComponent<AboutProps> = props => {
         <h2 style={{ marginTop: "32px"}}><b>People</b></h2>
         <div style = {{alignItems : ""}}>
           <div className = "member-row">
-            <img src = { require('../../images/member/강다현.jpeg')} />
-            <p>
-            <a href="https://github.com/dahyun1226">강다현</a><br/>
-            안드로이드 9기<br/>
-            한줄 소개 : 2021년의 라이징 스타
-            </p>
-          </div>
-          <div className = "member-row">
             <img src = { require('../../images/member/김유정.jpeg')}/> 
             <p>
             <a href="https://github.com/yuchocopie">김유정</a><br/>
             안드로이드 6기<br/>
-            한줄 소개 : 안드팀의 친목담당 유초코입니다~~
+            한줄 소개 : 안드로이드의 박힌돌! 유초코입니다~
             </p>
           </div>
           <div className = "member-row">
-            <img src = { require('../../images/member/박지영.jpeg')}/>
+            <img src = { require('../../images/member/강다현.jpeg')} />
+            <p>
+            <a href="https://github.com/dahyun1226">강다현</a><br/>
+            안드로이드 9기<br/>
+            한줄 소개 : 개발자라면 코틀린씁시다
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = { require('../../images/member/박지영.jpg')}/>
             <p>
             <a href="https://github.com/d2fault">박지영</a><br/>
             안드로이드 9기<br/>
-            한줄 소개 : 2021년의 라이징 스타
+            한줄 소개 : We can do everything~🧚‍♀
             </p>
           </div>
           <div className = "member-row">
-            <img src = "https://avatars.githubusercontent.com/u/33657541?v=4" />
+            <img src =  { require('../../images/member/양민욱.jpg')}/>
             <p>
             <a href="https://github.com/jaeryo2357">양민욱</a><br/>
             안드로이드 10기~<br/>
@@ -163,6 +163,102 @@ const About: React.FunctionComponent<AboutProps> = props => {
             <a href="https://github.com/Huijiny">유희진</a><br/>
             안드로이드 10기<br/>
             한줄 소개 : 안녕하세요! 안둥이 유희진입니다! 많이 듣고 배우겠습니다🙇‍♀️
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = "https://avatars.githubusercontent.com/u/67602108?v=4" />
+            <p>
+            <a href="https://github.com/Ahn-seokjoo">안석주</a><br/>
+            안드로이드 11기<br/>
+            한줄 소개 : 안드로이드 빠이팅
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = "https://avatars.githubusercontent.com/u/53978090?v=4" />
+            <p>
+            <a href="https://github.com/leejieun1121">이지은</a><br/>
+            안드로이드 11기<br/>
+            한줄 소개 : 안드로이드 빠이팅
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = "https://avatars.githubusercontent.com/u/15627863?v=4" />
+            <p>
+            <a href="https://github.com/lagoJin">강진호</a><br/>
+            안드로이드 11기<br/>
+            한줄 소개 : 낭만을 추구하는 개발자 
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = { require('../../images/member/김현수.jpg')}/>
+            <p>
+            <a href="https://github.com/KimHance">김현수</a><br/>
+            안드로이드 12기<br/>
+            한줄 소개 : 안드의 긁지 않은 복권
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = "https://avatars.githubusercontent.com/u/62296097?v=4"/>
+            <p>
+            <a href="https://github.com/014967">김현국</a><br/>
+            안드로이드 12기<br/>
+            한줄 소개 : Android is my life🎸
+            </p>
+          </div>
+          <div className = "member-row">
+          <img src = { require('../../images/member/정민지.jpg')}/>
+            <p>
+            <a href="https://github.com/Sookhee">정민지</a><br/>
+            안드로이드 12기<br/>
+            한줄 소개 : 안드팀의 상콤발랄 막내온탑🧸
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = "https://avatars.githubusercontent.com/u/46737716?v=4"/>
+            <p>
+            <a href="https://github.com/ckddlr0610">최창익</a><br/>
+            안드로이드 12기<br/>
+            한줄 소개 : 모바일은 안드로이드다👽 2년차 주니어 개발자 최창익입니다
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = "https://avatars.githubusercontent.com/u/23455686?v=4"/>
+            <p>
+            <a href="https://github.com/hj1115hj">주혜진</a><br/>
+            안드로이드 12기<br/>
+            한줄 소개 : 소리내어 행복을 불러들어라~~ 😃 주니어 개발자 주혜진입니다!! 
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = "https://avatars.githubusercontent.com/u/51108983?v=4"/>
+            <p>
+            <a href="https://github.com/sooziini">박수진</a><br/>
+            안드로이드 12기<br/>
+            한줄 소개 : 귀염뽀짝..한 거 좋아합니다 예를 들면 안드로봇..
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = "https://avatars.githubusercontent.com/u/53086454?v=4"/>
+            <p>
+            <a href="https://github.com/ddyeon">백다연</a><br/>
+            안드로이드 12기<br/>
+            한줄 소개 : 2022년의 라이징 스타
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = "https://avatars.githubusercontent.com/u/22673963?v=4"/>
+            <p>
+            <a href="https://github.com/AnKyungMoo">안경무</a><br/>
+            안드로이드 12기<br/>
+            한줄 소개 : 2022년의 라이징 스타
+            </p>
+          </div>
+          <div className = "member-row">
+            <img src = "https://avatars.githubusercontent.com/u/41153567?v=4"/>
+            <p>
+            <a href="https://github.com/seunghee63">양승희</a><br/>
+            안드로이드 12기<br/>
+            한줄 소개 : 2022년의 라이징 스타
             </p>
           </div>
         </div>

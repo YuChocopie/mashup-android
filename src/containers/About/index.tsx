@@ -164,7 +164,7 @@ const About: React.FunctionComponent<AboutProps> = props => {
             <p>
             <a href="https://github.com/Huijiny">유희진</a><br/>
             안드로이드 10기<br/>
-            한줄 소개 : 안녕하세요! 안둥이 유희진입니다! 많이 듣고 배우겠습니다🙇‍♀️
+            한줄 소개 : 안드로이드 개발합니다🤖
             </p>
           </div>
           <div className = "member-row">
@@ -180,7 +180,7 @@ const About: React.FunctionComponent<AboutProps> = props => {
             <p>
             <a href="https://github.com/leejieun1121">이지은</a><br/>
             안드로이드 11기<br/>
-            한줄 소개 : 안드로이드 빠이팅
+            한줄 소개 : 2022년 라이징 스타
             </p>
           </div>
           <div className = "member-row">

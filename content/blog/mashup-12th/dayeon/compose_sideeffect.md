@@ -38,7 +38,7 @@ Composable은 Side Effect가 없는 것이 좋으나, 앱 상태를 변경해야
 
 - Composable은 Side Effect에 Free 해야한다.
 - 앱의 상태 변경이 필요할 때 Composable의 생명주기를 알고 있는 제어되는 환경으로 부터 호출해야 한다.
-- Compose에서 가능성 있는 Effect들을 열어두기 때문에 쉽게 과하게 사용할 수있다. 그래서 UI와 관련되고 단방향 데이터 플로우를 중단시켜서는 안된다.
+- Compose에서 가능성 있는 Effect들을 열어두기 때문에 쉽고 과하게 사용할 수있다. 그래서 UI와 관련되고 단방향 데이터 플로우를 중단시켜서는 안된다.
 
 <br></br>
 ### Effect API
@@ -57,7 +57,7 @@ fun LaunchedEffect(
 ) {}
 ```
 
-LaunchedEffect는 key라 불리는 기준가을 두어 key가 바뀔 때만 LaunchedEffect의 supsend fun을 취소하고 재실행하니다.
+LaunchedEffect는 key라 불리는 기준가을 두어 key가 바뀔 때만 LaunchedEffect의 supsend fun을 취소하고 재실행합니다.
 
 ⇒recomposition은 Composable의 State가 바뀔 때마다 일어나므로, 만약 recomposition이 일어날 때마다 이전 LaunchedEffect가 취소되고 다시 수행된다면 매우 비효율적이기 때문에 이를 해결하기 위해!
 
@@ -132,7 +132,7 @@ onDispose {
 }
 ```
 
-위 코드에서는 effect블록은 처음에는 초기화 로직만 수행하고 이후에는 key값이 바뀔 때마다 onDispose블록을 호출한 후 초기화 로직을 다시 호출합니다.
+위 코드에서는 effect 블록은 처음에는 초기화 로직만 수행하고 이후에는 key값이 바뀔 때마다 onDispose블록을 호출한 후 초기화 로직을 다시 호출합니다.
 
 여기서 주의할 점은 onDispose 블록의 리턴 값이 바로 DisposableEffect여서 onDispose 블록은 effect 람다식의 맨 마지막에 꼭 와야합니다.
 
@@ -178,7 +178,7 @@ Activity의 onStart에서 시작되어 onStop에서 끝나야 하는 경우(백�
 
 **만약, `DisposableEffect` 가 아닌 `LaunchedEffect` 를 사용하여 구현했다면 어떤 것이 문제일까요?**
 
-LaunchedEffect를 사용했을 경우 lifecycle이 바뀔 때마다 lifecycle Owner의 lifecycle에 붙는데 이 observer가 정리되는 부분이 없기때문에 observer은 계속해서 이전 lifecyclerOwner에 붙어 있을 것입니다. 즉 , onDIspose를 이용하여 lifecylce이 바뀔 때 새로운 observer가 livecycle에 붙어 변화를 구독하고 composable이 제거될 때 observer 또한 정리되는 것입니다.
+LaunchedEffect를 사용했을 경우 lifecycle이 바뀔 때마다 lifecycle Owner의 lifecycle에 붙는데 이 observer가 정리되는 부분이 없기때문에 observer은 계속해서 이전 lifecyclerOwner에 붙어 있을 것입니다. 즉 , onDispose를 이용하여 lifecylce이 바뀔 때 새로운 observer가 livecycle에 붙어 변화를 구독하고 composable이 제거될 때 observer 또한 정리되는 것입니다.
 
 1. SideEffect :  Compose 상태를 비 Compose 코드에 게시하기
 - Compose 상태를 Compose에서 관리하지 않는 객체와 공유하려면 recomposition 성공시마다 호출되는 SideEffect Composable를 사용해야 합니다.
